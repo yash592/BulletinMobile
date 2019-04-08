@@ -67,11 +67,13 @@ class App extends React.Component {
               style={styles.image}
             />
           </View>
+
           <View
+            opacity={0.1}
             style={{
               flex: 0.3,
               width: "80%",
-              backgroundColor: "transparent",
+              backgroundColor: "white",
               borderColor: "black",
               borderWidth: 1,
               alignItems: "center",
