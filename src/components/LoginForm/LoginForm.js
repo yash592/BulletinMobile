@@ -4,7 +4,9 @@ import firebase from "firebase";
 import { Dimensions, TextInput, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { Input } from "react-native-elements";
+import { Gradient } from "../common/Gradient";
+import { Input } from "../common/TextInput";
+import { Button } from "../common/Button";
 
 class LoginForm extends Component {
   constructor() {
