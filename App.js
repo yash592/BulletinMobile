@@ -1,9 +1,24 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
-// import Router from "./Router";
+import Routes from "./src/Routes";
 import { Provider } from "react-redux";
 import firebase from "firebase";
 import { createStore, applyMiddleWare } from "redux";
+import ReduxThunk from "redux-thunk";
+import {
+  Scene,
+  Router,
+  Actions,
+  Reducer,
+  ActionConst,
+  Overlay,
+  Tabs,
+  Modal,
+  Drawer,
+  Stack,
+  Lightbox
+} from "react-native-router-flux";
+
 // import reducers from "./reducers";
 import { Dimensions, TouchableOpacity } from "react-native";
 import { Gradient } from "./src/components/common/Gradient";
@@ -27,69 +42,13 @@ class App extends React.Component {
   }
 
   render() {
-    // const store = createStore(reducers, {}, applyMiddleWare(ReduxThunk));
-    var { height, width } = Dimensions.get("window");
-    console.log(height, width);
-
-    const styles = StyleSheet.create({
-      container: {
-        flex: 0.5,
-        backgroundColor: "orange"
-      },
-      Gradient: {
-        flex: 1,
-        position: "absolute",
-        left: 0,
-        right: 0,
-        top: 0,
-        alignItems: "center",
-        justifyContent: "center",
-        height: height
-      },
-      image: {
-        width: 250,
-        height: 100,
-        resizeMode: "contain"
-      },
-      imageCtr: {
-        flex: 0.4,
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center"
-      },
-      boxContainer: {
-        flex: 0.5,
-        width: "100%",
-        backgroundColor: "transparent",
-        borderColor: "black",
-        alignItems: "center",
-        flexDirection: "column",
-        justifyContent: "flex-start"
-      }
-    });
+    // const store = createStore(applyMiddleWare(ReduxThunk));
+    // console.log(store);
 
     return (
-      <Gradient colors={["white", "#EAE0F7"]} style={styles.Gradient}>
-        <View style={styles.imageCtr}>
-          <Image
-            source={{ uri: "https://i.imgur.com/SB0VyTQ.png" }}
-            style={styles.image}
-          />
-        </View>
-        <View style={styles.boxContainer}>
-          <Input
-            placeholder={"user@gmail.com"}
-            placeholderTextColor={"black"}
-          />
-          <Input
-            secureTextEntry
-            placeholder={"password"}
-            placeholderTextColor={"black"}
-          />
-          <Button>Log in</Button>
-          <Text>Not a member? Sign Up here</Text>
-        </View>
-      </Gradient>
+      <View>
+        <Routes />
+      </View>
     );
   }
 }
