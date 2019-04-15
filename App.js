@@ -3,23 +3,9 @@ import { StyleSheet, Text, View, Image } from "react-native";
 import Routes from "./src/Routes";
 import { Provider } from "react-redux";
 import firebase from "firebase";
-import { createStore, applyMiddleWare } from "redux";
-import ReduxThunk from "redux-thunk";
-import {
-  Scene,
-  Router,
-  Actions,
-  Reducer,
-  ActionConst,
-  Overlay,
-  Tabs,
-  Modal,
-  Drawer,
-  Stack,
-  Lightbox
-} from "react-native-router-flux";
-
-// import reducers from "./reducers";
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import reducers from "./src/reducers";
 import { Dimensions, TouchableOpacity } from "react-native";
 import { Gradient } from "./src/components/common/Gradient";
 import { Input } from "./src/components/common/TextInput";
@@ -42,13 +28,14 @@ class App extends React.Component {
   }
 
   render() {
-    // const store = createStore(applyMiddleWare(ReduxThunk));
-    // console.log(store);
+    const store = createStore(reducers, {}, applyMiddleware(thunk));
+    // console.log(store.getState());
+    // console.log("thunk", thunk);
 
     return (
-      <View>
+      <Provider store={store}>
         <Routes />
-      </View>
+      </Provider>
     );
   }
 }

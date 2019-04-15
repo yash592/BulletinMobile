@@ -10,7 +10,7 @@ import { Button } from "../common/Button";
 
 class LoginForm extends Component {
   constructor() {
-    super(props);
+    super();
     this.state = {};
   }
 
@@ -80,3 +80,5 @@ class LoginForm extends Component {
     );
   }
 }
+
+export default LoginForm;
