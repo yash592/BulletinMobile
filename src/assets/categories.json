@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "General",
+    "icon": "icon"
+  },
+  {
+    "id": 2,
+    "name": "Politics",
+    "icon": "icon"
+  },
+  {
+    "id": 3,
+    "name": "Business",
+    "icon": "icon"
+  },
+  {
+    "id": 4,
+    "name": "Entertainment",
+    "icon": "icon"
+  },
+  {
+    "id": 5,
+    "name": "Health",
+    "icon": "icon"
+  },
+  {
+    "id": 6,
+    "name": "Science",
+    "icon": "icon"
+  },
+  {
+    "id": 7,
+    "name": "Sports",
+    "icon": "icon"
+  },
+  {
+    "id": 8,
+    "name": "Technology",
+    "icon": "icon"
+  }
+]

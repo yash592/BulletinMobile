@@ -1,0 +1,34 @@
+[
+  {
+    "name": "General",
+    "icon": "icon"
+  },
+  {
+    "name": "Politics",
+    "icon": "icon"
+  },
+  {
+    "name": "Business",
+    "icon": "icon"
+  },
+  {
+    "name": "Entertainment",
+    "icon": "icon"
+  },
+  {
+    "name": "Health",
+    "icon": "icon"
+  },
+  {
+    "name": "Science",
+    "icon": "icon"
+  },
+  {
+    "name": "Sports",
+    "icon": "icon"
+  },
+  {
+    "name": "Technology",
+    "icon": "icon"
+  }
+]
