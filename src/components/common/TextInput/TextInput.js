@@ -19,6 +19,8 @@ const Input = ({
       style={styles.textInput}
       placeholder={placeholder}
       placeholderTextColor={placeholderTextColor}
+      secureTextEntry={secureTextEntry}
+      onChangeText={onChangeText}
     />
   );
 };
