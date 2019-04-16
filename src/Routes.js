@@ -7,10 +7,10 @@ const Routes = () => {
   return (
     <Router>
       <Scene key="root">
-        <Scene key="auth" hideNavBar initial>
+        <Scene key="auth" hideNavBar>
           <Scene key="login" component={LoginForm} />
         </Scene>
-        <Scene key="main" hideNavBar>
+        <Scene key="main" hideNavBar initial>
           <Scene key="Home" component={Home} />
         </Scene>
       </Scene>
