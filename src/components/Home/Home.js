@@ -1,26 +1,30 @@
 import React, { Component } from "react";
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 import { Gradient } from "../common/Gradient";
+import { CategoryTile } from "../common/CategoryTile";
+
 import { Dimensions, TextInput, TouchableOpacity } from "react-native";
-// import Categories from "../../assets/categories";
+
 const categories = require("../../assets/categories");
 
 class Home extends Component {
   renderTiles = () => {
     return categories.map(category => {
-      return <Text key={category.id}>{category.name}</Text>;
+      return <CategoryTile img={category.icon} />;
     });
   };
 
   render() {
     // console.log(categories);
     var { height, width } = Dimensions.get("window");
+    console.log(width);
     const styles = {
       Gradient: {
         flex: 1,
-        position: "absolute",
+
         left: 0,
         right: 0,
+
         top: 0,
         height: height
       }

@@ -2,41 +2,41 @@
   {
     "id": 1,
     "name": "General",
-    "icon": "icon"
+    "icon": "https://i.imgur.com/jLaEbhb.png"
   },
   {
     "id": 2,
     "name": "Politics",
-    "icon": "icon"
+    "icon": "https://i.imgur.com/okLkHOG.png"
   },
   {
     "id": 3,
     "name": "Business",
-    "icon": "icon"
+    "icon": "https://i.imgur.com/AbvgAJ0.png"
   },
   {
     "id": 4,
     "name": "Entertainment",
-    "icon": "icon"
+    "icon": "https://i.imgur.com/QtVMKLf.png"
   },
   {
     "id": 5,
     "name": "Health",
-    "icon": "icon"
+    "icon": "https://i.imgur.com/KJgF4uF.png"
   },
   {
     "id": 6,
     "name": "Science",
-    "icon": "icon"
+    "icon": "https://i.imgur.com/KVoc74S.png"
   },
   {
     "id": 7,
     "name": "Sports",
-    "icon": "icon"
+    "icon": "https://i.imgur.com/XqlD2Q2.png"
   },
   {
     "id": 8,
     "name": "Technology",
-    "icon": "icon"
+    "icon": "https://i.imgur.com/0KsireP.png"
   }
 ]
