@@ -1,42 +1,42 @@
 [
   {
     "id": 1,
-    "name": "General",
-    "icon": "https://i.imgur.com/jLaEbhb.png"
+    "name": "World",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg"
   },
   {
     "id": 2,
     "name": "Politics",
-    "icon": "https://i.imgur.com/okLkHOG.png"
+    "icon": "https://www.insidehighered.com/sites/default/server_files/media/politics_0.png"
   },
   {
     "id": 3,
     "name": "Business",
-    "icon": "https://i.imgur.com/AbvgAJ0.png"
+    "icon": "https://columbiabusinesstimes.com/wp-content/uploads/2019/02/agenda-analysis-business-990818.jpg"
   },
   {
     "id": 4,
     "name": "Entertainment",
-    "icon": "https://i.imgur.com/QtVMKLf.png"
+    "icon": "https://cache-graphicslib.viator.com/graphicslib/page-images/742x525/277713_CY83YR.jpg"
   },
   {
     "id": 5,
     "name": "Health",
-    "icon": "https://i.imgur.com/KJgF4uF.png"
+    "icon": "http://greatoceanroadrunfest.com.au/wp-content/uploads/2018/12/62144.jpg"
   },
   {
     "id": 6,
     "name": "Science",
-    "icon": "https://i.imgur.com/KVoc74S.png"
+    "icon": "https://img.newatlas.com/female-spacewalk-2.jpg?auto=format%2Ccompress&ch=Width%2CDPR&fit=crop&h=347&q=60&rect=0%2C0%2C959%2C539&w=616&s=400df40f17dc6d8580af0f9596cea4cc"
   },
   {
     "id": 7,
     "name": "Sports",
-    "icon": "https://i.imgur.com/XqlD2Q2.png"
+    "icon": "https://www.unilad.co.uk/wp-content/uploads/2018/06/Ronaldo-Stands.jpg"
   },
   {
     "id": 8,
     "name": "Technology",
-    "icon": "https://i.imgur.com/0KsireP.png"
+    "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8mFqd8JJKOyL9iy5kznE2nheBsNT_zM-31-8csVM1U64p3s4l"
   }
 ]
