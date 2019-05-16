@@ -2,12 +2,19 @@ import React, { Component } from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { Gradient } from "../common/Gradient";
 import { CategoryTile } from "../common/CategoryTile";
+import { worldNews } from "../../actions";
+import { connect } from "react-redux";
 
 import { Dimensions, TextInput, TouchableOpacity } from "react-native";
 
 const categories = require("../../assets/categories");
 
 class Home extends Component {
+  onClick() {
+    console.log("clicked!");
+    this.props.worldNews();
+  }
+
   renderTiles = () => {
     return categories.map(category => {
       return (
@@ -15,6 +22,7 @@ class Home extends Component {
           key={category.id}
           img={category.icon}
           text={category.name}
+          onPress={() => this.props.worldNews()}
         />
       );
     });
@@ -23,7 +31,8 @@ class Home extends Component {
   render() {
     // console.log(categories);
 
-    // console.log(width);
+    // console.log(width);'
+    // console.log("props", this.props);
 
     return (
       <Gradient colors={["#EAE0F7", "black"]} style={styles.Gradient}>
@@ -32,6 +41,13 @@ class Home extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    news: state.news.news
+  };
+};
 
 const { height, width } = Dimensions.get("window");
 
@@ -50,4 +66,7 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Home;
+export default connect(
+  mapStateToProps,
+  { worldNews }
+)(Home);
