@@ -10,17 +10,19 @@ import {
 // const categories = require("../../assets/categories");
 
 const CategoryTile = props => {
-  console.log("props", props);
+  // console.log("props", props);
+  const { img, text, onPress, children } = props;
+
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <ImageBackground
-        source={{ uri: props.img }}
+        source={{ uri: img }}
         style={styles.imgBox}
         imageStyle={styles.imgStyle}
       >
-        {props.children}
+        {children}
         <View style={styles.textBox}>
-          <Text style={styles.text}>{props.text}</Text>
+          <Text style={styles.text}>{text}</Text>
         </View>
       </ImageBackground>
     </TouchableOpacity>

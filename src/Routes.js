@@ -12,7 +12,7 @@ const Routes = () => {
           <Scene key="login" component={LoginForm} />
         </Scene>
         <Scene key="main" hideNavBar initial>
-          <Scene key="NewsDetail" component={NewsDetail} />
+          <Scene key="home" component={Home} />
         </Scene>
       </Scene>
     </Router>
