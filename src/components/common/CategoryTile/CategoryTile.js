@@ -66,7 +66,7 @@ const styles = {
     fontSize: 22,
     fontWeight: "bold",
     shadowColor: "white",
-    textShadowOffset: { width: 0.5, height: 0.5 },
+    textShadowOffset: { width: 0.1, height: 0.1 },
     shadowOpacity: 0.5,
     textShadowRadius: 1
   }
