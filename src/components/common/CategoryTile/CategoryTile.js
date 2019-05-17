@@ -14,7 +14,7 @@ const CategoryTile = props => {
   const { img, text, onPress, children } = props;
 
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress}>
+    <TouchableOpacity style={props.style} onPress={onPress}>
       <ImageBackground
         source={{ uri: img }}
         style={styles.imgBox}
@@ -51,7 +51,6 @@ const styles = {
     width: "100%",
     height: "100%",
     opacity: 0.2,
-
     position: "relative",
     borderRadius: 10
   },
