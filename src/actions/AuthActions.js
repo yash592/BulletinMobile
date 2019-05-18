@@ -25,7 +25,7 @@ export const loginUserSuccess = (dispatch, user) => {
     payload: user
   });
   // console.log(payload);
-  Actions.main();
+  Actions.home();
 };
 
 export const loginUserFail = () => {};

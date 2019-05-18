@@ -5,7 +5,7 @@ import { Actions } from "react-native-router-flux";
 export const worldNews = () => {
   console.log("got to world news");
   let url =
-    "https://newsapi.org/v2/top-headlines?country=us&pageSize=100&apiKey=513740817e1e424cb4406d9e434de94f";
+    "https://newsapi.org/v2/top-headlines?country=in&pageSize=100&apiKey=513740817e1e424cb4406d9e434de94f";
   return dispatch => {
     return axios.get(url).then(res => {
       // console.log("respose", res.data);
@@ -13,6 +13,7 @@ export const worldNews = () => {
         type: WORLD_NEWS,
         payload: res.data.articles
       });
+      Actions.newsdetail();
     });
   };
 };

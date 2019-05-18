@@ -14,7 +14,7 @@ const CategoryTile = props => {
   const { img, text, onPress, children } = props;
 
   return (
-    <TouchableOpacity style={props.style} onPress={onPress}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <ImageBackground
         source={{ uri: img }}
         style={styles.imgBox}
