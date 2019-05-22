@@ -8,6 +8,15 @@ import axios from "axios";
 import { Font } from "expo";
 import { connect } from "react-redux";
 import _ from "lodash";
+import {
+  Container,
+  Header,
+  Content,
+  Footer,
+  FooterTab,
+  Button,
+  Icon
+} from "native-base";
 
 class NewsDetail extends Component {
   constructor(props) {
@@ -60,7 +69,8 @@ class NewsDetail extends Component {
       style={{
         flex: 1,
         flexDirection: "column",
-        alignItems: "center"
+        alignItems: "center",
+        justifyContent: "space-evenly"
       }}
     >
       <NewsCardSmall
@@ -76,21 +86,48 @@ class NewsDetail extends Component {
   render() {
     // console.log("PROPSSSSS", this.props.newsList);
     return (
-      <ScrollView>
-        <Gradient colors={["#EAE0F7", "black"]} style={styles.Gradient}>
-          <FlatList
-            data={this.props.newsList.slice(0, 1)}
-            renderItem={this._renderBigTiles}
-            keyExtractor={this._keyExtractor}
-          />
-          <FlatList
-            data={this.props.newsList.slice(1, this.props.newsList.length)}
-            renderItem={this._renderSmallTiles}
-            keyExtractor={this._keyExtractor}
-            numColumns="2"
-          />
-        </Gradient>
-      </ScrollView>
+      <View>
+        <ScrollView>
+          <Gradient
+            colors={["black", "#EAE0F7"]}
+            start={[0, 0.2]}
+            end={[0, 1]}
+            style={styles.Gradient}
+          >
+            <FlatList
+              data={this.props.newsList.slice(0, 1)}
+              renderItem={this._renderBigTiles}
+              keyExtractor={this._keyExtractor}
+            />
+            <FlatList
+              data={this.props.newsList.slice(1, this.props.newsList.length)}
+              renderItem={this._renderSmallTiles}
+              keyExtractor={this._keyExtractor}
+              numColumns="2"
+            />
+          </Gradient>
+        </ScrollView>
+        <Footer style={{ position: "absolute", left: 0, right: 0, bottom: 0 }}>
+          <FooterTab active>
+            <Button vertical>
+              <Icon name="apps" />
+              <Text>Apps</Text>
+            </Button>
+            <Button vertical>
+              <Icon name="camera" />
+              <Text>Camera</Text>
+            </Button>
+            <Button vertical active>
+              <Icon active name="navigate" />
+              <Text>Navigate</Text>
+            </Button>
+            <Button vertical>
+              <Icon name="search" />
+              <Text>Contact</Text>
+            </Button>
+          </FooterTab>
+        </Footer>
+      </View>
     );
   }
 }
