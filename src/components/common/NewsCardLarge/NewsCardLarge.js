@@ -25,9 +25,10 @@ const NewsCardLarge = props => {
 
 const styles = {
   container: {
-    margin: 2,
+    flex: 1,
+    marginTop: 30,
     width: "100%",
-    height: "43.5%",
+    height: 350,
     shadowColor: "black",
     shadowOffset: { width: 20, height: 20 },
     shadowOpacity: 1,
