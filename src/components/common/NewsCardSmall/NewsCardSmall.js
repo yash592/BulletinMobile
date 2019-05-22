@@ -22,11 +22,12 @@ const NewsCardSmall = props => {
 
 const styles = {
   container: {
-    marginTop: 20,
+    flex: 1,
+    marginTop: 2,
     marginRight: 2,
     marginLeft: 2,
-    width: "49%",
-    height: "33.5%",
+    width: "96%",
+    height: 350,
     shadowColor: "black",
     shadowOffset: { width: 20, height: 20 },
     shadowOpacity: 1,

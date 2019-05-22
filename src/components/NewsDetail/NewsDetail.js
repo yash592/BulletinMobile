@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, Image, FlatList } from "react-native";
+import { View, Text, Image, FlatList, ScrollView } from "react-native";
 import { Gradient } from "../common/Gradient";
 import { CategoryTile } from "../common/CategoryTile";
 import { NewsCardLarge } from "../common/NewsCardLarge";
@@ -37,26 +37,33 @@ class NewsDetail extends Component {
 
   onClick = () => {};
 
-  renderBigTile = () => {
-    // console.log("rendering big tile");
-    return this.state.news.slice(0, 1).map(tile => {
-      return (
-        <NewsCardLarge
-          style={styles.bigTile}
-          img={tile.urlToImage}
-          title={tile.title}
-          onPress={this.onClick()}
-          textStyle={styles.largeCardtext}
-        />
-      );
-    });
-  };
+  _renderBigTiles = ({ item }) => (
+    <View
+      style={{
+        flex: 1,
+        flexDirection: "column",
+        alignItems: "center"
+      }}
+    >
+      <NewsCardLarge
+        img={item.urlToImage}
+        title={item.title}
+        author={item.author}
+        onPress={this.onClick()}
+        textStyle={styles.smallCardtext}
+      />
+    </View>
+  );
 
   _renderSmallTiles = ({ item }) => (
-    // console.log("ITEMSSSSSSSSSSSSSSSSSSS", { item });
-    <View style={{ flex: 1, flexDirection: "column" }}>
+    <View
+      style={{
+        flex: 1,
+        flexDirection: "column",
+        alignItems: "center"
+      }}
+    >
       <NewsCardSmall
-        style={styles.smallTiles}
         img={item.urlToImage}
         title={item.title}
         author={item.author}
@@ -69,12 +76,21 @@ class NewsDetail extends Component {
   render() {
     // console.log("PROPSSSSS", this.props.newsList);
     return (
-      <FlatList
-        data={this.props.newsList}
-        renderItem={this._renderSmallTiles}
-        keyExtractor={this._keyExtractor}
-        horizontal
-      />
+      <ScrollView>
+        <Gradient colors={["#EAE0F7", "black"]} style={styles.Gradient}>
+          <FlatList
+            data={this.props.newsList.slice(0, 1)}
+            renderItem={this._renderBigTiles}
+            keyExtractor={this._keyExtractor}
+          />
+          <FlatList
+            data={this.props.newsList.slice(1, this.props.newsList.length)}
+            renderItem={this._renderSmallTiles}
+            keyExtractor={this._keyExtractor}
+            numColumns="2"
+          />
+        </Gradient>
+      </ScrollView>
     );
   }
 }
@@ -105,7 +121,7 @@ const styles = {
 
   smallTiles: {
     margin: 5,
-    width: "45%",
+    width: "100%",
     height: "23.5%",
     shadowColor: "black",
     shadowOffset: { width: 20, height: 20 },
@@ -138,11 +154,14 @@ const styles = {
     textShadowOffset: { width: 0.1, height: 0.1 },
     shadowOpacity: 0.5,
     textShadowRadius: 1
+  },
+  Gradient: {
+    height: "100%"
   }
 };
 
 const mapStateToProps = state => {
-  // console.log(state);
+  // console.log("state.ews", state.news);
   const newsList = _.map(state.news, list => {
     return { ...list };
   });
