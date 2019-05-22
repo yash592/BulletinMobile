@@ -13,7 +13,7 @@ const NewsCardLarge = props => {
       >
         {props.children}
         <View style={styles.textBox}>
-          <Text style={props.textStyle}>{props.title}</Text>
+          <Text style={props.textStyle}>{props.title.toUpperCase()}</Text>
         </View>
         <View style={styles.authorBox}>
           <Text style={props.textStyle}>{props.author}</Text>
