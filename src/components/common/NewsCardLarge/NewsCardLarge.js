@@ -8,12 +8,12 @@ const NewsCardLarge = props => {
     <TouchableOpacity style={styles.container} onPress={props.onPress}>
       <ImageBackground
         source={{ uri: props.img }}
-        style={styles.imgStyle}
+        style={styles.imgBox}
         imageStyle={styles.imgStyle}
       >
         {props.children}
         <View style={styles.textBox}>
-          <Text style={props.textStyle}>{props.title.toUpperCase()}</Text>
+          <Text style={props.textStyle}>{props.title}</Text>
         </View>
         <View style={styles.authorBox}>
           <Text style={props.textStyle}>{props.author}</Text>
@@ -27,23 +27,25 @@ const styles = {
   container: {
     flex: 1,
     marginTop: 30,
-    width: "100%",
+    width: "96%",
     height: 350,
     shadowColor: "black",
     shadowOffset: { width: 20, height: 20 },
     shadowOpacity: 1,
     shadowRadius: 2,
     elevation: 5,
-    backgroundColor: "white"
+    backgroundColor: "white",
+    justifyContent: "center",
+    alignItems: "center"
   },
   imgBox: {
     width: "100%"
   },
   imgStyle: {
     width: "100%",
-    height: "80%",
-    opacity: 1
-    // position: "relative"
+    height: "100%",
+
+    position: "relative"
   },
   textBox: {
     position: "absolute",
@@ -51,11 +53,13 @@ const styles = {
     left: 0,
     right: 0,
     bottom: 0,
-    padding: 5
-    // justifyContent: "flex-end"
+    padding: 5,
+    backgroundColor: "black"
   },
   text: {
     fontSize: 12,
+    color: "white",
+    opacity: 1,
     shadowColor: "white",
     textShadowOffset: { width: 0.1, height: 0.1 },
     shadowOpacity: 0.5,
@@ -67,8 +71,9 @@ const styles = {
     left: 0,
     right: "90%",
     bottom: "5%",
-    padding: 15
-    // justifyContent: "flex-end"
+    padding: 15,
+    justifyContent: "center",
+    alignItems: "center"
   },
   author: {
     fontSize: 12,

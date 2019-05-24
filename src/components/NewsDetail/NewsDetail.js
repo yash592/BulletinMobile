@@ -2,21 +2,14 @@ import React, { Component } from "react";
 import { View, Text, Image, FlatList, ScrollView } from "react-native";
 import { Gradient } from "../common/Gradient";
 import { CategoryTile } from "../common/CategoryTile";
+// import { Header } from "react-native-elements";
 import { NewsCardLarge } from "../common/NewsCardLarge";
 import { NewsCardSmall } from "../common/NewsCardSmall";
 import axios from "axios";
 import { Font } from "expo";
 import { connect } from "react-redux";
 import _ from "lodash";
-import {
-  Container,
-  Header,
-  Content,
-  Footer,
-  FooterTab,
-  Button,
-  Icon
-} from "native-base";
+import { Header } from "react-native-elements";
 
 class NewsDetail extends Component {
   constructor(props) {
@@ -30,7 +23,7 @@ class NewsDetail extends Component {
   async componentDidMount() {
     console.log("componentDidMount");
     await Font.loadAsync({
-      SourceSansPro: require("../assets/fonts/SourceSansPro-SemiBold.ttf")
+      Roboto: require("../assets/fonts/Roboto-Medium.ttf")
     });
     this.setState({ fontLoaded: true });
 
@@ -44,7 +37,9 @@ class NewsDetail extends Component {
     // });
   }
 
-  onClick = () => {};
+  onClick = () => {
+    console.log("clicked");
+  };
 
   _renderBigTiles = ({ item }) => (
     <View
@@ -57,9 +52,9 @@ class NewsDetail extends Component {
       <NewsCardLarge
         img={item.urlToImage}
         title={item.title}
-        author={item.author}
-        onPress={this.onClick()}
-        textStyle={styles.smallCardtext}
+        // author={item.author}
+        // onPress={this.onClick()}
+        textStyle={styles.largeCardtext}
       />
     </View>
   );
@@ -77,7 +72,7 @@ class NewsDetail extends Component {
         img={item.urlToImage}
         title={item.title}
         author={item.author}
-        onPress={this.onClick()}
+        // onPress={this.onClick()}
         textStyle={styles.smallCardtext}
       />
     </View>
@@ -85,11 +80,26 @@ class NewsDetail extends Component {
 
   render() {
     // console.log("PROPSSSSS", this.props.newsList);
-    return (
+    return !this.state.fontLoaded ? (
       <View>
+        <Text>Loading</Text>
+      </View>
+    ) : (
+      <View>
+        <Header
+          leftComponent={{ icon: "menu", color: "#0A0A0A" }}
+          centerComponent={{
+            text: "NEWS",
+            style: { color: "#0A0A0A", fontWeight: "bold" }
+          }}
+          rightComponent={{ icon: "home", color: "#0A0A0A" }}
+          containerStyle={{
+            backgroundColor: "white"
+          }}
+        />
         <ScrollView>
           <Gradient
-            colors={["black", "#EAE0F7"]}
+            colors={["white", "#EAE0F7"]}
             start={[0, 0.2]}
             end={[0, 1]}
             style={styles.Gradient}
@@ -107,26 +117,6 @@ class NewsDetail extends Component {
             />
           </Gradient>
         </ScrollView>
-        <Footer style={{ position: "absolute", left: 0, right: 0, bottom: 0 }}>
-          <FooterTab active>
-            <Button vertical>
-              <Icon name="apps" />
-              <Text>Apps</Text>
-            </Button>
-            <Button vertical>
-              <Icon name="camera" />
-              <Text>Camera</Text>
-            </Button>
-            <Button vertical active>
-              <Icon active name="navigate" />
-              <Text>Navigate</Text>
-            </Button>
-            <Button vertical>
-              <Icon name="search" />
-              <Text>Contact</Text>
-            </Button>
-          </FooterTab>
-        </Footer>
       </View>
     );
   }
@@ -177,16 +167,18 @@ const styles = {
     borderRadius: 10
   },
   smallCardtext: {
-    // fontFamily: "SourceSansPro",
-    fontSize: 14,
+    fontFamily: "Roboto",
+    fontSize: 16,
     shadowColor: "white",
     textShadowOffset: { width: 0.1, height: 0.1 },
     shadowOpacity: 0.5,
     textShadowRadius: 1
   },
   largeCardtext: {
-    // fontFamily: "SourceSansPro",
-    fontSize: 22,
+    fontFamily: "Roboto",
+    opacity: 1,
+    fontSize: 20,
+    color: "white",
     shadowColor: "white",
     textShadowOffset: { width: 0.1, height: 0.1 },
     shadowOpacity: 0.5,
