@@ -26,41 +26,43 @@ const NewsCardLarge = props => {
 const styles = {
   container: {
     flex: 1,
-    marginTop: 30,
-    width: "96%",
-    height: 350,
+    marginTop: 1,
+    marginColor: "red",
+    width: "100%",
+    height: 400,
+    backgroundColor: "#102135",
+    justifyContent: "center",
+    alignItems: "center",
     shadowColor: "black",
     shadowOffset: { width: 20, height: 20 },
     shadowOpacity: 1,
     shadowRadius: 2,
-    elevation: 5,
-    backgroundColor: "white",
-    justifyContent: "center",
-    alignItems: "center"
+    elevation: 5
   },
   imgBox: {
-    width: "100%"
+    width: "97%"
   },
   imgStyle: {
     width: "100%",
     height: "100%",
-
-    position: "relative"
+    opacity: 0.5,
+    position: "relative",
+    backgroundColor: "#102135"
   },
   textBox: {
     position: "absolute",
-    top: "80%",
+    top: 0,
     left: 0,
     right: 0,
-    bottom: 0,
+    bottom: 20,
     padding: 5,
-    backgroundColor: "black"
+    justifyContent: "flex-end"
   },
   text: {
     fontSize: 12,
     color: "white",
     opacity: 1,
-    shadowColor: "white",
+    shadowColor: "black",
     textShadowOffset: { width: 0.1, height: 0.1 },
     shadowOpacity: 0.5,
     textShadowRadius: 1

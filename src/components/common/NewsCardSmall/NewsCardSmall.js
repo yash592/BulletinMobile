@@ -24,7 +24,6 @@ const styles = {
   container: {
     flex: 1,
     marginTop: 10,
-
     width: "90%",
     height: 350,
     shadowColor: "black",
@@ -54,6 +53,7 @@ const styles = {
   },
   text: {
     fontSize: 12,
+
     shadowColor: "white",
     textShadowOffset: { width: 0.1, height: 0.1 },
     shadowOpacity: 0.5,
