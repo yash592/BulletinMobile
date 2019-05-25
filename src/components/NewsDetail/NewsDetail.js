@@ -23,7 +23,8 @@ class NewsDetail extends Component {
   async componentDidMount() {
     console.log("componentDidMount");
     await Font.loadAsync({
-      Roboto: require("../assets/fonts/Roboto-Medium.ttf")
+      Roboto: require("../assets/fonts/Roboto-Medium.ttf"),
+      RobotoBold: require("../assets/fonts/Roboto-Bold.ttf")
     });
     this.setState({ fontLoaded: true });
 
@@ -87,14 +88,16 @@ class NewsDetail extends Component {
     ) : (
       <View>
         <Header
-          leftComponent={{ icon: "menu", color: "#0A0A0A" }}
+          leftComponent={{ icon: "menu", color: "white" }}
           centerComponent={{
             text: "NEWS",
-            style: { color: "#0A0A0A", fontWeight: "bold" }
+            style: { color: "white", fontWeight: "bold" }
           }}
-          rightComponent={{ icon: "home", color: "#0A0A0A" }}
+          rightComponent={{ icon: "home", color: "white" }}
           containerStyle={{
-            backgroundColor: "white"
+            backgroundColor: "#102135",
+            marginBottom: 0,
+            justifyContent: "space-around"
           }}
         />
         <ScrollView>
@@ -109,6 +112,17 @@ class NewsDetail extends Component {
               renderItem={this._renderBigTiles}
               keyExtractor={this._keyExtractor}
             />
+            <Text
+              style={{
+                padding: 10,
+                fontFamily: "RobotoBold",
+                fontSize: 18,
+                letterSpacing: 1,
+                color: "#A3A3A3"
+              }}
+            >
+              RECENT NEWS
+            </Text>
             <FlatList
               data={this.props.newsList.slice(1, this.props.newsList.length)}
               renderItem={this._renderSmallTiles}
@@ -168,6 +182,8 @@ const styles = {
   },
   smallCardtext: {
     fontFamily: "Roboto",
+    color: "#A3A3A3",
+
     fontSize: 16,
     shadowColor: "white",
     textShadowOffset: { width: 0.1, height: 0.1 },

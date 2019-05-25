@@ -10,8 +10,12 @@ import { Dimensions, TextInput, TouchableOpacity } from "react-native";
 const categories = require("../../assets/categories");
 
 class Home extends Component {
-  onClick() {
-    console.log("clicked!");
+  constructor(props) {
+    super(props);
+    this.onClick = this.onClick.bind(this);
+  }
+  onClick(id) {
+    console.log("clicked!", id);
     this.props.worldNews();
   }
 
@@ -22,7 +26,7 @@ class Home extends Component {
           key={category.id}
           img={category.icon}
           text={category.name}
-          onPress={() => this.props.worldNews()}
+          onPress={() => this.onClick(category.id)}
         />
       );
     });
