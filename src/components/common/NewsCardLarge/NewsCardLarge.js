@@ -26,7 +26,7 @@ const NewsCardLarge = props => {
 const styles = {
   container: {
     flex: 1,
-    marginTop: 1,
+
     marginColor: "red",
     width: "100%",
     height: 400,

@@ -24,12 +24,12 @@ const styles = {
   container: {
     flex: 1,
     marginTop: 10,
-    width: "90%",
+    width: "98%",
     height: 350,
     shadowColor: "black",
-    shadowOffset: { width: 20, height: 20 },
+    shadowOffset: { width: 10, height: 10 },
     shadowOpacity: 1,
-    shadowRadius: 2,
+    shadowRadius: 1,
     elevation: 5,
     backgroundColor: "white"
   },
