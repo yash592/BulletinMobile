@@ -13,7 +13,7 @@ export const worldNews = () => {
         type: WORLD_NEWS,
         payload: res.data.articles
       });
-      Actions.newsdetail();
+      Actions.newsresults();
     });
   };
 };
@@ -28,7 +28,7 @@ export const politicsStories = () => {
         type: POLITICS_NEWS,
         payload: res.data.articles
       });
-      Actions.newsdetail();
+      Actions.newsresults();
     });
   };
 };
@@ -43,7 +43,7 @@ export const businessStories = () => {
         type: POLITICS_NEWS,
         payload: res.data.articles
       });
-      Actions.newsdetail();
+      Actions.newsresults();
     });
   };
 };
@@ -58,7 +58,7 @@ export const entertainmentStories = () => {
         type: POLITICS_NEWS,
         payload: res.data.articles
       });
-      Actions.newsdetail();
+      Actions.newsresults();
     });
   };
 };
@@ -73,7 +73,7 @@ export const healthStories = () => {
         type: POLITICS_NEWS,
         payload: res.data.articles
       });
-      Actions.newsdetail();
+      Actions.newsresults();
     });
   };
 };
@@ -88,7 +88,7 @@ export const scienceStories = () => {
         type: POLITICS_NEWS,
         payload: res.data.articles
       });
-      Actions.newsdetail();
+      Actions.newsresults();
     });
   };
 };
@@ -103,7 +103,7 @@ export const sportsStories = () => {
         type: POLITICS_NEWS,
         payload: res.data.articles
       });
-      Actions.newsdetail();
+      Actions.newsresults();
     });
   };
 };
@@ -118,7 +118,7 @@ export const techStories = () => {
         type: POLITICS_NEWS,
         payload: res.data.articles
       });
-      Actions.newsdetail();
+      Actions.newsresults();
     });
   };
 };
