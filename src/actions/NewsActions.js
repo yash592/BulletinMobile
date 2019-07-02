@@ -1,5 +1,5 @@
 import axios from "axios";
-import { WORLD_NEWS } from "./types";
+import { WORLD_NEWS, POLITICS_NEWS } from "./types";
 import { Actions } from "react-native-router-flux";
 
 export const worldNews = () => {
@@ -11,6 +11,111 @@ export const worldNews = () => {
       // console.log("respose", res.data);
       dispatch({
         type: WORLD_NEWS,
+        payload: res.data.articles
+      });
+      Actions.newsdetail();
+    });
+  };
+};
+
+export const politicsStories = () => {
+  console.log("got to politics");
+  let url =
+    "https://newsapi.org/v2/top-headlines?country=us&category=business&pageSize=100&apiKey=513740817e1e424cb4406d9e434de94f";
+  return dispatch => {
+    return axios.get(url).then(res => {
+      dispatch({
+        type: POLITICS_NEWS,
+        payload: res.data.articles
+      });
+      Actions.newsdetail();
+    });
+  };
+};
+
+export const businessStories = () => {
+  console.log("got to biz");
+  let url =
+    "https://newsapi.org/v2/top-headlines?country=us&category=business&pageSize=100&apiKey=513740817e1e424cb4406d9e434de94f";
+  return dispatch => {
+    return axios.get(url).then(res => {
+      dispatch({
+        type: POLITICS_NEWS,
+        payload: res.data.articles
+      });
+      Actions.newsdetail();
+    });
+  };
+};
+
+export const entertainmentStories = () => {
+  console.log("got to Entertainment");
+  let url =
+    "https://newsapi.org/v2/top-headlines?country=us&category=entertainment&pageSize=100&apiKey=513740817e1e424cb4406d9e434de94f";
+  return dispatch => {
+    return axios.get(url).then(res => {
+      dispatch({
+        type: POLITICS_NEWS,
+        payload: res.data.articles
+      });
+      Actions.newsdetail();
+    });
+  };
+};
+
+export const healthStories = () => {
+  console.log("got to health");
+  let url =
+    "https://newsapi.org/v2/top-headlines?country=us&category=health&pageSize=100&apiKey=513740817e1e424cb4406d9e434de94f";
+  return dispatch => {
+    return axios.get(url).then(res => {
+      dispatch({
+        type: POLITICS_NEWS,
+        payload: res.data.articles
+      });
+      Actions.newsdetail();
+    });
+  };
+};
+
+export const scienceStories = () => {
+  console.log("got to Science");
+  let url =
+    "https://newsapi.org/v2/top-headlines?country=us&category=science&pageSize=100&apiKey=513740817e1e424cb4406d9e434de94f";
+  return dispatch => {
+    return axios.get(url).then(res => {
+      dispatch({
+        type: POLITICS_NEWS,
+        payload: res.data.articles
+      });
+      Actions.newsdetail();
+    });
+  };
+};
+
+export const sportsStories = () => {
+  console.log("got to sports");
+  let url =
+    "https://newsapi.org/v2/top-headlines?country=us&category=sports&pageSize=100&apiKey=513740817e1e424cb4406d9e434de94f";
+  return dispatch => {
+    return axios.get(url).then(res => {
+      dispatch({
+        type: POLITICS_NEWS,
+        payload: res.data.articles
+      });
+      Actions.newsdetail();
+    });
+  };
+};
+
+export const techStories = () => {
+  console.log("got to tech");
+  let url =
+    "https://newsapi.org/v2/top-headlines?country=us&category=technology&pageSize=100&apiKey=513740817e1e424cb4406d9e434de94f";
+  return dispatch => {
+    return axios.get(url).then(res => {
+      dispatch({
+        type: POLITICS_NEWS,
         payload: res.data.articles
       });
       Actions.newsdetail();
