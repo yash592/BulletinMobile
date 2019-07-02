@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, PureComponent } from "react";
 import { View, Text, Image, FlatList, ScrollView } from "react-native";
 import { Gradient } from "../common/Gradient";
 import { CategoryTile } from "../common/CategoryTile";
@@ -11,14 +11,12 @@ import { connect } from "react-redux";
 import _ from "lodash";
 import { Header } from "react-native-elements";
 
-class NewsDetail extends Component {
+class NewsDetail extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       fontLoaded: false
     };
-
-    this.onClick = this.onClick.bind(this);
   }
   async componentDidMount() {
     console.log("componentDidMount");
@@ -27,11 +25,10 @@ class NewsDetail extends Component {
       RobotoBold: require("../assets/fonts/Roboto-Bold.ttf")
     });
     this.setState({ fontLoaded: true });
+    console.log("fontloaded");
   }
 
-  onClick = () => {
-    console.log("Caught you peeking 👀");
-  };
+  _keyExtractor = (item, index) => item.url;
 
   _renderBigTiles = ({ item }) => (
     <View
@@ -119,6 +116,8 @@ class NewsDetail extends Component {
               renderItem={this._renderSmallTiles}
               keyExtractor={this._keyExtractor}
               numColumns="2"
+              initialNumToRender={4}
+              legacyImplementation={false}
             />
           </Gradient>
         </ScrollView>
@@ -196,11 +195,11 @@ const styles = {
 };
 
 const mapStateToProps = state => {
-  // console.log("state.ews", state.news);
+  console.log("state.ews", state.news.length);
   const newsList = _.map(state.news, list => {
     return { ...list };
   });
-  console.log("HAHAAAAAAHAHAHAHAHAH", newsList);
+  // console.log("HAHAAAAAAHAHAHAHAHAH", newsList);
   return { newsList };
 };
 

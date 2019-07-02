@@ -4,13 +4,15 @@ import {
   Text,
   Image,
   TouchableOpacity,
-  ImageBackground
+  ImageBackground,
+  Animated,
+  Dimensions,
+  ScrollView
 } from "react-native";
 
 // const categories = require("../../assets/categories");
 
 const CategoryTile = props => {
-  // console.log("props", props);
   const { img, text, onPress, children } = props;
 
   return (
@@ -32,7 +34,7 @@ const CategoryTile = props => {
 const styles = {
   container: {
     margin: 5,
-    width: "45%",
+    width: "47.5%",
     height: "23.5%",
     shadowColor: "black",
     shadowOffset: { width: 20, height: 20 },

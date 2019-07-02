@@ -15,7 +15,7 @@ const Routes = () => {
           <Scene key="home" component={Home} />
         </Scene>
         <Scene key="newsdetail" hideNavBar>
-          <Scene key="newsdetail" component={NewsDetail} />
+          <Scene key="newsdetail" component={NewsResults} />
         </Scene>
       </Scene>
     </Router>

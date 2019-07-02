@@ -1,8 +1,17 @@
 import React, { Component } from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, Animated } from "react-native";
 import { Gradient } from "../common/Gradient";
-import { CategoryTile } from "../common/CategoryTile";
-import { worldNews } from "../../actions";
+import { CategoryTile } from "../common/CategoryTile/";
+import {
+  worldNews,
+  politicsStories,
+  businessStories,
+  entertainmentStories,
+  healthStories,
+  scienceStories,
+  sportsStories,
+  techStories
+} from "../../actions";
 import { connect } from "react-redux";
 
 import { Dimensions, TextInput, TouchableOpacity } from "react-native";
@@ -14,9 +23,35 @@ class Home extends Component {
     super(props);
     this.onClick = this.onClick.bind(this);
   }
-  onClick(id) {
-    console.log("clicked!", id);
-    this.props.worldNews();
+
+  onClick(name) {
+    console.log("clicked!", name);
+    switch (name) {
+      case "World":
+        this.props.worldNews();
+        break;
+      case "Politics":
+        this.props.politicsStories();
+        break;
+      case "Business":
+        this.props.businessStories();
+        break;
+      case "Entertainment":
+        this.props.entertainmentStories();
+        break;
+      case "Health":
+        this.props.healthStories();
+        break;
+      case "Science":
+        this.props.scienceStories();
+        break;
+      case "Sports":
+        this.props.sportsStories();
+        break;
+      case "Technology":
+        this.props.techStories();
+        break;
+    }
   }
 
   renderTiles = () => {
@@ -26,7 +61,7 @@ class Home extends Component {
           key={category.id}
           img={category.icon}
           text={category.name}
-          onPress={() => this.onClick(category.id)}
+          onPress={() => this.onClick(category.name)}
         />
       );
     });
@@ -71,5 +106,14 @@ const styles = StyleSheet.create({
 
 export default connect(
   mapStateToProps,
-  { worldNews }
+  {
+    worldNews,
+    politicsStories,
+    businessStories,
+    entertainmentStories,
+    healthStories,
+    scienceStories,
+    sportsStories,
+    techStories
+  }
 )(Home);
