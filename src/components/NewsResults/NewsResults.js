@@ -10,6 +10,7 @@ import { Font } from "expo";
 import { connect } from "react-redux";
 import _ from "lodash";
 import { Header } from "react-native-elements";
+import { summarizeArticle } from "../../actions";
 
 class NewsDetail extends PureComponent {
   constructor(props) {
@@ -27,6 +28,11 @@ class NewsDetail extends PureComponent {
     this.setState({ fontLoaded: true });
     console.log("fontloaded");
   }
+
+  onPress = () => {
+    // this.props = summarizeArticle;
+    this.props.summarizeArticle();
+  };
 
   _keyExtractor = (item, index) => item.url;
 
@@ -63,12 +69,14 @@ class NewsDetail extends PureComponent {
         author={item.author}
         // onPress={this.onClick()}
         textStyle={styles.smallCardtext}
+        onPress={this.onPress}
       />
     </View>
   );
 
   render() {
     // console.log("PROPSSSSS", this.props.newsList);
+    console.log(this.props);
     return !this.state.fontLoaded ? (
       <View>
         <Text>Loading</Text>
@@ -205,5 +213,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  {}
+  { summarizeArticle }
 )(NewsDetail);

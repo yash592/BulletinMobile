@@ -9,3 +9,4 @@ export const HEALTH_NEWS = "HEALTH_NEWS";
 export const SCIENCE_NEWS = "SCIENCE_NEWS";
 export const SPORTS_NEWS = "SPORTS_NEWS";
 export const TECH_NEWS = "TECH_NEWS";
+export const SUMMARIZE_NEWS = "SUMMARIZE_NEWS";

@@ -4,7 +4,14 @@
 //    .header("X-RapidAPI-Key", "ODvwbEGCc8mshFxn58WHl2tFdqkfp1eFXRXjsnlfTlgUdF0qML")
 //
 //   },
+import { SUMMARIZE_NEWS } from "./types";
 
-export const summarizeArticle = link => {
-  console.log(link);
+export const summarizeArticle = () => {
+  console.log("got to summarize");
+  return dispatch => {
+    dispatch({
+      type: SUMMARIZE_NEWS,
+      payload: null
+    });
+  };
 };
