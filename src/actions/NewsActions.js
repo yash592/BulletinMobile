@@ -7,13 +7,13 @@ export const worldNews = () => {
   let url =
     "https://newsapi.org/v2/top-headlines?country=us&pageSize=100&apiKey=513740817e1e424cb4406d9e434de94f";
   return dispatch => {
+    Actions.newsresults();
     return axios.get(url).then(res => {
       // console.log("respose", res.data);
       dispatch({
         type: WORLD_NEWS,
         payload: res.data.articles
       });
-      Actions.newsresults();
     });
   };
 };
@@ -23,12 +23,12 @@ export const politicsStories = () => {
   let url =
     "https://newsapi.org/v2/top-headlines?country=us&category=business&pageSize=100&apiKey=513740817e1e424cb4406d9e434de94f";
   return dispatch => {
+    Actions.newsresults();
     return axios.get(url).then(res => {
       dispatch({
         type: POLITICS_NEWS,
         payload: res.data.articles
       });
-      Actions.newsresults();
     });
   };
 };
