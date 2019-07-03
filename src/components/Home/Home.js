@@ -13,6 +13,7 @@ import {
   techStories
 } from "../../actions";
 import { connect } from "react-redux";
+import { Actions } from "react-native-router-flux";
 
 import { Dimensions, TextInput, TouchableOpacity } from "react-native";
 
@@ -82,7 +83,7 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
+  // console.log(state);
   return {
     news: state.news.news
   };

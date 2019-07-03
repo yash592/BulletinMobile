@@ -18,6 +18,7 @@ class NewsDetail extends PureComponent {
     this.state = {
       fontLoaded: false
     };
+    this.onPress = this.onPress.bind(this);
   }
   async componentDidMount() {
     console.log("componentDidMount");
@@ -29,9 +30,10 @@ class NewsDetail extends PureComponent {
     console.log("fontloaded");
   }
 
-  onPress = () => {
-    // this.props = summarizeArticle;
-    this.props.summarizeArticle();
+  onPress = link => {
+    console.log("Tile pressed");
+    console.log(link);
+    this.props.summarizeArticle(link);
   };
 
   _keyExtractor = (item, index) => item.url;
@@ -46,9 +48,10 @@ class NewsDetail extends PureComponent {
     >
       <NewsCardLarge
         img={item.urlToImage}
+        url={item.url}
         title={item.title}
-        // author={item.author}
-        // onPress={this.onClick()}
+        author={item.author}
+        onPress={this.onPress.bind(this, item.url)}
         textStyle={styles.largeCardtext}
       />
     </View>
@@ -65,18 +68,18 @@ class NewsDetail extends PureComponent {
     >
       <NewsCardSmall
         img={item.urlToImage}
+        url={item.url}
         title={item.title}
         author={item.author}
-        // onPress={this.onClick()}
         textStyle={styles.smallCardtext}
-        onPress={this.onPress}
+        onPress={this.onPress.bind(this, item.url)}
       />
     </View>
   );
 
   render() {
     // console.log("PROPSSSSS", this.props.newsList);
-    console.log(this.props);
+    // console.log(this.props);
     return !this.state.fontLoaded ? (
       <View>
         <Text>Loading</Text>
@@ -203,7 +206,7 @@ const styles = {
 };
 
 const mapStateToProps = state => {
-  console.log("state.ews", state.news.length);
+  // console.log("state.ews", state.news.length);
   const newsList = _.map(state.news, list => {
     return { ...list };
   });
