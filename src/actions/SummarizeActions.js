@@ -13,8 +13,8 @@ import { Actions } from "react-native-router-flux";
 export const summarizeArticle = link => {
   console.log("got to summarize", link);
   let url = `https://aylien-text.p.rapidapi.com/summarize?url=${link}&sentences_number=5`;
-  console.log(url);
-  console.log(fetch);
+  // console.log(url);
+  // console.log(fetch);
 
   return dispatch => {
     return fetch(url, {
@@ -23,11 +23,14 @@ export const summarizeArticle = link => {
         "X-RapidAPI-Key": "ODvwbEGCc8mshFxn58WHl2tFdqkfp1eFXRXjsnlfTlgUdF0qML"
       }
     }).then(res => {
-      console.log("response", res._bodyText);
-    });
-    dispatch({
-      type: SUMMARIZE_NEWS,
-      payload: null
+      const response = JSON.parse(res._bodyText);
+      console.log(response["sentences"]);
+      dispatch({
+        type: SUMMARIZE_NEWS,
+        payload: response.sentences
+      });
+
+      Actions.newsdetail();
     });
   };
 };

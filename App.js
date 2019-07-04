@@ -29,7 +29,7 @@ class App extends React.Component {
 
   render() {
     const store = createStore(reducers, {}, applyMiddleware(thunk));
-    // console.log(store.getState());
+    // console.log("global store", store);
     // console.log("thunk", thunk);
 
     return (
