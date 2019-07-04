@@ -3,6 +3,7 @@ import { Scene, Router, Actions } from "react-native-router-flux";
 import LoginForm from "./components/LoginForm/LoginForm";
 import Home from "./components/Home/Home";
 import NewsResults from "./components/NewsResults/NewsResults";
+import NewsDetail from "./components/NewsDetail/NewsDetail";
 
 const Routes = () => {
   return (
@@ -16,6 +17,9 @@ const Routes = () => {
         </Scene>
         <Scene key="newsresults" hideNavBar>
           <Scene key="newsresults" component={NewsResults} />
+        </Scene>
+        <Scene key="newsdetail" hideNavBar>
+          <Scene key="newsdetail" component={NewsDetail} />
         </Scene>
       </Scene>
     </Router>

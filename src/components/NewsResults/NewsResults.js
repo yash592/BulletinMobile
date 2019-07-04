@@ -11,6 +11,7 @@ import { connect } from "react-redux";
 import _ from "lodash";
 import { Header } from "react-native-elements";
 import { summarizeArticle } from "../../actions";
+import { Actions } from "react-native-router-flux";
 
 class NewsDetail extends PureComponent {
   constructor(props) {
@@ -206,7 +207,7 @@ const styles = {
 };
 
 const mapStateToProps = state => {
-  // console.log("state.ews", state.news.length);
+  // console.log("state.news", state);
   const newsList = _.map(state.news, list => {
     return { ...list };
   });

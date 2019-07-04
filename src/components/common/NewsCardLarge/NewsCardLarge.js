@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { View, Text, ImageBackground, TouchableOpacity } from "react-native";
 
 const NewsCardLarge = props => {
-  console.log(props.author);
+  // console.log(props.author);
 
   return (
     <TouchableOpacity style={styles.container} onPress={props.onPress}>
