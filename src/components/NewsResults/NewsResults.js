@@ -13,7 +13,7 @@ import { Header } from "react-native-elements";
 import { summarizeArticle } from "../../actions";
 import { Actions } from "react-native-router-flux";
 
-class NewsDetail extends PureComponent {
+class NewsDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -31,13 +31,24 @@ class NewsDetail extends PureComponent {
     console.log("fontloaded");
   }
 
-  onPress = link => {
-    console.log("Tile pressed");
-    console.log(link);
-    this.props.summarizeArticle(link);
+  onPress = (url, img, title, author) => {
+    console.log(
+      "Tile pressed",
+      "url",
+      url,
+      "img",
+      img,
+      "title",
+      title,
+      "author",
+      author
+    );
+    // console.log(link);
+    this.props.summarizeArticle(url, img, title, author);
   };
 
   _keyExtractor = (item, index) => item.url;
+  keyExtractor = (item, index) => item.url;
 
   _renderBigTiles = ({ item }) => (
     <View
@@ -52,7 +63,13 @@ class NewsDetail extends PureComponent {
         url={item.url}
         title={item.title}
         author={item.author}
-        onPress={this.onPress.bind(this, item.url)}
+        onPress={this.onPress.bind(
+          this,
+          item.urlToImage,
+          item.img,
+          item.title,
+          item.author
+        )}
         textStyle={styles.largeCardtext}
       />
     </View>
@@ -73,7 +90,13 @@ class NewsDetail extends PureComponent {
         title={item.title}
         author={item.author}
         textStyle={styles.smallCardtext}
-        onPress={this.onPress.bind(this, item.url)}
+        onPress={this.onPress.bind(
+          this,
+          item.url,
+          item.urlToImage,
+          item.title,
+          item.author
+        )}
       />
     </View>
   );
@@ -87,19 +110,6 @@ class NewsDetail extends PureComponent {
       </View>
     ) : (
       <View>
-        <Header
-          leftComponent={{ icon: "menu", color: "white" }}
-          centerComponent={{
-            text: "NEWS",
-            style: { color: "white", fontWeight: "bold" }
-          }}
-          rightComponent={{ icon: "home", color: "white" }}
-          containerStyle={{
-            backgroundColor: "#102135",
-            marginBottom: 0,
-            justifyContent: "space-around"
-          }}
-        />
         <ScrollView>
           <Gradient
             colors={["white", "#EAE0F7"]}
@@ -110,7 +120,7 @@ class NewsDetail extends PureComponent {
             <FlatList
               data={this.props.newsList.slice(0, 1)}
               renderItem={this._renderBigTiles}
-              keyExtractor={this._keyExtractor}
+              keyExtractor={this.keyExtractor}
             />
             <Text
               style={{
@@ -211,7 +221,7 @@ const mapStateToProps = state => {
   const newsList = _.map(state.news, list => {
     return { ...list };
   });
-  // console.log("HAHAAAAAAHAHAHAHAHAH", newsList);
+  // console.log("HAHAAAAAAHAHAHAHAHAH", { newsList });
   return { newsList };
 };
 
