@@ -102,7 +102,7 @@ class NewsDetail extends Component {
   );
 
   render() {
-    // console.log("PROPSSSSS", this.props.newsList);
+    console.log("PROPSSSSS", this.props.newsList);
     // console.log(this.props);
     return !this.state.fontLoaded ? (
       <View>
