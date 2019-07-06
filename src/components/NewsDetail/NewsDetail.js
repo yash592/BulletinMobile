@@ -20,26 +20,15 @@ const data = [
     link:
       "https://www.reuters.com/article/us-usa-immigration/trump-says-immigration-raids-starting-fairly-soon-idUSKCN1U1003",
     summary: [
-      {
-        summary:
-          "U.S. Immigration and Customs Enforcement (ICE) last month said operations would target recently-arrived undocumented migrants in a bid to discourage a surge of Central American families at the southwest border."
-      },
-      {
-        summary:
-          "Government documents published this week by migrant rights groups showed some past ICE operations resulted in more so-called “collateral” arrests of undocumented migrants agents happened to find, than apprehensions of targeted people."
-      },
-      {
-        summary:
-          "“We have to be ready, not just when Trump announces it, because there are arrests every day,” said Elsa Lopez, an organizer for Somos Un Pueblo Unido, a New Mexico group which educates migrants on their civil rights and creates phone networks to send alerts if ICE enters their neighborhood."
-      },
-      {
-        summary:
-          "The threatened raids come after migrant apprehensions on the southwest border hit a 13-year high in May before easing in June as Mexico increased immigration enforcement."
-      },
-      {
-        summary:
-          "“We’re not forcing aliens to drink out of the toilet,” said Villareal, head of an area that in May apprehended nearly six times fewer people than the El Paso sector, a stretch of border that has borne the brunt of the migrant surge."
-      }
+      "U.S. Immigration and Customs Enforcement (ICE) last month said operations would target recently-arrived undocumented migrants in a bid to discourage a surge of Central American families at the southwest border.",
+
+      "Government documents published this week by migrant rights groups showed some past ICE operations resulted in more so-called “collateral” arrests of undocumented migrants agents happened to find, than apprehensions of targeted people.",
+
+      "“We have to be ready, not just when Trump announces it, because there are arrests every day,” said Elsa Lopez, an organizer for Somos Un Pueblo Unido, a New Mexico group which educates migrants on their civil rights and creates phone networks to send alerts if ICE enters their neighborhood.",
+
+      "The threatened raids come after migrant apprehensions on the southwest border hit a 13-year high in May before easing in June as Mexico increased immigration enforcement.",
+
+      "“We’re not forcing aliens to drink out of the toilet,” said Villareal, head of an area that in May apprehended nearly six times fewer people than the El Paso sector, a stretch of border that has borne the brunt of the migrant surge."
     ],
     title: "Trump says immigration raids coming 'fairly soon' - Reuters"
   }
