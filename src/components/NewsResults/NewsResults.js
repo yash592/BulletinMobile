@@ -32,17 +32,6 @@ class NewsDetail extends Component {
   }
 
   onPress = (url, img, title, author) => {
-    console.log(
-      "Tile pressed",
-      "url",
-      url,
-      "img",
-      img,
-      "title",
-      title,
-      "author",
-      author
-    );
     // console.log(link);
     this.props.summarizeArticle(url, img, title, author);
   };
@@ -62,7 +51,6 @@ class NewsDetail extends Component {
         img={item.urlToImage}
         url={item.url}
         title={item.title}
-        author={item.author}
         onPress={this.onPress.bind(
           this,
           item.urlToImage,
@@ -102,7 +90,7 @@ class NewsDetail extends Component {
   );
 
   render() {
-    console.log("PROPSSSSS", this.props.newsList);
+    // console.log("PROPSSSSS", this.props.newsList);
     // console.log(this.props);
     return !this.state.fontLoaded ? (
       <View>
