@@ -14,23 +14,20 @@ import { Font } from "expo";
 
 const data = [
   {
-    author: "Andrew Hay",
+    author: "Natasha Frost",
     img:
-      "https://s2.reutersmedia.net/resources/r/?m=02&d=20190706&t=2&i=1404982424&w=1200&r=LYNXNPEF6500H",
+      "https://cms.qz.com/wp-content/uploads/2019/01/Amazon-CEO-Jeff-Bezos-and-his-wife-MacKenzie-e1547053835572.jpg?quality=75&strip=all&w=1400",
     link:
-      "https://www.reuters.com/article/us-usa-immigration/trump-says-immigration-raids-starting-fairly-soon-idUSKCN1U1003",
+      "https://qz.com/1659819/jeff-bezos-remains-worlds-richest-man-after-finalizing-divorce/",
     summary: [
-      "U.S. Immigration and Customs Enforcement (ICE) last month said operations would target recently-arrived undocumented migrants in a bid to discourage a surge of Central American families at the southwest border.",
-
-      "Government documents published this week by migrant rights groups showed some past ICE operations resulted in more so-called “collateral” arrests of undocumented migrants agents happened to find, than apprehensions of targeted people.",
-
-      "“We have to be ready, not just when Trump announces it, because there are arrests every day,” said Elsa Lopez, an organizer for Somos Un Pueblo Unido, a New Mexico group which educates migrants on their civil rights and creates phone networks to send alerts if ICE enters their neighborhood.",
-
-      "The threatened raids come after migrant apprehensions on the southwest border hit a 13-year high in May before easing in June as Mexico increased immigration enforcement.",
-
-      "“We’re not forcing aliens to drink out of the toilet,” said Villareal, head of an area that in May apprehended nearly six times fewer people than the El Paso sector, a stretch of border that has borne the brunt of the migrant surge."
+      "The ink is barely dry on Jeff and Mackenzie Bezos’ divorce papers, filed Friday in King County, Washington.",
+      "Mackenzie Bezos opted to give her ex-husband 75% of her Amazon stock and voting control over what she retains, despite having a likely legal right to much more of his empire, as Ephrat Livni reports in a Quartz membership profile.",
+      "Mackenzie Bezos is nearly 50 years old: Even if she lives to 100, she may find it difficult to land upon enough avenues to direct her wealth.",
+      "But Mackenzie Bezos’ comments in her letter announcing her intention to give, where she promised to be “thoughtful” and to take “time and effort and care,” suggests a desire to no longer remain on the sidelines.",
+      "Jeff Bezos, whose net worth is approximately three times his ex-wife’s, has not signed the Giving Pledge."
     ],
-    title: "Trump says immigration raids coming 'fairly soon' - Reuters"
+    title:
+      "Jeff Bezos remains world's richest man after finalizing divorce - Quartz"
   }
 ];
 
@@ -58,17 +55,12 @@ class NewsDetail extends Component {
     // console.log("renderSummary", data);
     return data.map(el => {
       console.log("foreach", el);
-      return (
-        <View style={{ margin: 10 }}>
-          <Text style={{ fontFamily: "Roboto", fontSize: 18 }}>
-            • {el.summary}
-          </Text>
-        </View>
-      );
+      return <Text style={{ fontFamily: "Roboto", fontSize: 18 }}> {el}</Text>;
     });
   };
+
   renderData = () => {
-    return data.map((data, i) => {
+    return this.props.SummarizePageData.map((data, i) => {
       // console.log("data", data);
       return (
         <ScrollView>
@@ -77,24 +69,27 @@ class NewsDetail extends Component {
             style={{
               width: WIDTH,
               height: 0.4 * HEIGHT,
-              resizeMode: "contain"
+              resizeMode: "cover"
             }}
           />
           <View style={{ margin: 5 }}>
             <Text style={{ fontFamily: "Roboto", fontSize: 32 }}>
               {data.title}
             </Text>
+            <Text style={{ fontFamily: "Roboto", fontSize: 20 }}>
+              {data.author}
+            </Text>
+            {this.renderSummary(data.summary)}
           </View>
-          <Text style={{ fontFamily: "Roboto", fontSize: 20 }}>
-            {data.author}
-          </Text>
-          {this.renderSummary(data.summary)}
         </ScrollView>
       );
     });
   };
   render() {
-    // console.log(this.props.SummarizePageData);
+    console.log(
+      "Summarize Props from NewsDetail",
+      this.props.SummarizePageData
+    );
     return (
       <View style={{ justifyContent: "flex-start" }}>{this.renderData()}</View>
     );
