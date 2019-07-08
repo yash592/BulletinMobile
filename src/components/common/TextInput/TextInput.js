@@ -6,6 +6,8 @@ import {
   View,
   StyleSheet
 } from "react-native";
+import { KeyboardAvoidingView } from "react-native";
+import { Gradient } from "../Gradient";
 
 const Input = ({
   secureTextEntry,
@@ -27,11 +29,11 @@ const Input = ({
 
 const styles = StyleSheet.create({
   textInput: {
-    height: 40,
-    width: "70%",
+    height: 45,
+    width: "98%",
     padding: 10,
     margin: 10,
-    borderColor: "black",
+    borderColor: "#8337F1",
     borderWidth: 0.5,
     borderRadius: 8,
     shadowColor: "black",
