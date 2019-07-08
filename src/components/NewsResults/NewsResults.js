@@ -5,11 +5,14 @@ import { CategoryTile } from "../common/CategoryTile";
 // import { Header } from "react-native-elements";
 import { NewsCardLarge } from "../common/NewsCardLarge";
 import { NewsCardSmall } from "../common/NewsCardSmall";
+import { BottomNav } from "../common/BottomNav";
+import { Header } from "../common/Header";
+
 import axios from "axios";
 import { Font } from "expo";
 import { connect } from "react-redux";
 import _ from "lodash";
-import { Header } from "react-native-elements";
+// import { Header } from "react-native-elements";
 import { summarizeArticle } from "../../actions";
 import { Actions } from "react-native-router-flux";
 
@@ -97,7 +100,8 @@ class NewsDetail extends Component {
         <Text>Loading</Text>
       </View>
     ) : (
-      <View>
+      <View style={{ flex: 1 }}>
+        <Header headerText={"News"} />
         <ScrollView>
           <Gradient
             colors={["white", "#EAE0F7"]}
@@ -131,6 +135,7 @@ class NewsDetail extends Component {
             />
           </Gradient>
         </ScrollView>
+        <BottomNav />
       </View>
     );
   }

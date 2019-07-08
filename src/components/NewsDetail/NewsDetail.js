@@ -11,8 +11,11 @@ import { connect } from "react-redux";
 import { summarizeArticle } from "../../actions";
 import _ from "lodash";
 import { Font } from "expo";
+import { NewsImage } from "../common/NewsImage";
+import { BottomNav } from "../common/BottomNav";
+import { Header } from "../common/Header";
 
-const data = [
+const dummyData = [
   {
     author: "Natasha Frost",
     img:
@@ -44,8 +47,9 @@ class NewsDetail extends Component {
   async componentDidMount() {
     console.log("componentDidMount");
     await Font.loadAsync({
+      SourceSansPro: require("../assets/fonts/SourceSansPro-Regular.ttf"),
       Roboto: require("../assets/fonts/Roboto-Medium.ttf"),
-      RobotoBold: require("../assets/fonts/Roboto-Bold.ttf")
+      RobotoCondensed: require("../assets/fonts/RobotoCondensed-Regular.ttf")
     });
     this.setState({ fontLoaded: true });
     console.log("fontloaded");
@@ -55,32 +59,53 @@ class NewsDetail extends Component {
     // console.log("renderSummary", data);
     return data.map(el => {
       console.log("foreach", el);
-      return <Text style={{ fontFamily: "Roboto", fontSize: 18 }}> {el}</Text>;
+      return (
+        <View style={{ margin: 10 }}>
+          <Text
+            style={{
+              fontFamily: "Roboto",
+              fontSize: 18,
+              letterSpacing: 0.1,
+              lineHeight: 25
+            }}
+          >
+            • {el}
+          </Text>
+        </View>
+      );
     });
   };
 
   renderData = () => {
-    return this.props.SummarizePageData.map((data, i) => {
-      // console.log("data", data);
+    return dummyData.map((data, i) => {
+      console.log("data", data);
       return (
         <ScrollView>
-          <Image
-            source={{ uri: data.img }}
-            style={{
-              width: WIDTH,
-              height: 0.4 * HEIGHT,
-              resizeMode: "cover"
-            }}
+          <NewsImage
+            source={data.img}
+            style={{ width: WIDTH, height: 0.4 * HEIGHT }}
           />
-          <View style={{ margin: 5 }}>
-            <Text style={{ fontFamily: "Roboto", fontSize: 32 }}>
-              {data.title}
+          <View
+            style={{
+              margin: 10,
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+          >
+            <Text
+              style={{
+                fontFamily: "RobotoCondensed",
+                fontSize: 32,
+                textAlign: "center"
+              }}
+            >
+              {data.title.toUpperCase()}
             </Text>
-            <Text style={{ fontFamily: "Roboto", fontSize: 20 }}>
+            <Text style={{ fontFamily: "RobotoCondensed", fontSize: 22 }}>
               {data.author}
             </Text>
-            {this.renderSummary(data.summary)}
           </View>
+          {this.renderSummary(data.summary)}
         </ScrollView>
       );
     });
@@ -90,8 +115,23 @@ class NewsDetail extends Component {
       "Summarize Props from NewsDetail",
       this.props.SummarizePageData
     );
-    return (
-      <View style={{ justifyContent: "flex-start" }}>{this.renderData()}</View>
+    return !this.state.fontLoaded ? (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Text>Loading</Text>
+      </View>
+    ) : (
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "flex-start",
+          backgroundColor: "white"
+        }}
+      >
+        <Header headerText={"Gist"} />
+
+        {this.renderData()}
+        <BottomNav />
+      </View>
     );
   }
 }
