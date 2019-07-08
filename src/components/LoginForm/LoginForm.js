@@ -40,7 +40,7 @@ class LoginForm extends Component {
   };
 
   render() {
-    var { height, width } = Dimensions.get("window");
+    const { height, width } = Dimensions.get("window");
     // console.log(height, width);
     // console.log(this.state);
     console.log(this.props);
