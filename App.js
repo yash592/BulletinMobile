@@ -29,8 +29,6 @@ class App extends React.Component {
 
   render() {
     const store = createStore(reducers, {}, applyMiddleware(thunk));
-    // console.log("global store", store);
-    // console.log("thunk", thunk);
 
     return (
       <Provider store={store}>
