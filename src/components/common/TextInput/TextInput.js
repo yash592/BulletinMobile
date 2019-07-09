@@ -14,6 +14,7 @@ const Input = ({
   placeholder,
   placeholderTextColor,
   onChangeText,
+  onKeyPress,
   value
 }) => {
   return (
@@ -23,13 +24,14 @@ const Input = ({
       placeholderTextColor={placeholderTextColor}
       secureTextEntry={secureTextEntry}
       onChangeText={onChangeText}
+      onKeyPress={onKeyPress}
     />
   );
 };
 
 const styles = StyleSheet.create({
   textInput: {
-    height: 45,
+    height: 50,
     width: "98%",
     padding: 10,
     margin: 10,

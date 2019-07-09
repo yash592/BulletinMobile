@@ -7,7 +7,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case WORLD_NEWS:
-      console.log("from reducer", action.payload);
+      // console.log("from reducer", action.payload);
       return action.payload;
     case POLITICS_NEWS:
       return action.payload;

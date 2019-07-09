@@ -2,6 +2,21 @@ import axios from "axios";
 import { WORLD_NEWS, POLITICS_NEWS } from "./types";
 import { Actions } from "react-native-router-flux";
 
+export const searchNews = () => {
+  console.log("search news");
+  let searchTerm = "Trump";
+  let url = `https://newsapi.org/v2/everything?q=${searchTerm}&apiKey=513740817e1e424cb4406d9e434de94f`;
+  return dispatch => {
+    return axios.get(url).then(res => {
+      console.log(res.data.articles.length);
+      dispatch({
+        type: WORLD_NEWS,
+        payload: res.data.articles
+      });
+    });
+  };
+};
+
 export const worldNews = () => {
   console.log("got to world news");
   let url =
