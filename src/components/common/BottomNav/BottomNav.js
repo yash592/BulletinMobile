@@ -48,7 +48,7 @@ const BottomNav = props => {
 
 const styles = {
   container: {
-    height: 60,
+    height: 50,
     flexDirection: "row",
     justifyContent: "space-evenly",
     backgroundColor: "white",
@@ -64,8 +64,8 @@ const styles = {
     alignItems: "center"
   },
   imageStyle: {
-    width: 24,
-    height: 24,
+    width: 20,
+    height: 20,
     resizeMode: "contain"
   },
   text: {

@@ -35,14 +35,14 @@ const styles = StyleSheet.create({
     width: "98%",
     padding: 10,
     margin: 10,
-    borderColor: "#8337F1",
+    borderColor: "black",
     borderWidth: 0.5,
     borderRadius: 8,
     shadowColor: "black",
-    shadowRadius: 122,
-    shadowOffset: { width: 20, height: 10 },
+    shadowRadius: 2,
+    shadowOffset: { height: 10 },
     shadowOpacity: 1,
-    elevation: 1
+    elevation: 1.5
   }
 });
 

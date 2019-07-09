@@ -30,6 +30,24 @@ class Search extends Component {
     this.props.searchNews();
   };
 
+  renderFlatList = () => {
+    console.log(this.props.newsList.length);
+    return this.props.newsList.length === 1 ? (
+      <View style={{ flex: 0.9 }} />
+    ) : (
+      <View style={{ flex: 0.9 }}>
+        <FlatList
+          data={this.props.newsList}
+          renderItem={this._renderSmallTiles}
+          keyExtractor={this._keyExtractor}
+          numColumns="2"
+          initialNumToRender={10}
+          legacyImplementation={false}
+        />
+      </View>
+    );
+  };
+
   _keyExtractor = (item, index) => item.url;
 
   _renderSmallTiles = ({ item }) => (
@@ -38,8 +56,7 @@ class Search extends Component {
         flex: 1,
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "space-evenly",
-        backgroundColor: "red"
+        justifyContent: "space-evenly"
       }}
     >
       <NewsCardSmall
@@ -56,10 +73,10 @@ class Search extends Component {
     console.log(this.props);
     return (
       <Gradient colors={["white", "#EAE0F7"]} style={styles.Gradient}>
-        <Header headerText={"SEARCH"} />
         <View
           style={{
             flex: 0.1,
+            marginTop: 30,
             width: "100%",
             borderColor: "black",
             alignItems: "center",
@@ -73,22 +90,8 @@ class Search extends Component {
             placeholderTextColor={"gray"}
           />
         </View>
-        <View>
-          <Text style={{ fontSize: 32 }}>RESULTS</Text>
-        </View>
-
-        <View style={{ flex: 0.9 }}>
-          <ScrollView>
-            <FlatList
-              data={this.props.newsList}
-              renderItem={this._renderSmallTiles}
-              keyExtractor={this._keyExtractor}
-              numColumns="2"
-              initialNumToRender={4}
-              legacyImplementation={false}
-            />
-          </ScrollView>
-        </View>
+        {this.renderFlatList()}
+        <BottomNav />
       </Gradient>
     );
   }
@@ -96,7 +99,8 @@ class Search extends Component {
 
 const styles = StyleSheet.create({
   Gradient: {
-    flex: 1
+    flex: 1,
+    justifyContent: "flex-start"
   }
 });
 
