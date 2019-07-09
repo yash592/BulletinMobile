@@ -14,7 +14,7 @@ const Input = ({
   placeholder,
   placeholderTextColor,
   onChangeText,
-  onKeyPress,
+  onSubmitEditing,
   value
 }) => {
   return (
@@ -24,7 +24,7 @@ const Input = ({
       placeholderTextColor={placeholderTextColor}
       secureTextEntry={secureTextEntry}
       onChangeText={onChangeText}
-      onKeyPress={onKeyPress}
+      onSubmitEditing={onSubmitEditing}
     />
   );
 };
