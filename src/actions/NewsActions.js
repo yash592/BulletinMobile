@@ -4,7 +4,7 @@ import { Actions } from "react-native-router-flux";
 
 export const searchNews = () => {
   console.log("search news");
-  let searchTerm = "Sex";
+  let searchTerm = "Modi";
   let url = `https://newsapi.org/v2/everything?q=${searchTerm}&pageSize=100&apiKey=513740817e1e424cb4406d9e434de94f`;
   return dispatch => {
     return axios.get(url).then(res => {
