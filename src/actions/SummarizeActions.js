@@ -23,8 +23,9 @@ export const summarizeArticle = (link, img, title, author) => {
         "X-RapidAPI-Key": "ODvwbEGCc8mshFxn58WHl2tFdqkfp1eFXRXjsnlfTlgUdF0qML"
       }
     }).then(res => {
+      Actions.newsdetail();
       const response = JSON.parse(res._bodyText);
-      // console.log("API response", response);
+      console.log("API response", response);
       dispatch({
         type: SUMMARIZE_NEWS,
         payload: [
@@ -37,8 +38,6 @@ export const summarizeArticle = (link, img, title, author) => {
           }
         ]
       });
-
-      Actions.newsdetail();
     });
   };
 };
