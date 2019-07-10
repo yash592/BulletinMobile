@@ -8,8 +8,14 @@ class NewsListCard extends PureComponent {
       fontLoaded: false
     };
   }
+
+  // shouldComponentUpdate(nextProps) {
+  //   console.log(nextProps);
+  //   return false;
+  // }
   render() {
-    console.log("NewsListCard props", this.props);
+    // console.log("NewsListCard props", this.props);
+    // console.log(this.shouldComponentUpdate());
     const { img, onPress, children, style, title } = this.props;
     return (
       <TouchableOpacity style={styles.container} onPress={onPress}>

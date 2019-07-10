@@ -1,21 +1,6 @@
 import axios from "axios";
-import { WORLD_NEWS, POLITICS_NEWS } from "./types";
+import { NEWS } from "./types";
 import { Actions } from "react-native-router-flux";
-
-export const searchNews = () => {
-  console.log("search news");
-  let searchTerm = "Tesla";
-  let url = `https://newsapi.org/v2/everything?q=${searchTerm}&pageSize=40&apiKey=513740817e1e424cb4406d9e434de94f`;
-  return dispatch => {
-    return axios.get(url).then(res => {
-      console.log(res.data.articles.length);
-      dispatch({
-        type: WORLD_NEWS,
-        payload: res.data.articles
-      });
-    });
-  };
-};
 
 export const worldNews = () => {
   console.log("got to world news");
@@ -26,7 +11,7 @@ export const worldNews = () => {
     return axios.get(url).then(res => {
       // console.log("respose", res.data);
       dispatch({
-        type: WORLD_NEWS,
+        type: NEWS,
         payload: res.data.articles
       });
     });
@@ -41,7 +26,7 @@ export const politicsStories = () => {
     Actions.newsresults();
     return axios.get(url).then(res => {
       dispatch({
-        type: POLITICS_NEWS,
+        type: NEWS,
         payload: res.data.articles
       });
     });
@@ -55,7 +40,7 @@ export const businessStories = () => {
   return dispatch => {
     return axios.get(url).then(res => {
       dispatch({
-        type: POLITICS_NEWS,
+        type: NEWS,
         payload: res.data.articles
       });
       Actions.newsresults();
@@ -70,7 +55,7 @@ export const entertainmentStories = () => {
   return dispatch => {
     return axios.get(url).then(res => {
       dispatch({
-        type: POLITICS_NEWS,
+        type: NEWS,
         payload: res.data.articles
       });
       Actions.newsresults();
@@ -85,7 +70,7 @@ export const healthStories = () => {
   return dispatch => {
     return axios.get(url).then(res => {
       dispatch({
-        type: POLITICS_NEWS,
+        type: NEWS,
         payload: res.data.articles
       });
       Actions.newsresults();
@@ -100,7 +85,7 @@ export const scienceStories = () => {
   return dispatch => {
     return axios.get(url).then(res => {
       dispatch({
-        type: POLITICS_NEWS,
+        type: NEWS,
         payload: res.data.articles
       });
       Actions.newsresults();
@@ -115,7 +100,7 @@ export const sportsStories = () => {
   return dispatch => {
     return axios.get(url).then(res => {
       dispatch({
-        type: POLITICS_NEWS,
+        type: NEWS,
         payload: res.data.articles
       });
       Actions.newsresults();
@@ -130,7 +115,7 @@ export const techStories = () => {
   return dispatch => {
     return axios.get(url).then(res => {
       dispatch({
-        type: POLITICS_NEWS,
+        type: NEWS,
         payload: res.data.articles
       });
       Actions.newsresults();

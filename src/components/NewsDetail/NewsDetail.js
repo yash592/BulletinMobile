@@ -47,7 +47,7 @@ class NewsDetail extends Component {
   async componentDidMount() {
     console.log("componentDidMount");
     await Font.loadAsync({
-      SourceSansPro: require("../assets/fonts/SourceSansPro-Regular.ttf"),
+      OpenSans: require("../assets/fonts/OpenSans-SemiBold.ttf"),
       Roboto: require("../assets/fonts/Roboto-Medium.ttf"),
       RobotoCondensed: require("../assets/fonts/RobotoCondensed-Regular.ttf")
     });
@@ -94,7 +94,7 @@ class NewsDetail extends Component {
           >
             <Text
               style={{
-                fontFamily: "RobotoCondensed",
+                fontFamily: "OpenSans",
                 fontSize: 32,
                 textAlign: "center"
               }}
