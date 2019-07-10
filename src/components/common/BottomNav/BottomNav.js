@@ -16,7 +16,7 @@ const BottomNav = props => {
     {
       title: "Search",
       tabImg: require("../../assets/images/magnifying-glass.png"),
-      action: () => Actions.listings()
+      action: () => Actions.search()
     },
     {
       title: "Profile",
@@ -51,13 +51,7 @@ const styles = {
     height: 50,
     flexDirection: "row",
     justifyContent: "space-evenly",
-    backgroundColor: "white",
-    borderTopWidth: 0.4,
-    borderColor: "black",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: -8 },
-    shadowOpacity: 2,
-    elevation: 2
+    backgroundColor: "transparent"
   },
   tileStyle: {
     justifyContent: "center",

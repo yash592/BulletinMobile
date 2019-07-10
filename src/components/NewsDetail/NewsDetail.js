@@ -77,7 +77,7 @@ class NewsDetail extends Component {
   };
 
   renderData = () => {
-    return dummyData.map((data, i) => {
+    return this.props.SummarizePageData.map((data, i) => {
       console.log("data", data);
       return (
         <ScrollView>

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, PureComponent } from "react";
 import {
   View,
   Text,
@@ -16,36 +16,39 @@ import { Header } from "../common/Header";
 import { BottomNav } from "../common/BottomNav";
 import { searchNews } from "../../actions";
 import { connect } from "react-redux";
-import { NewsListCard } from "../common/NewsListCard";
+import NewsListCard from "../common/NewsListCard/NewsListCard";
 import _ from "lodash";
 import { Font } from "expo";
+import { summarizeArticle } from "../../actions";
 
-var { height, width } = Dimensions.get("window");
-console.log({ width });
-class Search extends Component {
+const { height, width } = Dimensions.get("window");
+
+class Search extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       fontLoaded: false
     };
-    // this.onKeyPress = this.onPress.bind(this);
+    // this.onPress = this.onPress.bind(this);
   }
 
   async componentDidMount() {
     console.log("componentDidMount");
     await Font.loadAsync({
       Roboto: require("../assets/fonts/Roboto-Medium.ttf"),
-      SourceSansPro: require("../assets/fonts/SourceSansPro-Bold.ttf")
+      OpenSans: require("../assets/fonts/OpenSans-Bold.ttf")
     });
     this.setState({ fontLoaded: true });
     console.log("fontloaded");
   }
+
   onKeyPress = () => {
     this.props.searchNews();
   };
 
-  onCardPress = () => {
-    console.log("pressed");
+  onPress = (url, img, title, author) => {
+    console.log("summarizebitch");
+    this.props.summarizeArticle(url, img, title, author);
   };
 
   renderFlatList = () => {
@@ -58,7 +61,8 @@ class Search extends Component {
           data={this.props.newsList}
           renderItem={this._renderSmallTiles}
           keyExtractor={this._keyExtractor}
-          initialNumToRender={20}
+          initialNumToRender={10}
+          windowSize={4}
         />
       </View>
     );
@@ -79,14 +83,27 @@ class Search extends Component {
         img={item.urlToImage}
         title={item.title}
         style={styles.textStyle}
-        onPress={this.onCardPress}
+        url={item.url}
+        author={item.author}
+        onPress={this.onPress.bind(
+          this,
+          item.url,
+          item.urlToImage,
+          item.title,
+          item.author
+        )}
       />
     </View>
   );
 
   render() {
-    // console.log(this.props);
-    return (
+    console.log("NewsCardList this.props", this.props);
+
+    return !this.state.fontLoaded ? (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Text>Loading</Text>
+      </View>
+    ) : (
       <Gradient colors={["white", "#EAE0F7"]} style={styles.Gradient}>
         <View
           style={{
@@ -118,8 +135,8 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start"
   },
   textStyle: {
-    fontFamily: "SourceSansPro",
-    fontSize: 18
+    fontFamily: "OpenSans",
+    fontSize: 16
   }
 });
 
@@ -134,5 +151,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { searchNews }
+  { searchNews, summarizeArticle }
 )(Search);
