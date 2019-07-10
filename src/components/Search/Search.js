@@ -16,18 +16,36 @@ import { Header } from "../common/Header";
 import { BottomNav } from "../common/BottomNav";
 import { searchNews } from "../../actions";
 import { connect } from "react-redux";
-import { NewsCardSmall } from "../common/NewsCardSmall";
+import { NewsListCard } from "../common/NewsListCard";
 import _ from "lodash";
+import { Font } from "expo";
 
 var { height, width } = Dimensions.get("window");
-
+console.log({ width });
 class Search extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      fontLoaded: false
+    };
     // this.onKeyPress = this.onPress.bind(this);
+  }
+
+  async componentDidMount() {
+    console.log("componentDidMount");
+    await Font.loadAsync({
+      Roboto: require("../assets/fonts/Roboto-Medium.ttf"),
+      SourceSansPro: require("../assets/fonts/SourceSansPro-Bold.ttf")
+    });
+    this.setState({ fontLoaded: true });
+    console.log("fontloaded");
   }
   onKeyPress = () => {
     this.props.searchNews();
+  };
+
+  onCardPress = () => {
+    console.log("pressed");
   };
 
   renderFlatList = () => {
@@ -40,9 +58,7 @@ class Search extends Component {
           data={this.props.newsList}
           renderItem={this._renderSmallTiles}
           keyExtractor={this._keyExtractor}
-          numColumns="2"
-          initialNumToRender={10}
-          legacyImplementation={false}
+          initialNumToRender={20}
         />
       </View>
     );
@@ -59,18 +75,17 @@ class Search extends Component {
         justifyContent: "space-evenly"
       }}
     >
-      <NewsCardSmall
+      <NewsListCard
         img={item.urlToImage}
-        url={item.url}
         title={item.title}
-        author={item.author}
-        textStyle={styles.smallCardtext}
+        style={styles.textStyle}
+        onPress={this.onCardPress}
       />
     </View>
   );
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <Gradient colors={["white", "#EAE0F7"]} style={styles.Gradient}>
         <View
@@ -101,6 +116,10 @@ const styles = StyleSheet.create({
   Gradient: {
     flex: 1,
     justifyContent: "flex-start"
+  },
+  textStyle: {
+    fontFamily: "SourceSansPro",
+    fontSize: 18
   }
 });
 
