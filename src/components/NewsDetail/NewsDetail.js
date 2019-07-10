@@ -101,7 +101,13 @@ class NewsDetail extends Component {
             >
               {data.title.toUpperCase()}
             </Text>
-            <Text style={{ fontFamily: "RobotoCondensed", fontSize: 22 }}>
+            <Text
+              style={{
+                fontFamily: "RobotoCondensed",
+                fontSize: 20,
+                color: "gray"
+              }}
+            >
               {data.author}
             </Text>
           </View>
