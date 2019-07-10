@@ -36,7 +36,7 @@ class Search extends PureComponent {
     console.log("componentDidMount");
     await Font.loadAsync({
       Roboto: require("../assets/fonts/Roboto-Medium.ttf"),
-      OpenSans: require("../assets/fonts/OpenSans-Bold.ttf")
+      OpenSans: require("../assets/fonts/OpenSans-SemiBold.ttf")
     });
     this.setState({ fontLoaded: true });
     console.log("fontloaded");
@@ -141,8 +141,8 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => {
-  console.log("state.news", state);
-  const newsList = _.map(state.news, list => {
+  // console.log("state.news", state);
+  const newsList = _.map(state.searchNews, list => {
     return { ...list };
   });
   // console.log("HAHAAAAAAHAHAHAHAHAH", { newsList });

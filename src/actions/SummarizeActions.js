@@ -24,7 +24,7 @@ export const summarizeArticle = (link, img, title, author) => {
       }
     }).then(res => {
       const response = JSON.parse(res._bodyText);
-      console.log("API response", response);
+      // console.log("API response", response);
       dispatch({
         type: SUMMARIZE_NEWS,
         payload: [

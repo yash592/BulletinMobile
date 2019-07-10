@@ -1,4 +1,4 @@
-import { WORLD_NEWS, POLITICS_NEWS } from "../actions/types";
+import { NEWS, SEARCH_NEWS } from "../actions/types";
 
 const initialState = {
   news: ""
@@ -6,10 +6,9 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case WORLD_NEWS:
-      // console.log("from reducer", action.payload);
+    case NEWS:
       return action.payload;
-    case POLITICS_NEWS:
+    case SEARCH_NEWS:
       return action.payload;
     default:
       return state;

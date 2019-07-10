@@ -1,12 +1,6 @@
 export const LOGIN_USER = "LOGIN_USER";
 export const LOGIN_SUCCESS = "LOGIN_USER_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_USER_FAIL";
-export const WORLD_NEWS = "WORLD_NEWS";
-export const POLITICS_NEWS = "POLITICS_NEWS";
-export const BUSINESS_NEWS = "BUSINESS_NEWS";
-export const ENTERTAINMENT_NEWS = "ENTERTAINMENT_NEWS";
-export const HEALTH_NEWS = "HEALTH_NEWS";
-export const SCIENCE_NEWS = "SCIENCE_NEWS";
-export const SPORTS_NEWS = "SPORTS_NEWS";
-export const TECH_NEWS = "TECH_NEWS";
+export const NEWS = "NEWS";
+export const SEARCH_NEWS = "SEARCH_NEWS";
 export const SUMMARIZE_NEWS = "SUMMARIZE_NEWS";

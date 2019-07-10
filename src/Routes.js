@@ -13,7 +13,7 @@ const Routes = () => {
         <Scene key="auth" hideNavBar>
           <Scene key="login" component={LoginForm} />
         </Scene>
-        <Scene key="home" hideNavBar initial>
+        <Scene key="home" hideNavBar>
           <Scene key="home" component={Home} />
         </Scene>
         <Scene key="newsresults" hideNavBar>
@@ -22,7 +22,7 @@ const Routes = () => {
         <Scene key="newsdetail" hideNavBar>
           <Scene key="newsdetail" component={NewsDetail} />
         </Scene>
-        <Scene key="search" hideNavBar>
+        <Scene key="search" hideNavBar initial>
           <Scene key="search" component={Search} />
         </Scene>
       </Scene>
