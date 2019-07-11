@@ -44,7 +44,7 @@ class NewsDetail extends Component {
 
   _renderBigTiles = ({ item }) => (
     <View
-      style={{
+      contentStyle={{
         flex: 1,
         flexDirection: "column",
         alignItems: "center"
@@ -130,8 +130,11 @@ class NewsDetail extends Component {
               renderItem={this._renderSmallTiles}
               keyExtractor={this._keyExtractor}
               numColumns="2"
-              initialNumToRender={4}
               legacyImplementation={false}
+              initialNumToRender={10}
+              windowSize={4}
+              removeClippedSubviews
+              disableVirtualization
             />
           </Gradient>
         </ScrollView>

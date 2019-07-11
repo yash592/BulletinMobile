@@ -9,7 +9,7 @@ export const worldNews = () => {
   return dispatch => {
     Actions.newsresults();
     return axios.get(url).then(res => {
-      // console.log("respose", res.data);
+      console.log("respose", res.data.articles.length);
       dispatch({
         type: NEWS,
         payload: res.data.articles
@@ -21,7 +21,7 @@ export const worldNews = () => {
 export const politicsStories = () => {
   console.log("got to politics");
   let url =
-    "https://newsapi.org/v2/top-headlines?country=us&category=business&pageSize=100&apiKey=513740817e1e424cb4406d9e434de94f";
+    "https://newsapi.org/v2/top-headlines?country=us&category=politics&pageSize=100&apiKey=513740817e1e424cb4406d9e434de94f";
   return dispatch => {
     Actions.newsresults();
     return axios.get(url).then(res => {
@@ -38,12 +38,13 @@ export const businessStories = () => {
   let url =
     "https://newsapi.org/v2/top-headlines?country=us&category=business&pageSize=100&apiKey=513740817e1e424cb4406d9e434de94f";
   return dispatch => {
+    Actions.newsresults();
     return axios.get(url).then(res => {
+      console.log(res.data.articles.length);
       dispatch({
         type: NEWS,
         payload: res.data.articles
       });
-      Actions.newsresults();
     });
   };
 };
