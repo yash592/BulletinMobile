@@ -80,7 +80,7 @@ class NewsDetail extends Component {
     return this.props.SummarizePageData.map((data, i) => {
       console.log("data", data);
       return (
-        <ScrollView>
+        <ScrollView key={i}>
           <NewsImage
             source={data.img}
             style={{ width: WIDTH, height: 0.4 * HEIGHT }}
@@ -116,11 +116,12 @@ class NewsDetail extends Component {
       );
     });
   };
+
   render() {
-    console.log(
-      "Summarize Props from NewsDetail",
-      this.props.SummarizePageData
-    );
+    // console.log(
+    //   "Summarize Props from NewsDetail",
+    //   this.props.SummarizePageData
+    // );
     return !this.state.fontLoaded ? (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <Text>Loading</Text>

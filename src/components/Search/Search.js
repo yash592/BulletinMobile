@@ -52,7 +52,7 @@ class Search extends PureComponent {
   };
 
   renderFlatList = () => {
-    console.log(this.props.newsList.length);
+    // console.log(this.props.newsList.length);
     return this.props.newsList.length === 1 ? (
       <View style={{ flex: 0.9 }} />
     ) : (
@@ -62,7 +62,7 @@ class Search extends PureComponent {
           renderItem={this._renderSmallTiles}
           keyExtractor={this._keyExtractor}
           initialNumToRender={10}
-          windowSize={4}
+          removeClippedSubviews
         />
       </View>
     );
@@ -97,7 +97,7 @@ class Search extends PureComponent {
   );
 
   render() {
-    console.log("NewsCardList this.props", this.props);
+    // console.log("NewsCardList this.props", this.props);
 
     return !this.state.fontLoaded ? (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
