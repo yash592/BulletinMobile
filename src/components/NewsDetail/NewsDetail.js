@@ -57,10 +57,10 @@ class NewsDetail extends Component {
 
   renderSummary = data => {
     // console.log("renderSummary", data);
-    return data.map(el => {
+    return data.map((el, i) => {
       console.log("foreach", el);
       return (
-        <View style={{ margin: 10 }}>
+        <View style={{ margin: 10 }} key={i}>
           <Text
             style={{
               fontFamily: "Roboto",
@@ -81,25 +81,19 @@ class NewsDetail extends Component {
       console.log("data", data);
       return (
         <ScrollView key={i}>
-          <NewsImage
-            source={data.img}
-            style={{ width: WIDTH, height: 0.4 * HEIGHT }}
-          />
           <View
             style={{
               margin: 10,
-              justifyContent: "center",
-              alignItems: "center"
+              justifyContent: "flex-start"
             }}
           >
             <Text
               style={{
                 fontFamily: "OpenSans",
-                fontSize: 32,
-                textAlign: "center"
+                fontSize: 32
               }}
             >
-              {data.title.toUpperCase()}
+              {data.title}
             </Text>
             <Text
               style={{
@@ -111,6 +105,11 @@ class NewsDetail extends Component {
               {data.author}
             </Text>
           </View>
+          <NewsImage
+            source={data.img}
+            style={{ width: WIDTH, height: 0.4 * HEIGHT }}
+          />
+
           {this.renderSummary(data.summary)}
         </ScrollView>
       );

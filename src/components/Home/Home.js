@@ -15,7 +15,12 @@ import {
 import { connect } from "react-redux";
 import { Actions } from "react-native-router-flux";
 
-import { Dimensions, TextInput, TouchableOpacity } from "react-native";
+import {
+  Dimensions,
+  TextInput,
+  TouchableOpacity,
+  AsyncStorage
+} from "react-native";
 
 const categories = require("../../assets/categories");
 
@@ -24,6 +29,28 @@ class Home extends Component {
     super(props);
     this.onClick = this.onClick.bind(this);
   }
+
+  componentDidMount() {
+    console.log("mounted");
+  }
+
+  _storeData = async () => {
+    console.log("_storedata");
+    try {
+      await AsyncStorage.setItem("CountryCode", "US");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  _retrieveData = async () => {
+    try {
+      const value = await AsyncStorage.getItem("CountryCode");
+      console.log("val", value);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   onClick(name) {
     console.log("clicked!", name);
@@ -56,6 +83,7 @@ class Home extends Component {
   }
 
   renderTiles = () => {
+    this._retrieveData();
     return categories.map(category => {
       return (
         <CategoryTile

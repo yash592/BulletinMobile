@@ -23,7 +23,7 @@ import { summarizeArticle } from "../../actions";
 
 const { height, width } = Dimensions.get("window");
 
-class Search extends PureComponent {
+class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -61,8 +61,7 @@ class Search extends PureComponent {
           data={this.props.newsList}
           renderItem={this._renderSmallTiles}
           keyExtractor={this._keyExtractor}
-          initialNumToRender={10}
-          removeClippedSubviews
+          initialNumToRender={100}
         />
       </View>
     );
