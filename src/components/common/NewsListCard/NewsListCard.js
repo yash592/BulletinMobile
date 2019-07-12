@@ -1,7 +1,7 @@
 import React, { Component, PureComponent } from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 
-class NewsListCard extends PureComponent {
+class NewsListCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -9,14 +9,15 @@ class NewsListCard extends PureComponent {
     };
   }
 
-  // shouldComponentUpdate(nextProps) {
-  //   console.log(nextProps);
-  //   return false;
-  // }
+  shouldComponentUpdate(nextProps) {
+    return false;
+  }
   render() {
     // console.log("NewsListCard props", this.props);
     // console.log(this.shouldComponentUpdate());
     const { img, onPress, children, style, title } = this.props;
+    let render = 0;
+    console.log("render called", (render += 1));
     return (
       <TouchableOpacity style={styles.container} onPress={onPress}>
         <Image source={{ uri: img }} style={styles.img} />
