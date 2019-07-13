@@ -131,10 +131,9 @@ class NewsDetail extends Component {
               keyExtractor={this._keyExtractor}
               numColumns="2"
               legacyImplementation={false}
-              initialNumToRender={10}
-              windowSize={4}
-              removeClippedSubviews
-              disableVirtualization
+              initialNumToRender={20}
+              windowSize={17}
+              maxToRenderPerBatch={10}
             />
           </Gradient>
         </ScrollView>
