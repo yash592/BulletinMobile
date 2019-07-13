@@ -17,7 +17,7 @@ class NewsListCard extends Component {
     // console.log(this.shouldComponentUpdate());
     const { img, onPress, children, style, title } = this.props;
     let render = 0;
-    console.log("render called", (render += 1));
+    // console.log("render called", (render += 1));
     return (
       <TouchableOpacity style={styles.container} onPress={onPress}>
         <Image source={{ uri: img }} style={styles.img} />

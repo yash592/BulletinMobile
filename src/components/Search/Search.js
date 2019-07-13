@@ -61,7 +61,9 @@ class Search extends Component {
           data={this.props.newsList}
           renderItem={this._renderSmallTiles}
           keyExtractor={this._keyExtractor}
-          initialNumToRender={100}
+          initialNumToRender={10}
+          windowSize={17}
+          maxToRenderPerBatch={10}
         />
       </View>
     );
@@ -79,7 +81,7 @@ class Search extends Component {
       }}
     >
       <NewsListCard
-        img={item.urlToImage}
+        // img={item.urlToImage}
         title={item.title}
         style={styles.textStyle}
         url={item.url}
