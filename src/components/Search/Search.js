@@ -9,6 +9,8 @@ import {
   ScrollView,
   FlatList
 } from "react-native";
+import { OptimizedFlatList } from "react-native-optimized-flatlist";
+
 import { Input } from "../common/TextInput";
 import { KeyboardAvoidingView } from "react-native";
 import { Gradient } from "../common/Gradient";
@@ -57,7 +59,7 @@ class Search extends Component {
       <View style={{ flex: 0.9 }} />
     ) : (
       <View style={{ flex: 0.9 }}>
-        <FlatList
+        <OptimizedFlatList
           data={this.props.newsList}
           renderItem={this._renderSmallTiles}
           keyExtractor={this._keyExtractor}
@@ -69,7 +71,7 @@ class Search extends Component {
     );
   };
 
-  _keyExtractor = (item, index) => item.url;
+  _keyExtractor = (item, index) => item.urlToImage;
 
   _renderSmallTiles = ({ item }) => (
     <View
