@@ -20,7 +20,6 @@ class NewsListCard extends Component {
     // console.log("render called", (render += 1));
     return (
       <TouchableOpacity style={styles.container} onPress={onPress}>
-        <Image source={{ uri: img }} style={styles.img} />
         {children}
         <View style={styles.textBox}>
           <Text style={style}>{title}</Text>
