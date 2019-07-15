@@ -11,7 +11,7 @@ import { Actions } from "react-native-router-flux";
 //   },
 
 export const summarizeArticle = (link, img, title, author) => {
-  console.log("got to summarize", link, img, title, author);
+  // console.log("got to summarize", link, img, title, author);
   let url = `https://aylien-text.p.rapidapi.com/summarize?url=${link}&sentences_number=5`;
   // console.log(url);
   // console.log(fetch);
@@ -25,7 +25,7 @@ export const summarizeArticle = (link, img, title, author) => {
     }).then(res => {
       Actions.newsdetail();
       const response = JSON.parse(res._bodyText);
-      console.log("API response", response);
+      // console.log("API response", response);
       dispatch({
         type: SUMMARIZE_NEWS,
         payload: [

@@ -1,7 +1,13 @@
 import React, { Component, PureComponent } from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  TouchableNativeFeedback
+} from "react-native";
 
-class NewsListCard extends Component {
+class NewsListCard extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,18 +19,26 @@ class NewsListCard extends Component {
     return false;
   }
   render() {
-    // console.log("NewsListCard props", this.props);
-    // console.log(this.shouldComponentUpdate());
     const { img, onPress, children, style, title } = this.props;
-    let render = 0;
-    // console.log("render called", (render += 1));
+    // let render = 0;
+
     return (
-      <TouchableOpacity style={styles.container} onPress={onPress}>
-        {children}
-        <View style={styles.textBox}>
-          <Text style={style}>{title}</Text>
-        </View>
-      </TouchableOpacity>
+      <View
+        style={{
+          flex: 1,
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "space-evenly"
+        }}
+      >
+        <TouchableOpacity style={styles.container} onPress={onPress}>
+          <Image source={{ uri: img }} style={styles.img} />
+          {children}
+          <View style={styles.textBox}>
+            <Text style={style}>{title}</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
     );
   }
 }

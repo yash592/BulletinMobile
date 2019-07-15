@@ -41,7 +41,7 @@ class Search extends Component {
       OpenSans: require("../assets/fonts/OpenSans-SemiBold.ttf")
     });
     this.setState({ fontLoaded: true });
-    console.log("fontloaded");
+    // console.log("fontloaded");
   }
 
   onKeyPress = () => {
@@ -49,7 +49,7 @@ class Search extends Component {
   };
 
   onPress = (url, img, title, author) => {
-    console.log("summarizebitch");
+    // console.log("summarizebitch");
     this.props.summarizeArticle(url, img, title, author);
   };
 
@@ -59,44 +59,33 @@ class Search extends Component {
       <View style={{ flex: 0.9 }} />
     ) : (
       <View style={{ flex: 0.9 }}>
-        <OptimizedFlatList
-          data={this.props.newsList}
+        <FlatList
+          data={this.props.newsList.slice(0, 41)}
           renderItem={this._renderSmallTiles}
           keyExtractor={this._keyExtractor}
           initialNumToRender={10}
-          windowSize={17}
-          maxToRenderPerBatch={10}
         />
       </View>
     );
   };
 
-  _keyExtractor = (item, index) => item.urlToImage;
+  _keyExtractor = (item, index) => item.url;
 
   _renderSmallTiles = ({ item }) => (
-    <View
-      style={{
-        flex: 1,
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "space-evenly"
-      }}
-    >
-      <NewsListCard
-        // img={item.urlToImage}
-        title={item.title}
-        style={styles.textStyle}
-        url={item.url}
-        author={item.author}
-        onPress={this.onPress.bind(
-          this,
-          item.url,
-          item.urlToImage,
-          item.title,
-          item.author
-        )}
-      />
-    </View>
+    <NewsListCard
+      img={item.urlToImage}
+      title={item.title}
+      style={styles.textStyle}
+      url={item.url}
+      author={item.author}
+      onPress={this.onPress.bind(
+        this,
+        item.url,
+        item.urlToImage,
+        item.title,
+        item.author
+      )}
+    />
   );
 
   render() {
