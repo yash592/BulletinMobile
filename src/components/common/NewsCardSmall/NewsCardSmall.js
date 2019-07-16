@@ -25,13 +25,14 @@ const styles = {
     flex: 1,
     marginTop: 10,
     width: "98%",
-    height: 350,
+    height: 250,
     shadowColor: "black",
     shadowOffset: { width: 10, height: 10 },
     shadowOpacity: 1,
     shadowRadius: 1,
     elevation: 5,
-    backgroundColor: "white"
+    backgroundColor: "white",
+    borderRadius: 5
   },
   imgBox: {
     width: "100%"

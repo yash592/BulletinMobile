@@ -39,8 +39,9 @@ class NewsDetail extends Component {
     this.props.summarizeArticle(url, img, title, author);
   };
 
-  _keyExtractor = (item, index) => item.url;
-  keyExtractor = (item, index) => item.url;
+  _keyExtractor = (item, index) => {
+    return item.url;
+  };
 
   _renderBigTiles = ({ item }) => (
     <View
@@ -112,7 +113,7 @@ class NewsDetail extends Component {
             <FlatList
               data={this.props.newsList.slice(0, 1)}
               renderItem={this._renderBigTiles}
-              keyExtractor={this.keyExtractor}
+              keyExtractor={this._keyExtractor}
             />
             <Text
               style={{
@@ -130,10 +131,7 @@ class NewsDetail extends Component {
               renderItem={this._renderSmallTiles}
               keyExtractor={this._keyExtractor}
               numColumns="2"
-              legacyImplementation={false}
               initialNumToRender={20}
-              windowSize={17}
-              maxToRenderPerBatch={10}
             />
           </Gradient>
         </ScrollView>
