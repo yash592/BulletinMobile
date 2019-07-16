@@ -89,7 +89,7 @@ class Search extends Component {
   );
 
   render() {
-    // console.log("NewsCardList this.props", this.props);
+    console.log("NewsCardList this.props", this.props);
 
     return !this.state.fontLoaded ? (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>

@@ -15,9 +15,6 @@ class NewsListCard extends PureComponent {
     };
   }
 
-  shouldComponentUpdate(nextProps) {
-    return false;
-  }
   render() {
     const { img, onPress, children, style, title } = this.props;
     // let render = 0;

@@ -51,7 +51,7 @@ const styles = {
     height: 50,
     flexDirection: "row",
     justifyContent: "space-evenly",
-    backgroundColor: "transparent"
+    backgroundColor: "#EAE0F7"
   },
   tileStyle: {
     justifyContent: "center",
