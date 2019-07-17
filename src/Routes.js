@@ -5,6 +5,7 @@ import Home from "./components/Home/Home";
 import NewsResults from "./components/NewsResults/NewsResults";
 import NewsDetail from "./components/NewsDetail/NewsDetail";
 import Search from "./components/Search/Search";
+import CountryPicker from "./components/CountryPicker/CountryPicker";
 
 const Routes = () => {
   return (
@@ -13,7 +14,10 @@ const Routes = () => {
         <Scene key="auth" hideNavBar>
           <Scene key="login" component={LoginForm} />
         </Scene>
-        <Scene key="home" hideNavBar initial>
+        <Scene key="countrypick" hideNavBar initial>
+          <Scene key="countrypick" component={CountryPicker} />
+        </Scene>
+        <Scene key="home" hideNavBar>
           <Scene key="home" component={Home} />
         </Scene>
         <Scene key="newsresults" hideNavBar>

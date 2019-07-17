@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { View, Text, Image, StyleSheet, Animated } from "react-native";
 import { Gradient } from "../common/Gradient";
 import { CategoryTile } from "../common/CategoryTile/";
+import { ModalOverlay } from "../common/ModalOverlay/";
 import {
   worldNews,
   politicsStories,
