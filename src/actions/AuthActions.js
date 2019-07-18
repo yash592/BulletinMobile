@@ -1,6 +1,13 @@
 import firebase from "firebase";
 import { Actions } from "react-native-router-flux";
-import { LOGIN_SUCCESS, LOGIN_FAILED, LOGIN_USER } from "./types";
+import {
+  LOGIN_SUCCESS,
+  LOGIN_FAILED,
+  LOGIN_USER,
+  COUNTRY_GETTER,
+  COUNTRY_SETTER
+} from "./types";
+import { AsyncStorage } from "react-native";
 
 export const loginUser = (email, password) => {
   // console.log(dispatch);
@@ -29,3 +36,32 @@ export const loginUserSuccess = (dispatch, user) => {
 };
 
 export const loginUserFail = () => {};
+
+export const countrySetter = country => {
+  return dispatch => {
+    return AsyncStorage.setItem("Country", country)
+      .then(res => {
+        console.log(res);
+        dispatch({
+          type: COUNTRY_SETTER,
+          payload: null
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+};
+
+export const countryGetter = () => {
+  // console.log("country from action");
+  return dispatch => {
+    return AsyncStorage.getItem("Country").then(res => {
+      // console.log(res);
+      dispatch({
+        type: COUNTRY_GETTER,
+        payload: res
+      });
+    });
+  };
+};

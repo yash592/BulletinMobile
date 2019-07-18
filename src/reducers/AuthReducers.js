@@ -1,8 +1,15 @@
-import { LOGIN_SUCCESS, LOGIN_FAIL, LOGIN_USER } from "../actions/types";
+import {
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
+  LOGIN_USER,
+  COUNTRY_SETTER,
+  COUNTRY_GETTER
+} from "../actions/types";
 
 const INITIAL_STATE = {
   user: null,
   error: "",
+  country: null,
   loading: false
 };
 
@@ -18,6 +25,8 @@ export default (state = INITIAL_STATE, action) => {
         error: "Login Failed! Check your username or password",
         loading: false
       };
+    case COUNTRY_GETTER:
+      return { ...state, ...INITIAL_STATE, country: action.payload };
     default:
       return state;
   }
