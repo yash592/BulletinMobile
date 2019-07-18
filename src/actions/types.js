@@ -4,3 +4,5 @@ export const LOGIN_FAIL = "LOGIN_USER_FAIL";
 export const NEWS = "NEWS";
 export const SEARCH_NEWS = "SEARCH_NEWS";
 export const SUMMARIZE_NEWS = "SUMMARIZE_NEWS";
+export const COUNTRY_SETTER = "COUNTRY_SETTER";
+export const COUNTRY_GETTER = "COUNTRY_GETTER";

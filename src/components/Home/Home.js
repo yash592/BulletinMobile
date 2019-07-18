@@ -11,7 +11,8 @@ import {
   healthStories,
   scienceStories,
   sportsStories,
-  techStories
+  techStories,
+  countryGetter
 } from "../../actions";
 import { connect } from "react-redux";
 import { Actions } from "react-native-router-flux";
@@ -29,62 +30,57 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.onClick = this.onClick.bind(this);
+    this.state = { country: "" };
   }
 
   componentDidMount() {
-    console.log("mounted");
+    console.log("componentDidMount");
+    this.getCountry();
   }
 
-  _storeData = async () => {
-    console.log("_storedata");
-    try {
-      await AsyncStorage.setItem("CountryCode", "US");
-    } catch (error) {
-      console.log(error);
+  getCountry = async () => {
+    const value = await AsyncStorage.getItem("Country");
+    console.log(value);
+    if (!value) {
+      Actions.countrypick();
     }
-  };
-
-  _retrieveData = async () => {
-    try {
-      const value = await AsyncStorage.getItem("CountryCode");
-      console.log("val", value);
-    } catch (error) {
-      console.log(error);
-    }
+    this.setState({ country: value });
   };
 
   onClick(name) {
     console.log("clicked!", name);
+    const countryCode = this.state.country;
+    console.log("countrycode", countryCode);
     switch (name) {
       case "World":
-        this.props.worldNews();
+        this.props.worldNews(countryCode);
         break;
       case "Politics":
-        this.props.politicsStories();
+        this.props.politicsStories(countryCode);
         break;
       case "Business":
-        this.props.businessStories();
+        this.props.businessStories(countryCode);
         break;
       case "Entertainment":
-        this.props.entertainmentStories();
+        this.props.entertainmentStories(countryCode);
         break;
       case "Health":
-        this.props.healthStories();
+        this.props.healthStories(countryCode);
         break;
       case "Science":
-        this.props.scienceStories();
+        this.props.scienceStories(countryCode);
         break;
       case "Sports":
-        this.props.sportsStories();
+        this.props.sportsStories(countryCode);
         break;
       case "Technology":
-        this.props.techStories();
+        this.props.techStories(countryCode);
         break;
     }
   }
 
   renderTiles = () => {
-    this._retrieveData();
+    // this._retrieveData();
     return categories.map(category => {
       return (
         <CategoryTile
@@ -101,7 +97,7 @@ class Home extends Component {
     // console.log(categories);
 
     // console.log(width);'
-    // console.log("props", this.props);
+    console.log("state", this.state);
 
     return (
       <Gradient colors={["#EAE0F7", "black"]} style={styles.Gradient}>
@@ -112,7 +108,7 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log(state);
+  console.log(state);
   return {
     news: state.news.news
   };
@@ -144,6 +140,7 @@ export default connect(
     healthStories,
     scienceStories,
     sportsStories,
-    techStories
+    techStories,
+    countryGetter
   }
 )(Home);
