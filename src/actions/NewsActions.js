@@ -17,10 +17,9 @@ export const worldNews = countryCode => {
   };
 };
 
-export const politicsStories = () => {
+export const politicsStories = countryCode => {
   console.log("got to politics");
-  let url =
-    "https://newsapi.org/v2/top-headlines?country=us&category=politics&pageSize=40&apiKey=513740817e1e424cb4406d9e434de94f";
+  let url = `https://newsapi.org/v2/top-headlines?country=${countryCode}&category=politics&pageSize=40&apiKey=513740817e1e424cb4406d9e434de94f`;
   return dispatch => {
     Actions.newsresults();
     return axios.get(url).then(res => {
@@ -32,10 +31,9 @@ export const politicsStories = () => {
   };
 };
 
-export const businessStories = () => {
+export const businessStories = countryCode => {
   console.log("got to biz");
-  let url =
-    "https://newsapi.org/v2/top-headlines?country=us&category=business&pageSize=40&apiKey=513740817e1e424cb4406d9e434de94f";
+  let url = `https://newsapi.org/v2/top-headlines?country=${countryCode}&category=business&pageSize=40&apiKey=513740817e1e424cb4406d9e434de94f`;
   return dispatch => {
     Actions.newsresults();
     return axios.get(url).then(res => {
@@ -48,10 +46,9 @@ export const businessStories = () => {
   };
 };
 
-export const entertainmentStories = () => {
+export const entertainmentStories = countryCode => {
   console.log("got to Entertainment");
-  let url =
-    "https://newsapi.org/v2/top-headlines?country=us&category=entertainment&pageSize=40&apiKey=513740817e1e424cb4406d9e434de94f";
+  let url = `https://newsapi.org/v2/top-headlines?country=${countryCode}&category=entertainment&pageSize=40&apiKey=513740817e1e424cb4406d9e434de94f`;
   return dispatch => {
     return axios.get(url).then(res => {
       dispatch({
@@ -63,10 +60,9 @@ export const entertainmentStories = () => {
   };
 };
 
-export const healthStories = () => {
+export const healthStories = countryCode => {
   console.log("got to health");
-  let url =
-    "https://newsapi.org/v2/top-headlines?country=us&category=health&pageSize=40&apiKey=513740817e1e424cb4406d9e434de94f";
+  let url = `https://newsapi.org/v2/top-headlines?country=${countryCode}&category=health&pageSize=40&apiKey=513740817e1e424cb4406d9e434de94f`;
   return dispatch => {
     return axios.get(url).then(res => {
       dispatch({
@@ -78,10 +74,9 @@ export const healthStories = () => {
   };
 };
 
-export const scienceStories = () => {
+export const scienceStories = countryCode => {
   console.log("got to Science");
-  let url =
-    "https://newsapi.org/v2/top-headlines?country=us&category=science&pageSize=40&apiKey=513740817e1e424cb4406d9e434de94f";
+  let url = `https://newsapi.org/v2/top-headlines?country=${countryCode}&category=science&pageSize=40&apiKey=513740817e1e424cb4406d9e434de94f`;
   return dispatch => {
     return axios.get(url).then(res => {
       dispatch({
@@ -93,10 +88,9 @@ export const scienceStories = () => {
   };
 };
 
-export const sportsStories = () => {
+export const sportsStories = countryCode => {
   console.log("got to sports");
-  let url =
-    "https://newsapi.org/v2/top-headlines?country=us&category=sports&pageSize=40&apiKey=513740817e1e424cb4406d9e434de94f";
+  let url = `https://newsapi.org/v2/top-headlines?country=${countryCode}&category=sports&pageSize=40&apiKey=513740817e1e424cb4406d9e434de94f`;
   return dispatch => {
     return axios.get(url).then(res => {
       dispatch({
@@ -108,10 +102,9 @@ export const sportsStories = () => {
   };
 };
 
-export const techStories = () => {
+export const techStories = countryCode => {
   console.log("got to tech");
-  let url =
-    "https://newsapi.org/v2/top-headlines?country=us&category=technology&pageSize=40&apiKey=513740817e1e424cb4406d9e434de94f";
+  let url = `https://newsapi.org/v2/top-headlines?country=${countryCode}&category=technology&pageSize=40&apiKey=513740817e1e424cb4406d9e434de94f`;
   return dispatch => {
     return axios.get(url).then(res => {
       dispatch({

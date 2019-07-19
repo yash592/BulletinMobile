@@ -14,9 +14,11 @@ const Input = ({
   placeholder,
   placeholderTextColor,
   onChangeText,
+  onChange,
   onSubmitEditing,
   value
 }) => {
+  console.log("val", value);
   return (
     <TextInput
       style={styles.textInput}
@@ -24,7 +26,9 @@ const Input = ({
       placeholderTextColor={placeholderTextColor}
       secureTextEntry={secureTextEntry}
       onChangeText={onChangeText}
+      onChange={onChange}
       onSubmitEditing={onSubmitEditing}
+      value={value}
     />
   );
 };
