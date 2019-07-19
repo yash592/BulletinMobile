@@ -29,7 +29,7 @@ const BottomNav = props => {
 
   renderTabs = () => {
     return tabs.map((tiles, index) => {
-      console.log(tiles, index);
+      // console.log(tiles, index);
       return (
         <TouchableOpacity
           style={styles.tileStyle}
@@ -51,7 +51,7 @@ const styles = {
     height: 50,
     flexDirection: "row",
     justifyContent: "space-evenly",
-    backgroundColor: "#EAE0F7"
+    backgroundColor: "white"
   },
   tileStyle: {
     justifyContent: "center",
