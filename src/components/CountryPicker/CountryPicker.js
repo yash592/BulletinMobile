@@ -26,21 +26,6 @@ class CountryPicker extends Component {
     };
     this.onChangeText = this.onChangeText.bind(this);
   }
-  setCountry = () => {
-    let country = "us";
-    this.props.countrySetter(country);
-  };
-
-  getCountry = () => {
-    this.props.countryGetter();
-  };
-
-  getData = async () => {
-    const value = await AsyncStorage.getItem("Country");
-    if (value != null) {
-      console.log(value);
-    }
-  };
 
   renderCountryTiles = () => {
     return Countries.map(country => {
@@ -56,34 +41,59 @@ class CountryPicker extends Component {
     });
   };
 
-  onChangeText = text => {
-    this.setState({
+  onChangeText = async text => {
+    await this.setState({
       countryCode: text
     });
+    // console.log(this.state.countryCode);
+    this.filterOnType();
   };
 
   filterOnType = () => {
-    console.log(this.state);
+    const { countryCode } = this.state;
+    const filtered = this.filter(Countries, countryCode);
+
+    if (!filtered) {
+      return <Text>No country found :(</Text>;
+    }
+    return filtered.map(country => {
+      // console.log(country);
+      return (
+        <CountryListCard
+          key={country.name}
+          img={country.flagImg}
+          title={country.name}
+          onPress={() => console.log("pressed!")}
+        />
+      );
+    });
+  };
+
+  filter = (arr, code) => {
+    return arr.filter(el => {
+      return el.name.toLowerCase().indexOf(code.toLowerCase()) !== -1;
+    });
   };
 
   render() {
     // console.log(this.state);
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, backgroundColor: "white" }}>
         <Header headerText={"Choose your Country!"} />
 
         <ScrollView>
-          <Gradient colors={["white", "#EAE0F7"]} style={styles.Gradient}>
+          <View style={styles.Gradient}>
             <Input
               placeholder={"Search for your country"}
-              onSubmitEditing={this.onKeyPress}
               placeholderTextColor={"gray"}
               onChangeText={text => this.onChangeText(text)}
-              onChange={this.filterOnType}
+              onChange={() => null}
               value={this.state.countryCode}
             />
-            {this.renderCountryTiles()}
-          </Gradient>
+            {!this.state.countryCode
+              ? this.renderCountryTiles()
+              : this.filterOnType()}
+          </View>
         </ScrollView>
         <BottomNav />
       </View>

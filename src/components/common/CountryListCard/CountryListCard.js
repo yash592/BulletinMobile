@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 
-const CountryListCard = props => {
+const CountryListCard = ({ title, children, onPress }) => {
   // console.log(props);
   return (
     <View
@@ -12,7 +12,7 @@ const CountryListCard = props => {
         height: 50
       }}
     >
-      <TouchableOpacity style={styles.container}>
+      <TouchableOpacity style={styles.container} onPress={onPress}>
         <Image
           source={{
             uri:
@@ -20,9 +20,9 @@ const CountryListCard = props => {
           }}
           style={styles.img}
         />
-        {props.children}
+        {children}
         <View style={styles.textBox}>
-          <Text style={styles.text}>{props.title}</Text>
+          <Text style={styles.text}>{title}</Text>
         </View>
       </TouchableOpacity>
     </View>

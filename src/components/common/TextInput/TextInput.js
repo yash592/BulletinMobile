@@ -18,7 +18,7 @@ const Input = ({
   onSubmitEditing,
   value
 }) => {
-  console.log("val", value);
+  // console.log("val", value);
   return (
     <TextInput
       style={styles.textInput}
