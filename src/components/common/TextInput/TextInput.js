@@ -20,16 +20,18 @@ const Input = ({
 }) => {
   // console.log("val", value);
   return (
-    <TextInput
-      style={styles.textInput}
-      placeholder={placeholder}
-      placeholderTextColor={placeholderTextColor}
-      secureTextEntry={secureTextEntry}
-      onChangeText={onChangeText}
-      onChange={onChange}
-      onSubmitEditing={onSubmitEditing}
-      value={value}
-    />
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <TextInput
+        style={styles.textInput}
+        placeholder={placeholder}
+        placeholderTextColor={placeholderTextColor}
+        secureTextEntry={secureTextEntry}
+        onChangeText={onChangeText}
+        onChange={onChange}
+        onSubmitEditing={onSubmitEditing}
+        value={value}
+      />
+    </View>
   );
 };
 
