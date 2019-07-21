@@ -27,17 +27,16 @@ class CountryPicker extends Component {
     this.onChangeText = this.onChangeText.bind(this);
   }
 
-  renderCountryTiles = () => {
-    return Countries.map(country => {
-      // console.log(country);
-      return (
-        <CountryListCard
-          key={country.name}
-          img={country.flagImg}
-          title={country.name}
-          onPress={() => console.log("pressed!")}
-        />
-      );
+  setCountry = code => {
+    console.log(code);
+    this.props.countrySetter(code);
+  };
+
+  // filter fn to match userinput to countries
+
+  filter = (arr, code) => {
+    return arr.filter(el => {
+      return el.name.toLowerCase().indexOf(code.toLowerCase()) !== -1;
     });
   };
 
@@ -45,8 +44,20 @@ class CountryPicker extends Component {
     await this.setState({
       countryCode: text
     });
-    // console.log(this.state.countryCode);
     this.filterOnType();
+  };
+
+  renderCountryTiles = () => {
+    return Countries.map(country => {
+      return (
+        <CountryListCard
+          key={country.name}
+          img={country.flagImg}
+          title={country.name}
+          onPress={this.setCountry.bind(this, country.ISOcode)}
+        />
+      );
+    });
   };
 
   filterOnType = () => {
@@ -57,43 +68,32 @@ class CountryPicker extends Component {
       return <Text>No country found :(</Text>;
     }
     return filtered.map(country => {
-      // console.log(country);
       return (
         <CountryListCard
           key={country.name}
+          code={country.ISOcode}
           img={country.flagImg}
           title={country.name}
-          onPress={() => console.log("pressed!")}
+          onPress={this.setCountry.bind(this, country.ISOcode)}
         />
       );
     });
   };
 
-  filter = (arr, code) => {
-    return arr.filter(el => {
-      return el.name.toLowerCase().indexOf(code.toLowerCase()) !== -1;
-    });
-  };
-
   render() {
-    // console.log(this.state);
     return (
       <View style={{ flex: 1, backgroundColor: "white" }}>
         <Header headerText={"Choose your Country!"} />
-
-        <ScrollView>
-          <View style={styles.Gradient}>
-            <Input
-              placeholder={"Search for your country"}
-              placeholderTextColor={"gray"}
-              onChangeText={text => this.onChangeText(text)}
-              onChange={() => null}
-              value={this.state.countryCode}
-            />
-            {!this.state.countryCode
-              ? this.renderCountryTiles()
-              : this.filterOnType()}
-          </View>
+        <ScrollView contentStyle={styles.Gradient}>
+          <Input
+            placeholder={"Search for your country"}
+            placeholderTextColor={"gray"}
+            onChangeText={text => this.onChangeText(text)}
+            value={this.state.countryCode}
+          />
+          {!this.state.countryCode
+            ? this.renderCountryTiles()
+            : this.filterOnType()}
         </ScrollView>
         <BottomNav />
       </View>
@@ -104,7 +104,8 @@ class CountryPicker extends Component {
 const styles = StyleSheet.create({
   Gradient: {
     flex: 1,
-    justifyContent: "flex-start"
+    justifyContent: "center",
+    alignItems: "center"
   }
 });
 

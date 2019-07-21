@@ -9,7 +9,9 @@ const CountryListCard = ({ title, children, onPress }) => {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "space-evenly",
-        height: 50
+        height: 50,
+        width: "100%",
+        flexWrap: "wrap"
       }}
     >
       <TouchableOpacity style={styles.container} onPress={onPress}>
