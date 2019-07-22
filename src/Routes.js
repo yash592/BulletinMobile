@@ -6,15 +6,19 @@ import NewsResults from "./components/NewsResults/NewsResults";
 import NewsDetail from "./components/NewsDetail/NewsDetail";
 import Search from "./components/Search/Search";
 import CountryPicker from "./components/CountryPicker/CountryPicker";
+import AppLoading from "./components/AppLoading/AppLoading";
 
 const Routes = () => {
   return (
     <Router>
       <Scene key="root">
+        <Scene key="load" hideNavBar initial>
+          <Scene key="load" component={AppLoading} />
+        </Scene>
         <Scene key="auth" hideNavBar>
           <Scene key="login" component={LoginForm} />
         </Scene>
-        <Scene key="countrypick" hideNavBar initial>
+        <Scene key="countrypick" hideNavBar>
           <Scene key="countrypick" component={CountryPicker} />
         </Scene>
         <Scene key="home" hideNavBar>

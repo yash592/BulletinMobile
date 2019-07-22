@@ -67,6 +67,7 @@ const styles = {
   },
   text: {
     fontSize: 22,
+    fontFamily: "Roboto",
     fontWeight: "bold",
     shadowColor: "white",
     textShadowOffset: { width: 0.1, height: 0.1 },
