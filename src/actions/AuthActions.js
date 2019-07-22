@@ -42,6 +42,7 @@ export const countrySetter = country => {
     return AsyncStorage.setItem("Country", country)
       .then(res => {
         console.log("Country code set", res);
+        Actions.home();
         dispatch({
           type: COUNTRY_SETTER,
           payload: null
