@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 
-const CountryListCard = ({ title, children, onPress }) => {
-  // console.log(props);
+const CountryListCard = props => {
+  const { title, children, onPress, img } = props;
+  console.log(img);
   return (
     <View
       style={{
@@ -15,13 +16,7 @@ const CountryListCard = ({ title, children, onPress }) => {
       }}
     >
       <TouchableOpacity style={styles.container} onPress={onPress}>
-        <Image
-          source={{
-            uri:
-              "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Flag_of_India.png/1024px-Flag_of_India.png"
-          }}
-          style={styles.img}
-        />
+        <Image source={`require(${img})`} style={styles.img} />
         {children}
         <View style={styles.textBox}>
           <Text style={styles.text}>{title}</Text>

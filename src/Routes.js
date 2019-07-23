@@ -13,7 +13,7 @@ const Routes = () => {
   return (
     <Router>
       <Scene key="root">
-        <Scene key="splash" hideNavBar initial>
+        <Scene key="splash" hideNavBar>
           <Scene key="splash" component={SplashScreen} />
         </Scene>
         <Scene key="load" hideNavBar>
@@ -22,7 +22,7 @@ const Routes = () => {
         <Scene key="auth" hideNavBar>
           <Scene key="login" component={LoginForm} />
         </Scene>
-        <Scene key="countrypick" hideNavBar>
+        <Scene key="countrypick" hideNavBar initial>
           <Scene key="countrypick" component={CountryPicker} />
         </Scene>
         <Scene key="home" hideNavBar>
