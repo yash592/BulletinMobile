@@ -7,12 +7,16 @@ import NewsDetail from "./components/NewsDetail/NewsDetail";
 import Search from "./components/Search/Search";
 import CountryPicker from "./components/CountryPicker/CountryPicker";
 import AppLoading from "./components/AppLoading/AppLoading";
+import SplashScreen from "./components/SplashScreen/SplashScreen";
 
 const Routes = () => {
   return (
     <Router>
       <Scene key="root">
-        <Scene key="load" hideNavBar initial>
+        <Scene key="splash" hideNavBar initial>
+          <Scene key="splash" component={SplashScreen} />
+        </Scene>
+        <Scene key="load" hideNavBar>
           <Scene key="load" component={AppLoading} />
         </Scene>
         <Scene key="auth" hideNavBar>
