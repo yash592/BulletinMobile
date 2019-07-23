@@ -3,7 +3,7 @@
     "id": 1,
     "name": "United Arab Emirates",
     "ISOcode": "ae",
-    "flagImg": "./countryImages/UAE.jpg"
+    "flagImg": "../../../assets/countryImages/united-arab-emirates.png"
   },
   {
     "id": 2,
@@ -27,294 +27,294 @@
     "id": 5,
     "name": "Belgium",
     "ISOcode": "be",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/belgium.png"
   },
   {
     "id": 6,
     "name": "Bulgaria",
     "ISOcode": "bg",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/bulgaria.png"
   },
   {
     "id": 7,
     "name": "Brazil",
     "ISOcode": "br",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/brazil.png"
   },
   {
     "id": 8,
     "name": "Canada",
     "ISOcode": "ca",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/canada.png"
   },
   {
     "id": 9,
     "name": "Switzerland",
     "ISOcode": "ch",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/switzerland.png"
   },
   {
     "id": 10,
     "name": "China",
     "ISOcode": "cn",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/china.png"
   },
   {
     "id": 11,
     "name": "Colombia",
     "ISOcode": "co",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/colombia.png"
   },
   {
     "id": 12,
     "name": "Cuba",
     "ISOcode": "cu",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/cuba.png"
   },
   {
-    "id": 1,
+    "id": 13,
     "name": "Czech Republic",
     "ISOcode": "cz",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/czech-republic.png"
   },
   {
-    "id": 2,
+    "id": 14,
     "name": "Germany",
     "ISOcode": "de",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/germany.png"
   },
   {
-    "id": 3,
+    "id": 15,
     "name": "Egypt",
     "ISOcode": "eg",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/egypt.png"
   },
   {
-    "id": 4,
+    "id": 16,
     "name": "France",
     "ISOcode": "fr",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/france.png"
   },
   {
-    "id": 5,
+    "id": 17,
     "name": "United Kingdom of Great Britain and Northern Ireland",
     "ISOcode": "gb",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/united-kingdom.png"
   },
   {
-    "id": 6,
+    "id": 18,
     "name": "Greece",
     "ISOcode": "gr",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/greece.png"
   },
   {
-    "id": 7,
+    "id": 19,
     "name": "Hong Kong",
     "ISOcode": "hk",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/hong-kong.png"
   },
   {
-    "id": 8,
+    "id": 20,
     "name": "Hungary",
     "ISOcode": "hu",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/hungary.png"
   },
   {
-    "id": 9,
+    "id": 21,
     "name": "Indonesia",
     "ISOcode": "id",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/indonesia.png"
   },
   {
-    "id": 10,
+    "id": 22,
     "name": "Ireland",
     "ISOcode": "ie",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/ireland.png"
   },
   {
-    "id": 11,
+    "id": 23,
     "name": "Israel",
     "ISOcode": "il",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/israel.png"
   },
   {
-    "id": 12,
+    "id": 24,
     "name": "India",
     "ISOcode": "in",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/india.png"
   },
   {
-    "id": 1,
+    "id": 25,
     "name": "Italy",
     "ISOcode": "it",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/italy.png"
   },
   {
-    "id": 2,
+    "id": 26,
     "name": "Japan",
     "ISOcode": "jp",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/japan.png"
   },
   {
-    "id": 3,
+    "id": 27,
     "name": "South Korea",
     "ISOcode": "kr",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/south-korea.png"
   },
   {
-    "id": 4,
+    "id": 28,
     "name": "Lithuania",
     "ISOcode": "lt",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/lithuania.png"
   },
   {
-    "id": 5,
+    "id": 29,
     "name": "Latvia",
     "ISOcode": "lv",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/latvia.png"
   },
   {
-    "id": 7,
+    "id": 30,
     "name": "Mexico",
     "ISOcode": "mx",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/mexico.png"
   },
   {
-    "id": 8,
+    "id": 31,
     "name": "Malaysia",
     "ISOcode": "my",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/malaysia.png"
   },
   {
-    "id": 9,
+    "id": 32,
     "name": "Nigeria",
     "ISOcode": "ng",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/nigeria.png"
   },
   {
-    "id": 10,
+    "id": 33,
     "name": "Netherlands",
     "ISOcode": "nl",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/netherlands.png"
   },
   {
-    "id": 11,
+    "id": 34,
     "name": "Norway",
     "ISOcode": "no",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/norway.png"
   },
   {
-    "id": 12,
+    "id": 35,
     "name": "New Zealand",
     "ISOcode": "nz",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/new-zealand.png"
   },
   {
-    "id": 1,
+    "id": 36,
     "name": "Philippines",
     "ISOcode": "ph",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/philippines.png"
   },
   {
-    "id": 2,
+    "id": 37,
     "name": "Poland",
     "ISOcode": "pl",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/poland.png"
   },
   {
-    "id": 3,
+    "id": 38,
     "name": "Portugal",
     "ISOcode": "pt",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/portugal.png"
   },
   {
-    "id": 4,
+    "id": 39,
     "name": "Romania",
     "ISOcode": "ro",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/romania.png"
   },
   {
-    "id": 5,
+    "id": 40,
     "name": "Serbia",
     "ISOcode": "rs",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/serbia.png"
   },
   {
-    "id": 6,
+    "id": 41,
     "name": "Russia",
     "ISOcode": "ru",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/russia.png"
   },
   {
-    "id": 7,
+    "id": 42,
     "name": "Saudi Arabia",
     "ISOcode": "sa",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/saudi-arabia.png"
   },
   {
-    "id": 8,
+    "id": 43,
     "name": "Sweden",
     "ISOcode": "se",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/sweden.png"
   },
   {
-    "id": 9,
+    "id": 44,
     "name": "Singapore",
     "ISOcode": "sg",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/singapore.png"
   },
   {
-    "id": 10,
+    "id": 45,
     "name": "Slovenia",
     "ISOcode": "si",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/slovenia.png"
   },
   {
-    "id": 11,
+    "id": 46,
     "name": "Slovakia",
     "ISOcode": "sk",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/slovakia.png"
   },
   {
-    "id": 12,
+    "id": 47,
     "name": "Thailand",
     "ISOcode": "th",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/thailand.png"
   },
   {
-    "id": 7,
+    "id": 48,
     "name": "Turkey",
     "ISOcode": "tr",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/turkey.png"
   },
   {
-    "id": 8,
+    "id": 49,
     "name": "Taiwan",
     "ISOcode": "tw",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/taiwan.png"
   },
   {
-    "id": 9,
+    "id": 50,
     "name": "Ukraine",
     "ISOcode": "ua",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/ukraine.png"
   },
   {
-    "id": 10,
+    "id": 51,
     "name": "United States of America",
     "ISOcode": "us",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/united-states.png"
   },
   {
-    "id": 11,
+    "id": 52,
     "name": "Venezuela",
     "ISOcode": "ve",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/venezuela.png"
   },
   {
-    "id": 12,
-    "name": "Sotuh Africa",
+    "id": 53,
+    "name": "South Africa",
     "ISOcode": "za",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "./countryImages/south-africa.png"
   }
 ]
