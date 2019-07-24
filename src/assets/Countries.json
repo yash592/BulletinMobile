@@ -3,318 +3,318 @@
     "id": 1,
     "name": "United Arab Emirates",
     "ISOcode": "ae",
-    "flagImg": "../../../assets/countryImages/united-arab-emirates.png"
+    "flagImg": "https://i.imgur.com/GMbS0i5.png"
   },
   {
     "id": 2,
     "name": "Argentina",
     "ISOcode": "ar",
-    "flagImg": "./countryImages/argentina.png"
+    "flagImg": "https://i.imgur.com/yx6OsdQ.png"
   },
   {
     "id": 3,
     "name": "Austria",
     "ISOcode": "at",
-    "flagImg": "./countryImages/austria.png"
+    "flagImg": "https://i.imgur.com/myCxGW5.png"
   },
   {
     "id": 4,
     "name": "Australia",
     "ISOcode": "au",
-    "flagImg": "./countryImages/australia.png"
+    "flagImg": "https://i.imgur.com/vcrSRpp.png"
   },
   {
     "id": 5,
     "name": "Belgium",
     "ISOcode": "be",
-    "flagImg": "./countryImages/belgium.png"
+    "flagImg": "https://i.imgur.com/tzAUXet.png"
   },
   {
     "id": 6,
     "name": "Bulgaria",
     "ISOcode": "bg",
-    "flagImg": "./countryImages/bulgaria.png"
+    "flagImg": "https://i.imgur.com/mjv8TRP.png"
   },
   {
     "id": 7,
     "name": "Brazil",
     "ISOcode": "br",
-    "flagImg": "./countryImages/brazil.png"
+    "flagImg": "https://i.imgur.com/L3mHNfi.png"
   },
   {
     "id": 8,
     "name": "Canada",
     "ISOcode": "ca",
-    "flagImg": "./countryImages/canada.png"
+    "flagImg": "https://i.imgur.com/dK283CF.png"
   },
   {
     "id": 9,
     "name": "Switzerland",
     "ISOcode": "ch",
-    "flagImg": "./countryImages/switzerland.png"
+    "flagImg": "https://i.imgur.com/1xS9yVp.png"
   },
   {
     "id": 10,
     "name": "China",
     "ISOcode": "cn",
-    "flagImg": "./countryImages/china.png"
+    "flagImg": "https://i.imgur.com/7H57Wxb.png"
   },
   {
     "id": 11,
     "name": "Colombia",
     "ISOcode": "co",
-    "flagImg": "./countryImages/colombia.png"
+    "flagImg": "https://i.imgur.com/sNTpmUX.png"
   },
   {
     "id": 12,
     "name": "Cuba",
     "ISOcode": "cu",
-    "flagImg": "./countryImages/cuba.png"
+    "flagImg": "https://i.imgur.com/u9ROs3H.png"
   },
   {
     "id": 13,
     "name": "Czech Republic",
     "ISOcode": "cz",
-    "flagImg": "./countryImages/czech-republic.png"
+    "flagImg": "https://i.imgur.com/KaSj0sf.png"
   },
   {
     "id": 14,
     "name": "Germany",
     "ISOcode": "de",
-    "flagImg": "./countryImages/germany.png"
+    "flagImg": "https://i.imgur.com/h32PDsS.png"
   },
   {
     "id": 15,
     "name": "Egypt",
     "ISOcode": "eg",
-    "flagImg": "./countryImages/egypt.png"
+    "flagImg": "https://i.imgur.com/HkTeLd8.png"
   },
   {
     "id": 16,
     "name": "France",
     "ISOcode": "fr",
-    "flagImg": "./countryImages/france.png"
+    "flagImg": "https://i.imgur.com/nEJCsrX.png"
   },
   {
     "id": 17,
     "name": "United Kingdom of Great Britain and Northern Ireland",
     "ISOcode": "gb",
-    "flagImg": "./countryImages/united-kingdom.png"
+    "flagImg": "https://i.imgur.com/vcrSRpp.png"
   },
   {
     "id": 18,
     "name": "Greece",
     "ISOcode": "gr",
-    "flagImg": "./countryImages/greece.png"
+    "flagImg": "https://i.imgur.com/J8cveQX.png"
   },
   {
     "id": 19,
     "name": "Hong Kong",
     "ISOcode": "hk",
-    "flagImg": "./countryImages/hong-kong.png"
+    "flagImg": "https://i.imgur.com/3w4s0rP.png"
   },
   {
     "id": 20,
     "name": "Hungary",
     "ISOcode": "hu",
-    "flagImg": "./countryImages/hungary.png"
+    "flagImg": "https://i.imgur.com/vcrSRpp.png"
   },
   {
     "id": 21,
     "name": "Indonesia",
     "ISOcode": "id",
-    "flagImg": "./countryImages/indonesia.png"
+    "flagImg": "https://i.imgur.com/L7jGEDg.png"
   },
   {
     "id": 22,
     "name": "Ireland",
     "ISOcode": "ie",
-    "flagImg": "./countryImages/ireland.png"
+    "flagImg": "https://i.imgur.com/MXIzBrr.png"
   },
   {
     "id": 23,
     "name": "Israel",
     "ISOcode": "il",
-    "flagImg": "./countryImages/israel.png"
+    "flagImg": "https://i.imgur.com/hUwDJ1C.png"
   },
   {
     "id": 24,
     "name": "India",
     "ISOcode": "in",
-    "flagImg": "./countryImages/india.png"
+    "flagImg": "https://i.imgur.com/1j5UKw7.png"
   },
   {
     "id": 25,
     "name": "Italy",
     "ISOcode": "it",
-    "flagImg": "./countryImages/italy.png"
+    "flagImg": "https://i.imgur.com/VwP982X.png"
   },
   {
     "id": 26,
     "name": "Japan",
     "ISOcode": "jp",
-    "flagImg": "./countryImages/japan.png"
+    "flagImg": "https://i.imgur.com/gnEdYQH.png"
   },
   {
     "id": 27,
     "name": "South Korea",
     "ISOcode": "kr",
-    "flagImg": "./countryImages/south-korea.png"
+    "flagImg": "https://i.imgur.com/uP63PYi.png"
   },
   {
     "id": 28,
     "name": "Lithuania",
     "ISOcode": "lt",
-    "flagImg": "./countryImages/lithuania.png"
+    "flagImg": "https://i.imgur.com/1K1CfS5.png"
   },
   {
     "id": 29,
     "name": "Latvia",
     "ISOcode": "lv",
-    "flagImg": "./countryImages/latvia.png"
+    "flagImg": "https://i.imgur.com/hmusBeo.png"
   },
   {
     "id": 30,
     "name": "Mexico",
     "ISOcode": "mx",
-    "flagImg": "./countryImages/mexico.png"
+    "flagImg": "https://i.imgur.com/rUQKK44.png"
   },
   {
     "id": 31,
     "name": "Malaysia",
     "ISOcode": "my",
-    "flagImg": "./countryImages/malaysia.png"
+    "flagImg": "https://i.imgur.com/YruxkPL.png"
   },
   {
     "id": 32,
     "name": "Nigeria",
     "ISOcode": "ng",
-    "flagImg": "./countryImages/nigeria.png"
+    "flagImg": "https://i.imgur.com/dXvNlyB.png"
   },
   {
     "id": 33,
     "name": "Netherlands",
     "ISOcode": "nl",
-    "flagImg": "./countryImages/netherlands.png"
+    "flagImg": "https://i.imgur.com/tV2IT1N.png"
   },
   {
     "id": 34,
     "name": "Norway",
     "ISOcode": "no",
-    "flagImg": "./countryImages/norway.png"
+    "flagImg": "https://i.imgur.com/x2eTgPA.png"
   },
   {
     "id": 35,
     "name": "New Zealand",
     "ISOcode": "nz",
-    "flagImg": "./countryImages/new-zealand.png"
+    "flagImg": "https://i.imgur.com/IRex8oV.png"
   },
   {
     "id": 36,
     "name": "Philippines",
     "ISOcode": "ph",
-    "flagImg": "./countryImages/philippines.png"
+    "flagImg": "https://i.imgur.com/GGww38i.png"
   },
   {
     "id": 37,
     "name": "Poland",
     "ISOcode": "pl",
-    "flagImg": "./countryImages/poland.png"
+    "flagImg": "https://i.imgur.com/qaF7AcP.png"
   },
   {
     "id": 38,
     "name": "Portugal",
     "ISOcode": "pt",
-    "flagImg": "./countryImages/portugal.png"
+    "flagImg": "https://i.imgur.com/rkSTTiy.png"
   },
   {
     "id": 39,
     "name": "Romania",
     "ISOcode": "ro",
-    "flagImg": "./countryImages/romania.png"
+    "flagImg": "https://i.imgur.com/GAPNYIK.png"
   },
   {
     "id": 40,
     "name": "Serbia",
     "ISOcode": "rs",
-    "flagImg": "./countryImages/serbia.png"
+    "flagImg": "https://i.imgur.com/p8r681t.png"
   },
   {
     "id": 41,
     "name": "Russia",
     "ISOcode": "ru",
-    "flagImg": "./countryImages/russia.png"
+    "flagImg": "https://i.imgur.com/h8IDCn7.png"
   },
   {
     "id": 42,
     "name": "Saudi Arabia",
     "ISOcode": "sa",
-    "flagImg": "./countryImages/saudi-arabia.png"
+    "flagImg": "https://i.imgur.com/EPGIwZ2.png"
   },
   {
     "id": 43,
     "name": "Sweden",
     "ISOcode": "se",
-    "flagImg": "./countryImages/sweden.png"
+    "flagImg": "https://i.imgur.com/1jsHgm5.png"
   },
   {
     "id": 44,
     "name": "Singapore",
     "ISOcode": "sg",
-    "flagImg": "./countryImages/singapore.png"
+    "flagImg": "https://i.imgur.com/39t0JTx.png"
   },
   {
     "id": 45,
     "name": "Slovenia",
     "ISOcode": "si",
-    "flagImg": "./countryImages/slovenia.png"
+    "flagImg": "https://i.imgur.com/ejaTyDx.png"
   },
   {
     "id": 46,
     "name": "Slovakia",
     "ISOcode": "sk",
-    "flagImg": "./countryImages/slovakia.png"
+    "flagImg": "https://i.imgur.com/Ufy9C2D.png"
   },
   {
     "id": 47,
     "name": "Thailand",
     "ISOcode": "th",
-    "flagImg": "./countryImages/thailand.png"
+    "flagImg": "https://i.imgur.com/B9cpmk6.png"
   },
   {
     "id": 48,
     "name": "Turkey",
     "ISOcode": "tr",
-    "flagImg": "./countryImages/turkey.png"
+    "flagImg": "https://i.imgur.com/UxGosxg.png"
   },
   {
     "id": 49,
     "name": "Taiwan",
     "ISOcode": "tw",
-    "flagImg": "./countryImages/taiwan.png"
+    "flagImg": "https://i.imgur.com/vcrSRpp.png"
   },
   {
     "id": 50,
     "name": "Ukraine",
     "ISOcode": "ua",
-    "flagImg": "./countryImages/ukraine.png"
+    "flagImg": "https://i.imgur.com/78D6Op2.png"
   },
   {
     "id": 51,
     "name": "United States of America",
     "ISOcode": "us",
-    "flagImg": "./countryImages/united-states.png"
+    "flagImg": "https://i.imgur.com/gqHoPYh.png"
   },
   {
     "id": 52,
     "name": "Venezuela",
     "ISOcode": "ve",
-    "flagImg": "./countryImages/venezuela.png"
+    "flagImg": "https://i.imgur.com/6SfBQ7v.png"
   },
   {
     "id": 53,
     "name": "South Africa",
     "ISOcode": "za",
-    "flagImg": "./countryImages/south-africa.png"
+    "flagImg": "https://i.imgur.com/F0Cxa9O.png"
   }
 ]

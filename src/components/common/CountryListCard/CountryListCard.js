@@ -3,20 +3,20 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 
 const CountryListCard = props => {
   const { title, children, onPress, img } = props;
-  console.log(img);
+
   return (
     <View
       style={{
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "space-evenly",
-        height: 50,
+        height: 70,
         width: "100%",
         flexWrap: "wrap"
       }}
     >
       <TouchableOpacity style={styles.container} onPress={onPress}>
-        <Image source={`require(${img})`} style={styles.img} />
+        <Image source={{ uri: img }} style={styles.img} />
         {children}
         <View style={styles.textBox}>
           <Text style={styles.text}>{title}</Text>
@@ -31,12 +31,14 @@ const styles = {
     flex: 1,
     marginTop: 20,
     width: "99%",
-    height: "100%",
-    flexDirection: "row"
+    height: "80%",
+    flexDirection: "row",
+    borderBottomWidth: 0.5,
+    borderBottomColor: "gray"
   },
   img: {
     width: 100,
-    height: "100%",
+    height: "80%",
     resizeMode: "contain"
   },
   textBox: {

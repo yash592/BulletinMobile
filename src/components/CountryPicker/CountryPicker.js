@@ -15,8 +15,7 @@ import { Gradient } from "../common/Gradient";
 import { BottomNav } from "../common/BottomNav";
 import { Header } from "../common/Header";
 import { Input } from "../common/TextInput";
-
-const Countries = require("../../assets/Countries");
+import Countries from "../../assets/Countries";
 
 class CountryPicker extends Component {
   constructor(props) {
