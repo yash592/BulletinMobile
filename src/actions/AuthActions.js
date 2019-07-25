@@ -8,6 +8,7 @@ import {
   COUNTRY_SETTER
 } from "./types";
 import { AsyncStorage } from "react-native";
+import { Font } from "expo";
 
 export const loginUser = (email, password) => {
   // console.log(dispatch);

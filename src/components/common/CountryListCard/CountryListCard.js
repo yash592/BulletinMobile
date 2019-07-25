@@ -2,24 +2,25 @@ import React, { Component } from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 
 const CountryListCard = props => {
-  const { title, children, onPress, img } = props;
+  const { onPress, img, title, children, cardstyle } = props;
+  // console.log(props);
 
   return (
     <View
       style={{
+        flex: 1,
         flexDirection: "column",
+        justifyContent: "center",
         alignItems: "center",
-        justifyContent: "space-evenly",
         height: 70,
-        width: "100%",
-        flexWrap: "wrap"
+        width: "100%"
       }}
     >
       <TouchableOpacity style={styles.container} onPress={onPress}>
         <Image source={{ uri: img }} style={styles.img} />
         {children}
         <View style={styles.textBox}>
-          <Text style={styles.text}>{title}</Text>
+          <Text style={cardstyle}>{title}</Text>
         </View>
       </TouchableOpacity>
     </View>
@@ -29,21 +30,25 @@ const CountryListCard = props => {
 const styles = {
   container: {
     flex: 1,
-    marginTop: 20,
     width: "99%",
-    height: "80%",
+    padding: 7,
+    height: "100%",
     flexDirection: "row",
-    borderBottomWidth: 0.5,
-    borderBottomColor: "gray"
+    justifyContent: "flex-start",
+    alignItems: "center",
+    borderBottomWidth: 0.2,
+    borderBottomColor: "gray",
+    flexWrap: "wrap"
   },
   img: {
-    width: 100,
-    height: "80%",
+    width: 70,
+    height: "100%",
     resizeMode: "contain"
   },
   textBox: {
     marginLeft: 20,
-    justifyContent: "center"
+    justifyContent: "center",
+    flexWrap: "wrap"
   },
   text: {
     fontSize: 20

@@ -41,7 +41,6 @@ class Search extends Component {
       OpenSans: require("../assets/fonts/OpenSans-SemiBold.ttf")
     });
     this.setState({ fontLoaded: true });
-    // console.log("fontloaded");
   }
 
   onKeyPress = () => {
@@ -133,11 +132,9 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => {
-  // console.log("state.news", state);
   const newsList = _.map(state.searchNews, list => {
     return { ...list };
   });
-  // console.log("HAHAAAAAAHAHAHAHAHAH", { newsList });
   return { newsList };
 };
 
