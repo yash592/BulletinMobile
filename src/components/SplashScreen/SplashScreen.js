@@ -3,59 +3,29 @@ import { Ionicons } from "@expo/vector-icons";
 import { StyleSheet, View, Text, Image } from "react-native";
 import { LinearGradient } from "expo";
 import AppIntroSlider from "react-native-app-intro-slider";
-
-const styles = StyleSheet.create({
-  mainContent: {
-    flex: 1,
-    justifyContent: "space-around",
-    alignContent: "flex-start",
-    alignItems: "center"
-  },
-  image: {
-    width: 320,
-    height: 320
-  },
-  text: {
-    color: "black",
-
-    textAlign: "center",
-    paddingHorizontal: 16
-  },
-  title: {
-    fontSize: 22,
-    color: "black",
-    textAlign: "center",
-    marginBottom: 16
-  }
-});
-
-const slides = [
-  {
-    key: "somethun",
-    title: "Quick setup, good defaults",
-    text:
-      "React-native-app-intro-slider is easy to setup with a small footprint and no dependencies. And it comes with good default layouts!",
-    img: "https://i.imgur.com/R0DdoPk.png",
-    color: ["white", "#EAE0F7"]
-  },
-  {
-    key: "somethun1",
-    title: "Super customizable",
-    text:
-      "The component is also super customizable, so you can adapt it to cover your needs and wants.",
-    img: "https://i.imgur.com/CUfu2Kn.png",
-    color: ["white", "#EAE0F7"]
-  },
-  {
-    key: "somethun2",
-    title: "No need to buy me beer",
-    text: "Usage is all free",
-    img: "https://i.imgur.com/CUfu2Kn.png",
-    color: ["white", "#EAE0F7"]
-  }
-];
+import { slides } from "./slides";
+import { Font } from "expo";
+import { onBoardingDoneSet, onBoardingDoneGet } from "../../actions";
+import { connect } from "react-redux";
 
 class SplashScreen extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      fontLoaded: false
+    };
+  }
+
+  async componentDidMount() {
+    console.log("componentDidMount");
+    await Font.loadAsync({
+      OpenSans: require("../assets/fonts/OpenSans-SemiBold.ttf"),
+      Roboto: require("../assets/fonts/Roboto-Medium.ttf"),
+      RobotoCondensed: require("../assets/fonts/RobotoCondensed-Regular.ttf")
+    });
+    this.setState({ fontLoaded: true });
+  }
+
   _renderItem = ({ item, dimensions }) => (
     <LinearGradient
       style={[
@@ -69,23 +39,85 @@ class SplashScreen extends Component {
       start={{ x: 0, y: 0.2 }}
       end={{ x: 0, y: 1 }}
     >
-      <Image
+      <View
         style={{
-          width: 200,
-          height: 350,
-          resizeMode: "contain"
+          flex: 0.7,
+          justifyContent: "space-around",
+          alignItems: "center"
         }}
-        source={{ uri: item.img }}
-      />
+      >
+        <Text style={styles.title}>{item.title}</Text>
+        <View
+          style={{
+            width: 250,
+            height: 500,
+            alignItems: "center",
+            justifyContent: "center"
+          }}
+        >
+          <Image
+            style={{
+              width: "100%",
+              height: "100%",
+              resizeMode: "contain"
+            }}
+            source={{ uri: item.img }}
+          />
+        </View>
 
-      <Text style={styles.title}>{item.title}</Text>
-      <Text style={styles.text}>{item.text}</Text>
+        <Text style={styles.text}>{item.text}</Text>
+      </View>
     </LinearGradient>
   );
 
+  onDone = () => {
+    this.props.onBoardingDoneSet("true");
+  };
+
   render() {
-    return <AppIntroSlider slides={slides} renderItem={this._renderItem} />;
+    console.log(this.props);
+    return !this.state.fontLoaded ? (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Text>Loading</Text>
+      </View>
+    ) : (
+      <AppIntroSlider
+        slides={slides}
+        renderItem={this._renderItem}
+        onDone={this.onDone}
+      />
+    );
   }
 }
 
-export default SplashScreen;
+const styles = StyleSheet.create({
+  mainContent: {
+    flex: 1,
+    justifyContent: "space-around",
+    alignContent: "center",
+    alignItems: "center"
+  },
+  image: {
+    width: 320,
+    height: 320
+  },
+  text: {
+    color: "black",
+    textAlign: "center",
+    paddingHorizontal: 16,
+    fontFamily: "Roboto",
+    fontSize: 18
+  },
+  title: {
+    fontSize: 22,
+    color: "black",
+    textAlign: "center",
+    marginBottom: 16,
+    fontFamily: "OpenSans"
+  }
+});
+
+export default connect(
+  null,
+  { onBoardingDoneSet }
+)(SplashScreen);

@@ -3,7 +3,9 @@ import {
   LOGIN_FAIL,
   LOGIN_USER,
   COUNTRY_SETTER,
-  COUNTRY_GETTER
+  COUNTRY_GETTER,
+  ONBOARING_GETTER,
+  ONBOARING_SETTER
 } from "../actions/types";
 
 const INITIAL_STATE = {
@@ -26,6 +28,10 @@ export default (state = INITIAL_STATE, action) => {
         loading: false
       };
     case COUNTRY_GETTER:
+      return { ...state, ...INITIAL_STATE, country: action.payload };
+    case ONBOARING_SETTER:
+      return { ...state, ...INITIAL_STATE, country: action.payload };
+    case ONBOARING_GETTER:
       return { ...state, ...INITIAL_STATE, country: action.payload };
     default:
       return state;
