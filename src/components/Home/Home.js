@@ -100,6 +100,7 @@ class Home extends Component {
     console.log("state", this.state);
 
     return (
+      // if(!this.state.country)
       <Gradient colors={["#EAE0F7", "black"]} style={styles.Gradient}>
         {this.renderTiles()}
       </Gradient>

@@ -5,7 +5,9 @@ import {
   LOGIN_FAILED,
   LOGIN_USER,
   COUNTRY_GETTER,
-  COUNTRY_SETTER
+  COUNTRY_SETTER,
+  ONBOARING_SETTER,
+  ONBOARING_GETTER
 } from "./types";
 import { AsyncStorage } from "react-native";
 import { Font } from "expo";
@@ -65,5 +67,39 @@ export const countryGetter = () => {
         payload: res
       });
     });
+  };
+};
+
+export const onBoardingDoneSet = code => {
+  return dispatch => {
+    return AsyncStorage.setItem("Onboarding", code)
+      .then(res => {
+        console.log("Onboarding", code);
+        Actions.home();
+        dispatch({
+          type: ONBOARING_SETTER,
+          payload: null
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+};
+
+export const onBoardingDoneGet = code => {
+  return dispatch => {
+    return AsyncStorage.getItem("Onboarding")
+      .then(res => {
+        console.log(res);
+
+        dispatch({
+          type: ONBOARING_GETTER,
+          payload: res
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 };
