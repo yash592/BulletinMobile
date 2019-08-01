@@ -96,8 +96,8 @@ class NewsDetail extends Component {
   render() {
     // console.log("PROPSSSSS", this.props.newsList);
     // console.log(this.props);
-    return !this.state.fontLoaded ? (
-      <View>
+    return !this.state.fontLoaded && !this.props.newsList ? (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <Text>Loading</Text>
       </View>
     ) : (
@@ -118,7 +118,7 @@ class NewsDetail extends Component {
             <Text
               style={{
                 padding: 10,
-                fontFamily: "RobotoBold",
+                fontFamily: "Roboto", //Roboto
                 fontSize: 18,
                 letterSpacing: 2,
                 color: "#A3A3A3"
