@@ -8,19 +8,22 @@ import Search from "./components/Search/Search";
 import CountryPicker from "./components/CountryPicker/CountryPicker";
 import AppLoading from "./components/AppLoading/AppLoading";
 import SplashScreen from "./components/SplashScreen/SplashScreen";
+import SavedNewsDeck from "./components/SavedNewsDeck/SavedNewsDeck";
 
-const Routes = () => {
+const Routes = props => {
+  console.log("rputes props", props);
   return (
     <Router>
       <Scene key="root">
         <Scene key="splash" hideNavBar>
           <Scene key="splash" component={SplashScreen} />
         </Scene>
-        <Scene key="load" hideNavBar initial>
+        <Scene key="load" hideNavBar>
           <Scene key="load" component={AppLoading} />
         </Scene>
-        <Scene key="auth" hideNavBar>
-          <Scene key="login" component={LoginForm} />
+
+        <Scene key="auth" hideNavBar initial>
+          <Scene key="login" component={SavedNewsDeck} />
         </Scene>
         <Scene key="countrypick" hideNavBar>
           <Scene key="countrypick" component={CountryPicker} />

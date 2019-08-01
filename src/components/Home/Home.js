@@ -48,7 +48,6 @@ class Home extends Component {
   };
 
   onClick(name) {
-    console.log("clicked!", name);
     const countryCode = this.state.country;
     console.log("countrycode", countryCode);
     switch (name) {
