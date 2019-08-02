@@ -62,32 +62,27 @@ class Deck extends Component {
     this.state = { panResponder, position };
   }
   renderCards = () => {
-    return DATA.map(item => {
-      // console.log(item);
-      return (
-        <View
-          style={{
-            flex: 1,
-            width: "90%",
-            height: 40,
-            backgroundColor: "#FF8C84",
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: 10
-          }}
-          key={item.id}
-        >
+    return DATA.map((item, index) => {
+      if (index === 0) {
+        return (
           <Animated.View
-            style={this.state.position.getLayout()}
+            style={[this.state.position.getLayout(), styles.animated]}
             {...this.state.panResponder.panHandlers}
           >
             <Text> {item.text}</Text>
           </Animated.View>
+        );
+      }
+      return (
+        <View style={styles.animated} {...this.state.panResponder.panHandlers}>
+          <Text> {item.text}</Text>
         </View>
       );
+
+      // console.log(item);
     });
   };
+
   render() {
     return (
       <View
@@ -105,5 +100,17 @@ class Deck extends Component {
     );
   }
 }
+
+const styles = {
+  animated: {
+    width: "40%",
+    height: 40,
+    backgroundColor: "#FF8C84",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 10
+  }
+};
 
 export default Deck;
