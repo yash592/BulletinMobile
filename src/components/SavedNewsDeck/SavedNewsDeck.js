@@ -1,48 +1,18 @@
 import React, { Component } from "react";
-import { View, Animated, Stylesheet, Text, PanResponder } from "react-native";
+import {
+  View,
+  Animated,
+  Stylesheet,
+  Text,
+  PanResponder,
+  Dimensions,
+  ScrollView
+} from "react-native";
+import { NewsCardLarge } from "../common/NewsCardLarge";
+import { SavedNewsCard } from "../common/SavedNewsCard";
 
-const DATA = [
-  {
-    id: 1,
-    text: "Card #1",
-    uri: "http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-04.jpg"
-  },
-  {
-    id: 2,
-    text: "Card #2",
-    uri: "http://www.fluxdigital.co/wp-content/uploads/2015/04/Unsplash.jpg"
-  },
-  {
-    id: 3,
-    text: "Card #3",
-    uri: "http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-09.jpg"
-  },
-  {
-    id: 4,
-    text: "Card #4",
-    uri: "http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-01.jpg"
-  },
-  {
-    id: 5,
-    text: "Card #5",
-    uri: "http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-04.jpg"
-  },
-  {
-    id: 6,
-    text: "Card #6",
-    uri: "http://www.fluxdigital.co/wp-content/uploads/2015/04/Unsplash.jpg"
-  },
-  {
-    id: 7,
-    text: "Card #7",
-    uri: "http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-09.jpg"
-  },
-  {
-    id: 8,
-    text: "Card #8",
-    uri: "http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-01.jpg"
-  }
-];
+const WIDTH = Dimensions.get("window").width;
+const SWIPE_MIN = 0.75 * WIDTH;
 
 class Deck extends Component {
   constructor(props) {
@@ -53,46 +23,94 @@ class Deck extends Component {
     const panResponder = PanResponder.create({
       onStartShouldSetPanResponder: () => true,
       onPanResponderMove: (event, gesture) => {
-        position.setValue({ x: gesture.dx, y: gesture.dy });
+        // console.log(gesture);
+        position.setValue({ x: gesture.dx });
       },
       onPanResponderRelease: (event, gesture) => {
-        position.setValue({ x: 0, y: 0 });
+        // console.log(SWIPE_MIN, -SWIPE_MIN);
+        gesture.dx > SWIPE_MIN ? this.swipeRight() : this.resetPosition();
       }
     });
-    this.state = { panResponder, position };
+    this.state = { panResponder, position, index: 0 };
   }
+
+  swipeRight = () => {
+    console.log("Swipped right");
+    Animated.timing(this.state.position, {
+      toValue: { x: SWIPE_MIN * 2, y: 0 },
+      duration: 500
+    }).start();
+  };
+
+  swipeLeft = () => {
+    console.log("swipped left");
+  };
+
+  resetPosition = () => {
+    // console.log("reset");
+    Animated.spring(this.state.position, {
+      toValue: { x: 0, y: 50 }
+    }).start();
+  };
   renderCards = () => {
-    return DATA.map((item, index) => {
-      if (index === 0) {
+    return DATA.map((item, i) => {
+      console.log(this.state.position);
+      // console.log(5 * (i - this.state.index));
+      if (i === this.state.index) {
         return (
           <Animated.View
-            style={[this.state.position.getLayout(), styles.animated]}
+            style={[
+              this.state.position.getLayout(),
+              styles.animated,
+              { zIndex: 99 }
+            ]}
             {...this.state.panResponder.panHandlers}
+            key={item.id}
           >
-            <Text> {item.text}</Text>
+            <SavedNewsCard
+              title={item.title}
+              img={item.urlToImage}
+              author={item.author}
+              summary={item.summary}
+              id={item.id}
+            />
           </Animated.View>
         );
       }
       return (
-        <View style={styles.animated} {...this.state.panResponder.panHandlers}>
-          <Text> {item.text}</Text>
-        </View>
+        <Animated.View
+          style={[
+            styles.animated,
+            {
+              top: 20 * (i - this.state.index),
+              zIndex: 5
+            }
+          ]}
+          key={item.id}
+        >
+          <SavedNewsCard
+            title={item.title}
+            img={item.urlToImage}
+            author={item.author}
+            summary={item.summary}
+            id={item.id}
+          />
+        </Animated.View>
       );
 
       // console.log(item);
-    });
+    }).reverse();
   };
 
   render() {
+    console.log(this.state.position);
     return (
       <View
         style={{
           flex: 1,
-          justifyContent: "flex-start",
-          marginTop: 30,
+          justifyContent: "center",
           alignItems: "center",
-          backgroundColor: "white",
-          flexDirection: "column"
+          marginTop: 30
         }}
       >
         {this.renderCards()}
@@ -103,14 +121,151 @@ class Deck extends Component {
 
 const styles = {
   animated: {
-    width: "40%",
-    height: 40,
-    backgroundColor: "#FF8C84",
-    flexDirection: "row",
+    position: "absolute",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 10
+
+    width: "100%"
   }
 };
+
+const DATA = [
+  {
+    id: 1,
+    author: "George Dvorsky",
+    title:
+      "Another Study Finds Our Galaxy Is 'Warped And Twisted' - Gizmodo Australia",
+    url:
+      "https://www.gizmodo.com.au/2019/08/another-study-finds-our-galaxy-is-warped-and-twisted/",
+    urlToImage:
+      "https://i.kinja-img.com/gawker-media/image/upload/c_lfill,w_768,q_90/rn5tfjqbb0oottg7kyxx.jpg",
+    summary: [
+      "A team of Polish astronomers has created the most accurate three-dimensional map of the Milky Way to date, revealing surprising distortions and irregularities along the galactic disk.",
+      "Despite these limitations, we know that the Milky Way is a spiral galaxy measuring around 120,000 light-years across, and that we’re located around 27,000 light-years from the galactic core.",
+      "A better way to map the Milky Way would be to directly measure our distance to a large sample of stars strewn across the galactic disk.",
+      "Using this strategy, a team of scientists from the Astronomical Observatory at the University of Warsaw has compiled the most accurate 3D map of the Milky Way to date.",
+      "The new map will also help to further clarify the physical structure of the Milky Way, the number of spiral arms (which is still debated), and the severity of the arms’ spiral twist, among other aspects."
+    ]
+  },
+  {
+    id: 2,
+    author: "George Dvorsky",
+    title:
+      "Another Study Finds Our Galaxy Is 'Warped And Twisted' - Gizmodo Australia",
+    url:
+      "https://www.gizmodo.com.au/2019/08/another-study-finds-our-galaxy-is-warped-and-twisted/",
+    urlToImage:
+      "https://i.kinja-img.com/gawker-media/image/upload/c_lfill,w_768,q_90/rn5tfjqbb0oottg7kyxx.jpg",
+    summary: [
+      "A team of Polish astronomers has created the most accurate three-dimensional map of the Milky Way to date, revealing surprising distortions and irregularities along the galactic disk.",
+      "Despite these limitations, we know that the Milky Way is a spiral galaxy measuring around 120,000 light-years across, and that we’re located around 27,000 light-years from the galactic core.",
+      "A better way to map the Milky Way would be to directly measure our distance to a large sample of stars strewn across the galactic disk.",
+      "Using this strategy, a team of scientists from the Astronomical Observatory at the University of Warsaw has compiled the most accurate 3D map of the Milky Way to date.",
+      "The new map will also help to further clarify the physical structure of the Milky Way, the number of spiral arms (which is still debated), and the severity of the arms’ spiral twist, among other aspects."
+    ]
+  },
+  {
+    id: 3,
+    author: "George Dvorsky",
+    title:
+      "Another Study Finds Our Galaxy Is 'Warped And Twisted' - Gizmodo Australia",
+    url:
+      "https://www.gizmodo.com.au/2019/08/another-study-finds-our-galaxy-is-warped-and-twisted/",
+    urlToImage:
+      "https://i.kinja-img.com/gawker-media/image/upload/c_lfill,w_768,q_90/rn5tfjqbb0oottg7kyxx.jpg",
+    summary: [
+      "A team of Polish astronomers has created the most accurate three-dimensional map of the Milky Way to date, revealing surprising distortions and irregularities along the galactic disk.",
+      "Despite these limitations, we know that the Milky Way is a spiral galaxy measuring around 120,000 light-years across, and that we’re located around 27,000 light-years from the galactic core.",
+      "A better way to map the Milky Way would be to directly measure our distance to a large sample of stars strewn across the galactic disk.",
+      "Using this strategy, a team of scientists from the Astronomical Observatory at the University of Warsaw has compiled the most accurate 3D map of the Milky Way to date.",
+      "The new map will also help to further clarify the physical structure of the Milky Way, the number of spiral arms (which is still debated), and the severity of the arms’ spiral twist, among other aspects."
+    ]
+  },
+  {
+    id: 4,
+    author: "George Dvorsky",
+    title:
+      "Another Study Finds Our Galaxy Is 'Warped And Twisted' - Gizmodo Australia",
+    url:
+      "https://www.gizmodo.com.au/2019/08/another-study-finds-our-galaxy-is-warped-and-twisted/",
+    urlToImage:
+      "https://i.kinja-img.com/gawker-media/image/upload/c_lfill,w_768,q_90/rn5tfjqbb0oottg7kyxx.jpg",
+    summary: [
+      "A team of Polish astronomers has created the most accurate three-dimensional map of the Milky Way to date, revealing surprising distortions and irregularities along the galactic disk.",
+      "Despite these limitations, we know that the Milky Way is a spiral galaxy measuring around 120,000 light-years across, and that we’re located around 27,000 light-years from the galactic core.",
+      "A better way to map the Milky Way would be to directly measure our distance to a large sample of stars strewn across the galactic disk.",
+      "Using this strategy, a team of scientists from the Astronomical Observatory at the University of Warsaw has compiled the most accurate 3D map of the Milky Way to date.",
+      "The new map will also help to further clarify the physical structure of the Milky Way, the number of spiral arms (which is still debated), and the severity of the arms’ spiral twist, among other aspects."
+    ]
+  },
+  {
+    id: 5,
+    author: "George Dvorsky",
+    title:
+      "Another Study Finds Our Galaxy Is 'Warped And Twisted' - Gizmodo Australia",
+    url:
+      "https://www.gizmodo.com.au/2019/08/another-study-finds-our-galaxy-is-warped-and-twisted/",
+    urlToImage:
+      "https://i.kinja-img.com/gawker-media/image/upload/c_lfill,w_768,q_90/rn5tfjqbb0oottg7kyxx.jpg",
+    summary: [
+      "A team of Polish astronomers has created the most accurate three-dimensional map of the Milky Way to date, revealing surprising distortions and irregularities along the galactic disk.",
+      "Despite these limitations, we know that the Milky Way is a spiral galaxy measuring around 120,000 light-years across, and that we’re located around 27,000 light-years from the galactic core.",
+      "A better way to map the Milky Way would be to directly measure our distance to a large sample of stars strewn across the galactic disk.",
+      "Using this strategy, a team of scientists from the Astronomical Observatory at the University of Warsaw has compiled the most accurate 3D map of the Milky Way to date.",
+      "The new map will also help to further clarify the physical structure of the Milky Way, the number of spiral arms (which is still debated), and the severity of the arms’ spiral twist, among other aspects."
+    ]
+  },
+  {
+    id: 6,
+    author: "George Dvorsky",
+    title:
+      "Another Study Finds Our Galaxy Is 'Warped And Twisted' - Gizmodo Australia",
+    url:
+      "https://www.gizmodo.com.au/2019/08/another-study-finds-our-galaxy-is-warped-and-twisted/",
+    urlToImage:
+      "https://i.kinja-img.com/gawker-media/image/upload/c_lfill,w_768,q_90/rn5tfjqbb0oottg7kyxx.jpg",
+    summary: [
+      "A team of Polish astronomers has created the most accurate three-dimensional map of the Milky Way to date, revealing surprising distortions and irregularities along the galactic disk.",
+      "Despite these limitations, we know that the Milky Way is a spiral galaxy measuring around 120,000 light-years across, and that we’re located around 27,000 light-years from the galactic core.",
+      "A better way to map the Milky Way would be to directly measure our distance to a large sample of stars strewn across the galactic disk.",
+      "Using this strategy, a team of scientists from the Astronomical Observatory at the University of Warsaw has compiled the most accurate 3D map of the Milky Way to date.",
+      "The new map will also help to further clarify the physical structure of the Milky Way, the number of spiral arms (which is still debated), and the severity of the arms’ spiral twist, among other aspects."
+    ]
+  },
+  {
+    id: 7,
+    author: "George Dvorsky",
+    title:
+      "Another Study Finds Our Galaxy Is 'Warped And Twisted' - Gizmodo Australia",
+    url:
+      "https://www.gizmodo.com.au/2019/08/another-study-finds-our-galaxy-is-warped-and-twisted/",
+    urlToImage:
+      "https://i.kinja-img.com/gawker-media/image/upload/c_lfill,w_768,q_90/rn5tfjqbb0oottg7kyxx.jpg",
+    summary: [
+      "A team of Polish astronomers has created the most accurate three-dimensional map of the Milky Way to date, revealing surprising distortions and irregularities along the galactic disk.",
+      "Despite these limitations, we know that the Milky Way is a spiral galaxy measuring around 120,000 light-years across, and that we’re located around 27,000 light-years from the galactic core.",
+      "A better way to map the Milky Way would be to directly measure our distance to a large sample of stars strewn across the galactic disk.",
+      "Using this strategy, a team of scientists from the Astronomical Observatory at the University of Warsaw has compiled the most accurate 3D map of the Milky Way to date.",
+      "The new map will also help to further clarify the physical structure of the Milky Way, the number of spiral arms (which is still debated), and the severity of the arms’ spiral twist, among other aspects."
+    ]
+  },
+  {
+    id: 8,
+    author: "George Dvorsky",
+    title:
+      "Another Study Finds Our Galaxy Is 'Warped And Twisted' - Gizmodo Australia",
+    url:
+      "https://www.gizmodo.com.au/2019/08/another-study-finds-our-galaxy-is-warped-and-twisted/",
+    urlToImage:
+      "https://i.kinja-img.com/gawker-media/image/upload/c_lfill,w_768,q_90/rn5tfjqbb0oottg7kyxx.jpg",
+    summary: [
+      "A team of Polish astronomers has created the most accurate three-dimensional map of the Milky Way to date, revealing surprising distortions and irregularities along the galactic disk.",
+      "Despite these limitations, we know that the Milky Way is a spiral galaxy measuring around 120,000 light-years across, and that we’re located around 27,000 light-years from the galactic core.",
+      "A better way to map the Milky Way would be to directly measure our distance to a large sample of stars strewn across the galactic disk.",
+      "Using this strategy, a team of scientists from the Astronomical Observatory at the University of Warsaw has compiled the most accurate 3D map of the Milky Way to date.",
+      "The new map will also help to further clarify the physical structure of the Milky Way, the number of spiral arms (which is still debated), and the severity of the arms’ spiral twist, among other aspects."
+    ]
+  }
+];
 
 export default Deck;
