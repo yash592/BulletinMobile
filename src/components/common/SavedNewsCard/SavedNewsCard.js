@@ -14,6 +14,7 @@ const SavedNewsCard = props => {
       <Text>{props.title}</Text>
       <Text>{props.author}</Text>
       <Text>{props.summary}</Text>
+      <Text>{props.id}</Text>
     </View>
   );
 };
@@ -22,8 +23,13 @@ const styles = {
   container: {
     width: "96%",
     height: 700,
-    borderWidth: 1,
-    borderColor: "grey"
+    shadowOffset: { width: 0, height: 10 },
+    shadowRadius: 0.25,
+    elevation: 5,
+    shadowOpacity: 0.5,
+    shadowColor: "black",
+    borderRadius: 10,
+    backgroundColor: "white"
   },
   image: {
     width: "100%",
