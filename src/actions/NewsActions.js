@@ -5,7 +5,7 @@ import { Actions } from "react-native-router-flux";
 export const worldNews = countryCode => {
   Actions.newsresults();
   console.log("got to world news", countryCode);
-  let url = `https://newsapi.org/v2/top-headlines?country=${countryCode}&pageSize=100&apiKey=513740817e1e424cb4406d9e434de94f`;
+  let url = `https://newsapi.org/v2/top-headlines?country=${countryCode}&pageSize=40&apiKey=513740817e1e424cb4406d9e434de94f`;
   return dispatch => {
     return axios.get(url).then(res => {
       console.log("respose", res.data.articles.length);
