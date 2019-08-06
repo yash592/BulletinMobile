@@ -6,10 +6,13 @@ import {
   Text,
   PanResponder,
   Dimensions,
-  ScrollView
+  ScrollView,
+  LayoutAnimation,
+  UIManager
 } from "react-native";
 import { NewsCardLarge } from "../common/NewsCardLarge";
 import { SavedNewsCard } from "../common/SavedNewsCard";
+import { Font } from "expo";
 
 const WIDTH = Dimensions.get("window").width;
 const SWIPE_MIN = 0.75 * WIDTH;
@@ -24,45 +27,75 @@ class Deck extends Component {
       onStartShouldSetPanResponder: () => true,
       onPanResponderMove: (event, gesture) => {
         // console.log(gesture);
-        position.setValue({ x: gesture.dx });
+        position.setValue({ x: gesture.dx, y: 0 });
       },
       onPanResponderRelease: (event, gesture) => {
         // console.log(SWIPE_MIN, -SWIPE_MIN);
-        gesture.dx > SWIPE_MIN ? this.swipeRight() : this.resetPosition();
+        gesture.dx > SWIPE_MIN ? this.beginSwipe() : this.resetPosition();
       }
     });
     this.state = { panResponder, position, index: 0 };
   }
+  //
+  async componentDidMount() {
+    await Font.loadAsync({
+      OpenSans: require("../assets/fonts/OpenSans-SemiBold.ttf"),
+      Roboto: require("../assets/fonts/Roboto-Medium.ttf"),
+      RobotoCondensed: require("../assets/fonts/RobotoCondensed-Regular.ttf")
+    });
+    this.setState({ fontLoaded: true });
+    console.log("fontloaded");
+  }
 
-  swipeRight = () => {
-    console.log("Swipped right");
+  componentWillUpdate() {
+    UIManager.setLayoutAnimationEnabledExperimental &&
+      UIManager.setLayoutAnimationEnabledExperimental(true);
+    LayoutAnimation.spring();
+  }
+
+  // componentWillReceiveProps(nextProps) {
+  //   // console.log(this.props);
+  //   if (nextProps.DATA !== this.props.DATA) {
+  //     this.setState({ index: 0 });
+  //   }
+  // }
+
+  beginSwipe = () => {
+    console.log("Swiped right");
     Animated.timing(this.state.position, {
-      toValue: { x: SWIPE_MIN * 2, y: 0 },
+      toValue: { x: WIDTH, y: 0 },
       duration: 500
-    }).start();
+    }).start(() => this.doneSwiping());
   };
 
-  swipeLeft = () => {
-    console.log("swipped left");
+  doneSwiping = () => {
+    const item = DATA[this.state.index];
+    // console.log(item);
+
+    // this.beginSwipe(item);
+
+    this.setState({ index: this.state.index + 1 });
+    this.state.position.setValue({ x: 0, y: 0 });
   };
 
   resetPosition = () => {
     // console.log("reset");
     Animated.spring(this.state.position, {
-      toValue: { x: 0, y: 50 }
+      toValue: { x: 0, y: 0 }
     }).start();
   };
   renderCards = () => {
     return DATA.map((item, i) => {
-      console.log(this.state.position);
-      // console.log(5 * (i - this.state.index));
+      // console.log(this.state.position);
+      if (i < this.state.index) return null;
+
       if (i === this.state.index) {
         return (
           <Animated.View
             style={[
               this.state.position.getLayout(),
               styles.animated,
-              { zIndex: 99 }
+              { zIndex: 99, transform: [{ scale: 1 }] }
             ]}
             {...this.state.panResponder.panHandlers}
             key={item.id}
@@ -73,6 +106,7 @@ class Deck extends Component {
               author={item.author}
               summary={item.summary}
               id={item.id}
+              style={{ ...styles }}
             />
           </Animated.View>
         );
@@ -83,7 +117,9 @@ class Deck extends Component {
             styles.animated,
             {
               top: 20 * (i - this.state.index),
-              zIndex: 5
+              zIndex: 5,
+
+              transform: [{ scale: 0.98 }]
             }
           ]}
           key={item.id}
@@ -94,6 +130,7 @@ class Deck extends Component {
             author={item.author}
             summary={item.summary}
             id={item.id}
+            style={{ ...styles }}
           />
         </Animated.View>
       );
@@ -103,8 +140,7 @@ class Deck extends Component {
   };
 
   render() {
-    console.log(this.state.position);
-    return (
+    return this.state.fontLoaded ? (
       <View
         style={{
           flex: 1,
@@ -115,7 +151,7 @@ class Deck extends Component {
       >
         {this.renderCards()}
       </View>
-    );
+    ) : null;
   }
 }
 
@@ -124,8 +160,25 @@ const styles = {
     position: "absolute",
     justifyContent: "center",
     alignItems: "center",
-
     width: "100%"
+  },
+  cardOpacity: {
+    opacity: 1
+  },
+  titleText: {
+    fontFamily: "OpenSans",
+    fontSize: 32
+  },
+  authorText: {
+    fontFamily: "RobotoCondensed",
+    fontSize: 20,
+    color: "gray"
+  },
+  summaryText: {
+    fontFamily: "Roboto",
+    fontSize: 18,
+    letterSpacing: 0.1,
+    lineHeight: 25
   }
 };
 

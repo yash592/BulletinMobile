@@ -98,11 +98,6 @@ class NewsDetail extends Component {
   };
 
   render() {
-    console
-      .log
-      //   "Summarize Props from NewsDetail",
-      // this.props.SummarizePageData
-      ();
     return !this.state.fontLoaded ? (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <Text>Loading</Text>
