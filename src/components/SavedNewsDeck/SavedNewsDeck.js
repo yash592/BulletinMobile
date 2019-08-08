@@ -13,9 +13,12 @@ import {
 import { NewsCardLarge } from "../common/NewsCardLarge";
 import { SavedNewsCard } from "../common/SavedNewsCard";
 import { Font } from "expo";
+import { BottomNav } from "../common/BottomNav";
+import { Header } from "../common/Header";
 
 const WIDTH = Dimensions.get("window").width;
-const SWIPE_MIN = 0.75 * WIDTH;
+const HEIGHT = Dimensions.get("window").height;
+const SWIPE_MIN = 0.5 * WIDTH;
 
 class Deck extends Component {
   constructor(props) {
@@ -64,7 +67,7 @@ class Deck extends Component {
     console.log("Swiped right");
     Animated.timing(this.state.position, {
       toValue: { x: WIDTH, y: 0 },
-      duration: 500
+      duration: 250
     }).start(() => this.doneSwiping());
   };
 
@@ -84,7 +87,11 @@ class Deck extends Component {
       toValue: { x: 0, y: 0 }
     }).start();
   };
+
+  // render all cards and stack them together
+
   renderCards = () => {
+    console.log(HEIGHT);
     return DATA.map((item, i) => {
       // console.log(this.state.position);
       if (i < this.state.index) return null;
@@ -95,7 +102,21 @@ class Deck extends Component {
             style={[
               this.state.position.getLayout(),
               styles.animated,
-              { zIndex: 99, transform: [{ scale: 1 }] }
+              {
+                zIndex: 99,
+                transform: [{ scale: 1 }],
+                opacity: this.state.position.x.interpolate({
+                  inputRange: [
+                    0,
+                    WIDTH / 8,
+                    WIDTH / 6,
+                    WIDTH / 4,
+                    WIDTH / 2,
+                    WIDTH
+                  ],
+                  outputRange: [1, 0.8, 0.6, 0.4, 0.2, 0]
+                })
+              }
             ]}
             {...this.state.panResponder.panHandlers}
             key={item.id}
@@ -140,18 +161,35 @@ class Deck extends Component {
   };
 
   render() {
-    return this.state.fontLoaded ? (
+    return !this.state.fontLoaded ? (
       <View
         style={{
           flex: 1,
           justifyContent: "center",
-          alignItems: "center",
-          marginTop: 30
+          alignItems: "center"
         }}
       >
-        {this.renderCards()}
+        <Text>Loading</Text>
       </View>
-    ) : null;
+    ) : (
+      <View
+        style={{
+          flex: 1,
+          height: "100%"
+        }}
+      >
+        <Header headerText={"Saved Gists"} />
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "flex-start",
+            marginTop: 20
+          }}
+        >
+          {this.renderCards()}
+        </View>
+      </View>
+    );
   }
 }
 
@@ -160,7 +198,8 @@ const styles = {
     position: "absolute",
     justifyContent: "center",
     alignItems: "center",
-    width: "100%"
+    width: "100%",
+    height: "86%"
   },
   cardOpacity: {
     opacity: 1
@@ -176,7 +215,7 @@ const styles = {
   },
   summaryText: {
     fontFamily: "Roboto",
-    fontSize: 18,
+    fontSize: 16,
     letterSpacing: 0.1,
     lineHeight: 25
   }
@@ -185,13 +224,13 @@ const styles = {
 const DATA = [
   {
     id: 1,
-    author: "George Dvorsky",
+    author: "Sandra Erwin",
     title:
-      "Another Study Finds Our Galaxy Is 'Warped And Twisted' - Gizmodo Australia",
+      "ULA receives contract for what could be the final Delta 4 Heavy mission - SpaceNews",
     url:
-      "https://www.gizmodo.com.au/2019/08/another-study-finds-our-galaxy-is-warped-and-twisted/",
+      "https://spacenews.com/wp-content/uploads/2016/06/Delta-4-Heavy_NROL-37_2016-06-11.jpg",
     urlToImage:
-      "https://i.kinja-img.com/gawker-media/image/upload/c_lfill,w_768,q_90/rn5tfjqbb0oottg7kyxx.jpg",
+      "https://spacenews.com/wp-content/uploads/2016/06/Delta-4-Heavy_NROL-37_2016-06-11.jpg",
     summary: [
       "A team of Polish astronomers has created the most accurate three-dimensional map of the Milky Way to date, revealing surprising distortions and irregularities along the galactic disk.",
       "Despite these limitations, we know that the Milky Way is a spiral galaxy measuring around 120,000 light-years across, and that we’re located around 27,000 light-years from the galactic core.",
@@ -202,13 +241,13 @@ const DATA = [
   },
   {
     id: 2,
-    author: "George Dvorsky",
+    author: "Joe Rao",
     title:
-      "Another Study Finds Our Galaxy Is 'Warped And Twisted' - Gizmodo Australia",
+      "See the Moon Near Jupiter (and Twinkly Red Antares, Too!) This Friday - Space.com",
     url:
       "https://www.gizmodo.com.au/2019/08/another-study-finds-our-galaxy-is-warped-and-twisted/",
     urlToImage:
-      "https://i.kinja-img.com/gawker-media/image/upload/c_lfill,w_768,q_90/rn5tfjqbb0oottg7kyxx.jpg",
+      "https://cdn.mos.cms.futurecdn.net/sqVs6v9cFwjazz8xQdbEs8-1200-80.jpg",
     summary: [
       "A team of Polish astronomers has created the most accurate three-dimensional map of the Milky Way to date, revealing surprising distortions and irregularities along the galactic disk.",
       "Despite these limitations, we know that the Milky Way is a spiral galaxy measuring around 120,000 light-years across, and that we’re located around 27,000 light-years from the galactic core.",
@@ -219,13 +258,13 @@ const DATA = [
   },
   {
     id: 3,
-    author: "George Dvorsky",
+    author: "Ashley Strickland",
     title:
-      "Another Study Finds Our Galaxy Is 'Warped And Twisted' - Gizmodo Australia",
+      "Exclusive: Google Pixel 4 and 4 XL will have 90Hz ‘Smooth Display’, 6GB of RAM, more - 9to5Google",
     url:
       "https://www.gizmodo.com.au/2019/08/another-study-finds-our-galaxy-is-warped-and-twisted/",
     urlToImage:
-      "https://i.kinja-img.com/gawker-media/image/upload/c_lfill,w_768,q_90/rn5tfjqbb0oottg7kyxx.jpg",
+      "https://9to5google.com/wp-content/uploads/sites/4/2019/06/google-pixel-4-header-1.png",
     summary: [
       "A team of Polish astronomers has created the most accurate three-dimensional map of the Milky Way to date, revealing surprising distortions and irregularities along the galactic disk.",
       "Despite these limitations, we know that the Milky Way is a spiral galaxy measuring around 120,000 light-years across, and that we’re located around 27,000 light-years from the galactic core.",

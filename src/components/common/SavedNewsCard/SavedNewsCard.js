@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
 
 const SavedNewsCard = props => {
-  console.log(props.style);
+  // console.log(props.style);
   return (
     <View style={[styles.container, props.style.opacity || 1]}>
       <Image
@@ -11,10 +11,23 @@ const SavedNewsCard = props => {
         }}
         style={styles.image}
       />
-      <Text style={props.style.titleText}>{props.title}</Text>
-      <Text style={props.style.authorText}>{props.author}</Text>
+      <Text style={[props.style.titleText, { paddingLeft: 10 }]}>
+        {props.title}
+      </Text>
+      <Text
+        style={[props.style.authorText, { paddingLeft: 10, paddingTop: 1 }]}
+      >
+        {props.author}
+      </Text>
       <View style={{ flex: 1 }}>
-        <ScrollView contentContainerStyle={{ flexWrap: "wrap", padding: 10 }}>
+        <ScrollView
+          contentContainerStyle={{
+            flexWrap: "wrap",
+            padding: 10,
+            marginBottom: 20,
+            height: "90%"
+          }}
+        >
           <Text style={props.style.summaryText}>{props.summary}</Text>
         </ScrollView>
       </View>
@@ -25,20 +38,23 @@ const SavedNewsCard = props => {
 const styles = {
   container: {
     flex: 1,
+    justifyContent: "flex-start",
     width: "96%",
-    height: 600,
-    shadowOffset: { width: 0, height: 10 },
+
+    shadowOffset: { width: 10, height: 10 },
     shadowRadius: 0.25,
     elevation: 5,
     shadowOpacity: 0.5,
     shadowColor: "black",
-    borderRadius: 10,
+    borderRadius: 8,
     backgroundColor: "white"
   },
   image: {
     width: "100%",
-    height: "33%",
-    resizeMode: "cover"
+    height: "40%",
+    resizeMode: "cover",
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8
   }
 };
 
