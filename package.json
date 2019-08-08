@@ -9,7 +9,9 @@
   "dependencies": {
     "axios": "^0.18.0",
     "expo": "^32.0.6",
+    "expo-cli": "^3.0.9",
     "firebase": "^5.9.3",
+    "global": "^4.4.0",
     "native-base": "^2.12.1",
     "prop-types": "^15.7.2",
     "react": "16.5.0",

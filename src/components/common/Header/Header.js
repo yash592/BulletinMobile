@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, View, Image } from "react-native";
 import { PropTypes } from "prop-types";
 
 // reusable header sticky component with title passed down as a prop
@@ -10,6 +10,10 @@ const Header = props => {
 
   return (
     <View style={viewStyle}>
+      <Image
+        source={require("../../assets/images/left-arrow.png")}
+        style={{ width: 18, height: 18, marginLeft: 10 }}
+      />
       <Text style={textStyle}>{headerText}</Text>
     </View>
   );
@@ -18,7 +22,8 @@ const Header = props => {
 const styles = {
   viewStyle: {
     backgroundColor: "white",
-    justifyContent: "center",
+    flexDirection: "row",
+    justifyContent: "flex-start",
     alignItems: "center",
     height: 60,
     marginTop: 28,
@@ -30,9 +35,10 @@ const styles = {
     position: "relative"
   },
   textStyle: {
-    fontSize: 20,
+    fontSize: 22,
     fontFamily: "sans-serif-condensed",
-    color: "black"
+    color: "black",
+    marginLeft: 20
   }
 };
 
