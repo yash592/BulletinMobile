@@ -39,7 +39,8 @@ class Deck extends Component {
     });
     this.state = { panResponder, position, index: 0 };
   }
-  //
+
+  // load font
   async componentDidMount() {
     await Font.loadAsync({
       OpenSans: require("../assets/fonts/OpenSans-SemiBold.ttf"),
@@ -55,13 +56,6 @@ class Deck extends Component {
       UIManager.setLayoutAnimationEnabledExperimental(true);
     LayoutAnimation.spring();
   }
-
-  // componentWillReceiveProps(nextProps) {
-  //   // console.log(this.props);
-  //   if (nextProps.DATA !== this.props.DATA) {
-  //     this.setState({ index: 0 });
-  //   }
-  // }
 
   beginSwipe = () => {
     console.log("Swiped right");
