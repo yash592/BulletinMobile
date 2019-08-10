@@ -57,6 +57,8 @@ class Deck extends Component {
     LayoutAnimation.spring();
   }
 
+  // begin swiping and if swipe is greater than swpipe min, swipe it out and move on to next card
+
   beginSwipe = () => {
     console.log("Swiped right");
     Animated.timing(this.state.position, {

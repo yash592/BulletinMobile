@@ -5,7 +5,8 @@ import {
   COUNTRY_SETTER,
   COUNTRY_GETTER,
   ONBOARING_GETTER,
-  ONBOARING_SETTER
+  ONBOARING_SETTER,
+  IF_USER_LOGGED_IN
 } from "../actions/types";
 
 const INITIAL_STATE = {
@@ -27,6 +28,7 @@ export default (state = INITIAL_STATE, action) => {
         error: "Login Failed! Check your username or password",
         loading: false
       };
+
     case COUNTRY_GETTER:
       return { ...state, ...INITIAL_STATE, country: action.payload };
     case ONBOARING_SETTER:

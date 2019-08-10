@@ -23,7 +23,7 @@ const Routes = props => {
         </Scene>
 
         <Scene key="auth" hideNavBar initial>
-          <Scene key="login" component={SavedNewsDeck} />
+          <Scene key="login" component={LoginForm} />
         </Scene>
         <Scene key="countrypick" hideNavBar>
           <Scene key="countrypick" component={CountryPicker} />

@@ -7,10 +7,13 @@ import {
   COUNTRY_GETTER,
   COUNTRY_SETTER,
   ONBOARING_SETTER,
-  ONBOARING_GETTER
+  ONBOARING_GETTER,
+  IF_USER_LOGGED_IN
 } from "./types";
 import { AsyncStorage } from "react-native";
 import { Font } from "expo";
+
+// action to start the login process
 
 export const loginUser = (email, password) => {
   // console.log(dispatch);
@@ -29,6 +32,8 @@ export const loginUser = (email, password) => {
   };
 };
 
+// action to sucessfully log a user in and redirect
+
 export const loginUserSuccess = (dispatch, user) => {
   dispatch({
     type: LOGIN_SUCCESS,
@@ -38,7 +43,23 @@ export const loginUserSuccess = (dispatch, user) => {
   Actions.home();
 };
 
+// action to handle a login failure attempt
+
 export const loginUserFail = () => {};
+
+// action to check auth state and reroute based on that
+
+export const checkIfUserLoggedIn = () => {
+  console.log("got to check user action");
+  return dispatch => {
+    dispatch({
+      type: IF_USER_LOGGED_IN
+    });
+    firebase.auth().onAuthStateChanged(user => {
+      console.log("try user id logged in", user.uid);
+    });
+  };
+};
 
 export const countrySetter = country => {
   return dispatch => {

@@ -20,35 +20,33 @@ const Input = ({
 }) => {
   // console.log("val", value);
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <TextInput
-        style={styles.textInput}
-        placeholder={placeholder}
-        placeholderTextColor={placeholderTextColor}
-        secureTextEntry={secureTextEntry}
-        onChangeText={onChangeText}
-        onChange={onChange}
-        onSubmitEditing={onSubmitEditing}
-        value={value}
-      />
-    </View>
+    <TextInput
+      style={styles.textInput}
+      placeholder={placeholder}
+      placeholderTextColor={placeholderTextColor}
+      secureTextEntry={secureTextEntry}
+      onChangeText={onChangeText}
+      onChange={onChange}
+      onSubmitEditing={onSubmitEditing}
+      value={value}
+    />
   );
 };
 
 const styles = StyleSheet.create({
   textInput: {
     height: 50,
-    width: "98%",
+    width: "80%",
     padding: 10,
     margin: 10,
-    borderColor: "black",
-    borderWidth: 0.5,
-    borderRadius: 8,
-    shadowColor: "black",
-    shadowRadius: 2,
-    shadowOffset: { height: 10 },
-    shadowOpacity: 1,
-    elevation: 1.5
+    borderBottomColor: "grey",
+    borderBottomWidth: 0.5
+
+    // shadowColor: "black",
+    // shadowRadius: 2,
+    // shadowOffset: { height: 10 },
+    // shadowOpacity: 1,
+    // elevation: 1.5
   }
 });
 

@@ -10,18 +10,21 @@ import { Dimensions, TouchableOpacity } from "react-native";
 import { Gradient } from "./src/components/common/Gradient";
 import { Input } from "./src/components/common/TextInput";
 import { Button } from "./src/components/common/Button";
+import { FIREBASE_CONFIG } from "./keys";
 
 import Icon from "react-native-vector-icons/FontAwesome";
 
 class App extends React.Component {
   componentWillMount() {
+    console.log(FIREBASE_CONFIG.apiKey);
     const config = {
-      apiKey: "AIzaSyBTMt0ID819x_BaMWYuN4dyIWi6FTvouiY",
-      authDomain: "bulletin-8d779.firebaseapp.com",
-      databaseURL: "https://bulletin-8d779.firebaseio.com",
-      projectId: "bulletin",
-      storageBucket: "bulletin.appspot.com",
-      messagingSenderId: "67122134573"
+      apiKey: FIREBASE_CONFIG.apiKey,
+      appId: FIREBASE_CONFIG.appId,
+      authDomain: FIREBASE_CONFIG.authDomain,
+      databaseURL: FIREBASE_CONFIG.appId.databaseURL,
+      projectId: FIREBASE_CONFIG.projectId,
+      storageBucket: FIREBASE_CONFIG.storageBucket,
+      messagingSenderId: FIREBASE_CONFIG.messagingSenderId
     };
 
     firebase.initializeApp(config);
