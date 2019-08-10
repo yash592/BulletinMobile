@@ -37,7 +37,6 @@ const BottomNav = props => {
           key={index}
         >
           <Image source={tiles.tabImg} style={styles.imageStyle} />
-          <Text style={styles.text}>{tiles.title}</Text>
         </TouchableOpacity>
       );
     });
@@ -51,7 +50,12 @@ const styles = {
     height: 50,
     flexDirection: "row",
     justifyContent: "space-evenly",
-    backgroundColor: "white"
+    backgroundColor: "white",
+    shadowOffset: { width: 0, height: -90 },
+    shadowColor: "#000000",
+    elevation: 24,
+    shadowRadius: 56,
+    shadowOpacity: 1
   },
   tileStyle: {
     justifyContent: "center",

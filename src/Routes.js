@@ -22,7 +22,7 @@ const Routes = props => {
           <Scene key="load" component={AppLoading} />
         </Scene>
 
-        <Scene key="auth" hideNavBar initial>
+        <Scene key="auth" hideNavBar>
           <Scene key="login" component={LoginForm} />
         </Scene>
         <Scene key="countrypick" hideNavBar>
@@ -34,7 +34,7 @@ const Routes = props => {
         <Scene key="newsresults" hideNavBar>
           <Scene key="newsresults" component={NewsResults} />
         </Scene>
-        <Scene key="newsdetail" hideNavBar>
+        <Scene key="newsdetail" hideNavBar initial>
           <Scene key="newsdetail" component={NewsDetail} />
         </Scene>
         <Scene key="search" hideNavBar>
