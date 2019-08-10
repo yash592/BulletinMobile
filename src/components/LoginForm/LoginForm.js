@@ -9,7 +9,9 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { Gradient } from "../common/Gradient";
 import { Input } from "../common/TextInput";
 import { Button } from "../common/Button";
-import { loginUser } from "../../actions";
+import { loginUser, checkIfUserLoggedIn } from "../../actions";
+
+const { height, width } = Dimensions.get("window");
 
 class LoginForm extends Component {
   constructor() {
@@ -36,54 +38,18 @@ class LoginForm extends Component {
         />
       );
     }
-    return <Button onPress={this.onButtonPress}>Login</Button>;
+    return <Button onPress={this.onButtonPress} buttonText={"LOGIN"} />;
   };
 
   render() {
-    const { height, width } = Dimensions.get("window");
-    // console.log(height, width);
-    // console.log(this.state);
-    console.log(this.props);
-
-    const styles = StyleSheet.create({
-      container: {
-        flex: 0.5,
-        backgroundColor: "orange"
-      },
-      Gradient: {
-        flex: 1,
-        position: "absolute",
-        left: 0,
-        right: 0,
-        top: 0,
-        alignItems: "center",
-        justifyContent: "center",
-        height: height
-      },
-      image: {
-        width: 250,
-        height: 100,
-        resizeMode: "contain"
-      },
-      imageCtr: {
-        flex: 0.4,
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center"
-      },
-      boxContainer: {
-        flex: 0.5,
-        width: "100%",
-        backgroundColor: "transparent",
-        borderColor: "black",
-        alignItems: "center",
-        flexDirection: "column",
-        justifyContent: "flex-start"
-      }
-    });
-
+    this.props.checkIfUserLoggedIn();
     return (
-      <Gradient colors={["white", "#EAE0F7"]} style={styles.Gradient}>
+      <Gradient
+        colors={["white", "#EAE0F7"]}
+        start={[0, 0.2]}
+        end={[0, 1]}
+        style={styles.Gradient}
+      >
         <View style={styles.imageCtr}>
           <Image
             source={{ uri: "https://i.imgur.com/SB0VyTQ.png" }}
@@ -97,6 +63,7 @@ class LoginForm extends Component {
             onChangeText={user => this.setState({ user })}
             value={this.state.user}
           />
+
           <Input
             secureTextEntry
             placeholder={"password"}
@@ -111,11 +78,44 @@ class LoginForm extends Component {
   }
 }
 
+const styles = StyleSheet.create({
+  Gradient: {
+    flex: 1,
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    alignItems: "center",
+    justifyContent: "center",
+    height: height
+  },
+  image: {
+    width: 250,
+    height: 100,
+    resizeMode: "contain"
+  },
+  imageCtr: {
+    flex: 0.4,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  boxContainer: {
+    flex: 0.5,
+    width: "100%",
+    backgroundColor: "transparent",
+    borderColor: "black",
+    alignItems: "center",
+    flexDirection: "column",
+    justifyContent: "flex-start"
+  }
+});
+
 const mapStateToProps = ({ auth }) => {
   return auth;
 };
 
 export default connect(
   mapStateToProps,
-  { loginUser }
+  { loginUser, checkIfUserLoggedIn }
 )(LoginForm);
