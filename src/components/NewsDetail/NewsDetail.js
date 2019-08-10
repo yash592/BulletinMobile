@@ -17,6 +17,23 @@ import { Header } from "../common/Header";
 
 const WIDTH = Dimensions.get("window").width;
 const HEIGHT = Dimensions.get("window").height;
+const MockData = [
+  {
+    author: "Yash Rajgor",
+    img: "https://www.eurasiareview.com/wp-content/uploads/2019/08/b-90.jpg",
+    link:
+      "https://www.eurasiareview.com/10082019-why-humans-in-africa-fled-to-the-mountains-during-last-ice-age/",
+    summary: [
+      "“Because of these adverse living conditions, it was previously assumed that humans settled in the Afro-Alpine region only very lately and for short periods of time,” says Professor Bruno Glaser, an expert in soil biogeochemistry at MLU.",
+      "People had already begun living for long periods of time on the ice-free plateaus of the Bale Mountains about 45,000 years ago during the Middle Pleistocene Epoch.",
+      "For several years, the research team investigated a rocky outcrop near the settlement of Fincha Habera in the Bale Mountains in southern Ethiopia.",
+      "Based on the sediment deposits in the soil, the researchers from Halle were able to carry out extensive biomarker and nutrient analyses as well as radiocarbon dating and thus draw conclusions as to how many people lived in the region and when they lived there.",
+      "The inhospitable conditions of the Bale Mountains present ideal conditions for such research since the soil has only changed on the surface during the last millennia."
+    ],
+    title:
+      "Why Humans In Africa Fled To The Mountains During Last Ice Age - Eurasia Review"
+  }
+];
 
 class NewsDetail extends Component {
   constructor(props) {
@@ -58,7 +75,9 @@ class NewsDetail extends Component {
   };
 
   renderData = () => {
-    return this.props.SummarizePageData.map((data, i) => {
+    console.log(this.props.SummarizePageData);
+    return MockData.map((data, i) => {
+      // this.props.SummarizePageData
       // console.log("data", data);
       return (
         <ScrollView key={i}>
@@ -110,7 +129,7 @@ class NewsDetail extends Component {
           backgroundColor: "white"
         }}
       >
-        <Header headerText={"Gist"} />
+        <Header headerText={"Gist"} showSocialIcons={true} />
 
         {this.renderData()}
         <BottomNav />

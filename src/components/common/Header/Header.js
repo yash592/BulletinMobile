@@ -1,11 +1,12 @@
 import React from "react";
-import { Text, View, Image } from "react-native";
+import { Text, View, Image, TouchableOpacity } from "react-native";
 import { PropTypes } from "prop-types";
 
 // reusable header sticky component with title passed down as a prop
 
 const Header = props => {
   const { textStyle, viewStyle } = styles;
+  console.log(props);
   const { headerText } = props;
 
   return (
@@ -15,6 +16,34 @@ const Header = props => {
         style={{ width: 18, height: 18, marginLeft: 10 }}
       />
       <Text style={textStyle}>{headerText}</Text>
+      {props.showSocialIcons ? (
+        <View
+          style={{
+            flexDirection: "row",
+            position: "absolute",
+            right: 10
+          }}
+        >
+          <TouchableOpacity style={{ marginRight: 20 }}>
+            <Image
+              source={require("../../assets/images/bookmark.png")}
+              style={{ width: 24, height: 24 }}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity style={{ marginRight: 20 }}>
+            <Image
+              source={require("../../assets/images/share.png")}
+              style={{ width: 24, height: 24 }}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity style={{ marginRight: 20 }}>
+            <Image
+              source={require("../../assets/images/comment.png")}
+              style={{ width: 24, height: 24 }}
+            />
+          </TouchableOpacity>
+        </View>
+      ) : null}
     </View>
   );
 };
@@ -31,8 +60,7 @@ const styles = {
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
-    elevation: 2,
-    position: "relative"
+    elevation: 2
   },
   textStyle: {
     fontSize: 22,
