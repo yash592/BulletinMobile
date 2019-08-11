@@ -6,8 +6,7 @@ import { PropTypes } from "prop-types";
 
 const Header = props => {
   const { textStyle, viewStyle } = styles;
-  console.log(props);
-  const { headerText } = props;
+  const { headerText, showSocialIcons } = props;
 
   return (
     <View style={viewStyle}>
@@ -16,27 +15,28 @@ const Header = props => {
         style={{ width: 18, height: 18, marginLeft: 10 }}
       />
       <Text style={textStyle}>{headerText}</Text>
-      {props.showSocialIcons ? (
+
+      {showSocialIcons ? (
         <View
           style={{
             flexDirection: "row",
             position: "absolute",
-            right: 10
+            right: 0
           }}
         >
-          <TouchableOpacity style={{ marginRight: 20 }}>
+          <TouchableOpacity style={{ marginRight: 35 }}>
             <Image
               source={require("../../assets/images/bookmark.png")}
               style={{ width: 24, height: 24 }}
             />
           </TouchableOpacity>
-          <TouchableOpacity style={{ marginRight: 20 }}>
+          <TouchableOpacity style={{ marginRight: 35 }}>
             <Image
               source={require("../../assets/images/share.png")}
               style={{ width: 24, height: 24 }}
             />
           </TouchableOpacity>
-          <TouchableOpacity style={{ marginRight: 20 }}>
+          <TouchableOpacity style={{ marginRight: 35 }}>
             <Image
               source={require("../../assets/images/comment.png")}
               style={{ width: 24, height: 24 }}

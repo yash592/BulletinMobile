@@ -11,7 +11,7 @@ import SplashScreen from "./components/SplashScreen/SplashScreen";
 import SavedNewsDeck from "./components/SavedNewsDeck/SavedNewsDeck";
 
 const Routes = props => {
-  console.log("rputes props", props);
+  // console.log("rputes props", props);
   return (
     <Router>
       <Scene key="root">
@@ -22,7 +22,7 @@ const Routes = props => {
           <Scene key="load" component={AppLoading} />
         </Scene>
 
-        <Scene key="auth" hideNavBar>
+        <Scene key="auth" hideNavBar initial>
           <Scene key="login" component={LoginForm} />
         </Scene>
         <Scene key="countrypick" hideNavBar>
@@ -34,7 +34,7 @@ const Routes = props => {
         <Scene key="newsresults" hideNavBar>
           <Scene key="newsresults" component={NewsResults} />
         </Scene>
-        <Scene key="newsdetail" hideNavBar initial>
+        <Scene key="newsdetail" hideNavBar>
           <Scene key="newsdetail" component={NewsDetail} />
         </Scene>
         <Scene key="search" hideNavBar>
