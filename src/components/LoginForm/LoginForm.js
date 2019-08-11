@@ -9,9 +9,16 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { Gradient } from "../common/Gradient";
 import { Input } from "../common/TextInput";
 import { Button } from "../common/Button";
-import { loginUser, checkIfUserLoggedIn } from "../../actions";
+import {
+  loginUser,
+  checkIfUserLoggedIn,
+  signInWithGoogleAsync
+} from "../../actions";
+// import { GoogleSignin, GoogleSigninButton } from "react-native-google-signin";
 
 const { height, width } = Dimensions.get("window");
+
+const provider = new firebase.auth.GoogleAuthProvider();
 
 class LoginForm extends Component {
   constructor() {
@@ -21,13 +28,9 @@ class LoginForm extends Component {
       password: ""
     };
 
-    this.onButtonPress = this.onButtonPress.bind(this);
+    // this.onButtonPress = this.onButtonPress.bind(this);
     this.renderButton = this.renderButton.bind(this);
   }
-
-  onButtonPress = () => {
-    this.props.loginUser(this.state.user, this.state.password);
-  };
 
   renderButton = () => {
     if (this.props.loading) {
@@ -38,11 +41,16 @@ class LoginForm extends Component {
         />
       );
     }
-    return <Button onPress={this.onButtonPress} buttonText={"LOGIN"} />;
+    return (
+      <Button
+        onPress={() => this.props.signInWithGoogleAsync()}
+        buttonText={"LOGIN"}
+      />
+    );
   };
 
   render() {
-    this.props.checkIfUserLoggedIn();
+    // console.log(this.props);
     return (
       <Gradient
         colors={["white", "#EAE0F7"]}
@@ -117,5 +125,5 @@ const mapStateToProps = ({ auth }) => {
 
 export default connect(
   mapStateToProps,
-  { loginUser, checkIfUserLoggedIn }
+  { loginUser, checkIfUserLoggedIn, signInWithGoogleAsync }
 )(LoginForm);

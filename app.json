@@ -19,10 +19,11 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.bulletin.bulletin"
+      "bundleIdentifier": "com.zephyr.summa"
     },
     "android": {
-      "package": "com.bulletin.bulletin"
+      "package": "com.zephyr.summa",
+      "googleServicesFile": "./google-services.json"
     }
   }
 }

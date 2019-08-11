@@ -11,6 +11,7 @@ import { Gradient } from "./src/components/common/Gradient";
 import { Input } from "./src/components/common/TextInput";
 import { Button } from "./src/components/common/Button";
 import { FIREBASE_CONFIG } from "./keys";
+import * as GoogleSignIn from "expo-google-sign-in";
 
 import Icon from "react-native-vector-icons/FontAwesome";
 

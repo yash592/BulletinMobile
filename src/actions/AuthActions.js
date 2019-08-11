@@ -12,8 +12,33 @@ import {
 } from "./types";
 import { AsyncStorage } from "react-native";
 import { Font } from "expo";
+import { FIREBASE_CONFIG } from "../../keys";
 
 // action to start the login process
+
+//
+
+export const signInWithGoogleAsync = () => {
+  // this.props.loginUser(this.state.user, this.state.password);
+  console.log(FIREBASE_CONFIG.androidClientId);
+
+  const result = Expo.Google.logInAsync({
+    androidClientId: FIREBASE_CONFIG.androidClientId,
+
+    scopes: ["profile", "email"]
+  });
+
+  console.log(result);
+
+  if (result.type === "success") {
+    console.log("success!!");
+    console.log(result);
+    Actions.home();
+    return result.accessToken;
+  } else {
+    return { cancelled: true };
+  }
+};
 
 export const loginUser = (email, password) => {
   // console.log(dispatch);

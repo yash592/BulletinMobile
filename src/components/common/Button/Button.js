@@ -18,7 +18,7 @@ const Button = ({ onPress, buttonText }) => {
 const styles = {
   buttonStyle: {
     width: "70%",
-    backgroundColor: "#4ADA9C",
+    backgroundColor: "#EAE0F7",
     alignItems: "center",
     justifyContent: "center",
     height: 50,
@@ -32,7 +32,8 @@ const styles = {
   },
   text: {
     fontSize: 20,
-    color: "white"
+    color: "black",
+    letterSpacing: 1.5
   }
 };
 
