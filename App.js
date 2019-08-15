@@ -17,12 +17,12 @@ import Icon from "react-native-vector-icons/FontAwesome";
 
 class App extends React.Component {
   componentWillMount() {
-    console.log(FIREBASE_CONFIG.apiKey);
+    // console.log(FIREBASE_CONFIG.apiKey);
     const config = {
       apiKey: FIREBASE_CONFIG.apiKey,
       appId: FIREBASE_CONFIG.appId,
       authDomain: FIREBASE_CONFIG.authDomain,
-      databaseURL: FIREBASE_CONFIG.appId.databaseURL,
+      databaseURL: FIREBASE_CONFIG.databaseURL,
       projectId: FIREBASE_CONFIG.projectId,
       storageBucket: FIREBASE_CONFIG.storageBucket,
       messagingSenderId: FIREBASE_CONFIG.messagingSenderId

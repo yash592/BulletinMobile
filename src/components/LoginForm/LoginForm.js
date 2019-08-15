@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import { connect } from "react-redux";
+import * as Expo from "expo";
 
 import firebase from "firebase";
 import { Dimensions, TextInput, TouchableOpacity } from "react-native";
@@ -14,11 +15,10 @@ import {
   checkIfUserLoggedIn,
   signInWithGoogleAsync
 } from "../../actions";
+import { FIREBASE_CONFIG } from "../../../keys";
 // import { GoogleSignin, GoogleSigninButton } from "react-native-google-signin";
 
 const { height, width } = Dimensions.get("window");
-
-const provider = new firebase.auth.GoogleAuthProvider();
 
 class LoginForm extends Component {
   constructor() {

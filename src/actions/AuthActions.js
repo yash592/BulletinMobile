@@ -8,7 +8,8 @@ import {
   COUNTRY_SETTER,
   ONBOARING_SETTER,
   ONBOARING_GETTER,
-  IF_USER_LOGGED_IN
+  IF_USER_LOGGED_IN,
+  GOOGLE_LOGIN_USER
 } from "./types";
 import { AsyncStorage } from "react-native";
 import { Font } from "expo";
@@ -19,25 +20,52 @@ import { FIREBASE_CONFIG } from "../../keys";
 //
 
 export const signInWithGoogleAsync = () => {
-  // this.props.loginUser(this.state.user, this.state.password);
-  console.log(FIREBASE_CONFIG.androidClientId);
+  console.log("google sign in");
+  // console.log(FIREBASE_CONFIG.androidClientId);
 
-  const result = Expo.Google.logInAsync({
-    androidClientId: FIREBASE_CONFIG.androidClientId,
+  return dispatch => {
+    dispatch({
+      type: GOOGLE_LOGIN_USER
+    });
+    const result = Expo.Google.logInAsync({
+      androidClientId: FIREBASE_CONFIG.androidClientId,
+      scopes: ["profile", "email"]
+    }).then(res => {
+      if (res.type === "success") {
+        // console.log(res);
+        onSignIn(res);
+        return res.accessToken;
+      } else {
+        return { cancelled: true };
+      }
+    });
+  };
+};
 
-    scopes: ["profile", "email"]
-  });
+// onSignIn checks if user exists already in db.catch
+// if not then proceed and store it in the db
 
-  console.log(result);
+export const onSignIn = googleUser => {
+  const { email, id, name, photoUrl } = googleUser.user;
+  console.log(email, id, photoUrl, name);
 
-  if (result.type === "success") {
-    console.log("success!!");
-    console.log(result);
-    Actions.home();
-    return result.accessToken;
-  } else {
-    return { cancelled: true };
-  }
+  firebase
+    .database()
+    .ref("users/" + id)
+    .set({
+      email,
+      name,
+      photoUrl,
+      savedGists: {}
+    })
+    .then(res => {
+      doesUserExist();
+    });
+};
+
+const doesUserExist = () => {
+  const { currentUser } = firebase.auth();
+  console.log("userid", currentUser);
 };
 
 export const loginUser = (email, password) => {
