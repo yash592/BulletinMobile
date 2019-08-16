@@ -17,8 +17,6 @@ import { FIREBASE_CONFIG } from "../../keys";
 
 // action to start the login process
 
-//
-
 export const signInWithGoogleAsync = () => {
   console.log("google sign in");
   // console.log(FIREBASE_CONFIG.androidClientId);
@@ -59,14 +57,85 @@ export const onSignIn = googleUser => {
       savedGists: {}
     })
     .then(res => {
-      doesUserExist();
+      doesUserExist(googleUser);
     });
 };
 
-const doesUserExist = () => {
-  const { currentUser } = firebase.auth();
-  console.log("userid", currentUser);
+const doesUserExist = googleUser => {
+  const unsubsctibe = firebase.auth().onAuthStateChanged(firebaseUser => {
+    unsubsctibe();
+    const { currentUser } = firebase.auth();
+    console.log("userid", currentUser);
+    if (!userEqual(googleUser, firebaseUser)) {
+      var credential = firebase.auth.GoogleAuthProvider.credential(
+        googleUser.idToken
+      );
+      console.log("cred", credential);
+      // Sign in with credential from the Google user.
+      firebase
+        .auth()
+        .signInAndRetrieveDataWithCredential(credential)
+        .catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // The email of the user's account used.
+          var email = error.email;
+          // The firebase.auth.AuthCredential type that was used.
+          var credential = error.credential;
+          // ...
+        });
+    } else {
+      console.log("User already signed in");
+    }
+  });
 };
+
+const userEqual = (googleUser, firebaseUser) => {
+  if (firebaseUser) {
+    var providerData = firebaseUser.providerData;
+    for (var i = 0; i < providerData.length; i++) {
+      if (
+        providerData[i].providerId ===
+          firebase.auth.GoogleAuthProvider.PROVIDER_ID &&
+        providerData[i].uid === googleUser.getBasicProfile().getId()
+      ) {
+        // We don't need to reauth the Firebase connection.
+        console.log("true");
+        return true;
+      }
+    }
+  }
+  console.log("false");
+  return false;
+};
+
+// function onSignIn(googleUser) {
+//   console.log('Google Auth Response', googleUser);
+//   // We need to register an Observer on Firebase Auth to make sure auth is initialized.
+//   var unsubscribe = firebase.auth().onAuthStateChanged(function(firebaseUser) {
+//     unsubscribe();
+//     // Check if we are already signed-in Firebase with the correct user.
+//     if (!isUserEqual(googleUser, firebaseUser)) {
+//       // Build Firebase credential with the Google ID token.
+//       var credential = firebase.auth.GoogleAuthProvider.credential(
+//           googleUser.getAuthResponse().id_token);
+//       // Sign in with credential from the Google user.
+//       firebase.auth().signInWithCredential(credential).catch(function(error) {
+//         // Handle Errors here.
+//         var errorCode = error.code;
+//         var errorMessage = error.message;
+//         // The email of the user's account used.
+//         var email = error.email;
+//         // The firebase.auth.AuthCredential type that was used.
+//         var credential = error.credential;
+//         // ...
+//       });
+//     } else {
+//       console.log('User already signed-in Firebase.');
+//     }
+//   });
+// }
 
 export const loginUser = (email, password) => {
   // console.log(dispatch);
