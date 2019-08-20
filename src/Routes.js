@@ -6,7 +6,7 @@ import NewsResults from "./components/NewsResults/NewsResults";
 import NewsDetail from "./components/NewsDetail/NewsDetail";
 import Search from "./components/Search/Search";
 import CountryPicker from "./components/CountryPicker/CountryPicker";
-import AppLoading from "./components/AppLoading/AppLoading";
+import LoadApp from "./components/LoadApp/LoadApp";
 import SplashScreen from "./components/SplashScreen/SplashScreen";
 import SavedNewsDeck from "./components/SavedNewsDeck/SavedNewsDeck";
 
@@ -18,11 +18,11 @@ const Routes = props => {
         <Scene key="splash" hideNavBar>
           <Scene key="splash" component={SplashScreen} />
         </Scene>
-        <Scene key="load" hideNavBar>
-          <Scene key="load" component={AppLoading} />
+        <Scene key="load" hideNavBar initial>
+          <Scene key="load" component={LoadApp} />
         </Scene>
 
-        <Scene key="auth" hideNavBar initial>
+        <Scene key="auth" hideNavBar>
           <Scene key="login" component={LoginForm} />
         </Scene>
         <Scene key="countrypick" hideNavBar>

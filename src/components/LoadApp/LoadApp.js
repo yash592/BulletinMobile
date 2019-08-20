@@ -3,6 +3,8 @@ import { Image, Text, View, AsyncStorage } from "react-native";
 import { Asset } from "expo-asset";
 import { AppLoading } from "expo";
 import { Actions } from "react-native-router-flux";
+import { checkIfUserLoggedIn } from "../../actions";
+import { connect } from "react-redux";
 
 class LoadApp extends Component {
   state = {
@@ -25,6 +27,7 @@ class LoadApp extends Component {
     ];
 
     const cacheImages = images.map(image => {
+      console.log(image);
       return Asset.fromModule(image).downloadAsync();
     });
     return Promise.all(cacheImages);
@@ -36,21 +39,18 @@ class LoadApp extends Component {
       isReady: true
     });
     const onBoarding = await AsyncStorage.getItem("Onboarding");
-
-    !onBoarding ? Actions.splash() : this.goToScreen();
-  };
-
-  goToScreen = async () => {
     const country = await AsyncStorage.getItem("Country");
-    const onBoarding = await AsyncStorage.getItem("Onboarding");
-    console.log("val", country, onBoarding);
-    if (!country) {
-      Actions.countrypick();
-    } else {
-      Actions.home();
-    }
+    console.log("onboarding!", onBoarding, country);
+
+    !onBoarding && !country ? Actions.splash() : this.goToScreen();
   };
+
+  goToScreen = () => {
+    this.props.checkIfUserLoggedIn();
+  };
+
   render() {
+    console.log("Apploading props", this.props, this.state);
     if (!this.state.isReady) {
       return (
         <AppLoading
@@ -71,4 +71,12 @@ class LoadApp extends Component {
   }
 }
 
-export default LoadApp;
+const mapStateToProps = ({ auth }) => {
+  // console.log(auth);
+  return auth;
+};
+
+export default connect(
+  mapStateToProps,
+  { checkIfUserLoggedIn }
+)(LoadApp);
