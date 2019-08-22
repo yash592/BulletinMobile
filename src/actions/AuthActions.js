@@ -15,106 +15,6 @@ import { AsyncStorage } from "react-native";
 import { Font } from "expo";
 import { FIREBASE_CONFIG } from "../../keys";
 
-// action to start the login process
-
-export const signInWithGoogleAsync = () => {
-  console.log("google sign in");
-  // console.log(FIREBASE_CONFIG.androidClientId);
-
-  return dispatch => {
-    dispatch({
-      type: GOOGLE_LOGIN_USER
-    });
-    const result = Expo.Google.logInAsync({
-      androidClientId: FIREBASE_CONFIG.androidClientId,
-      scopes: ["profile", "email"]
-    }).then(res => {
-      if (res.type === "success") {
-        // console.log(res);
-        onSignIn(res);
-        return res.accessToken;
-      } else {
-        return { cancelled: true };
-      }
-    });
-  };
-};
-
-// onSignIn checks if user exists already in db.catch
-// if not then proceed and store it in the db
-
-export const onSignIn = googleUser => {
-  const { email, id, name, photoUrl } = googleUser.user;
-  console.log(email, id, photoUrl, name);
-  doesUserExist(googleUser);
-
-  firebase
-    .database()
-    .ref("users/" + id)
-    .set({
-      email,
-      name,
-      photoUrl,
-      savedGists: {}
-    })
-    .then(res => {
-      Actions.home();
-    });
-};
-
-const doesUserExist = googleUser => {
-  console.log("Doesuerexist");
-  const unsubscribe = firebase.auth().onAuthStateChanged(firebaseUser => {
-    unsubscribe();
-    const { currentUser } = firebase.auth();
-
-    if (!userEqual(googleUser, firebaseUser)) {
-      var credential = firebase.auth.GoogleAuthProvider.credential(
-        googleUser.idToken
-      );
-      console.log("cred", credential);
-      // Sign in with credential from the Google user.
-      firebase
-        .auth()
-        .signInAndRetrieveDataWithCredential(credential)
-        .then(res => {
-          console.log(res);
-        })
-        .catch(error => {
-          // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          // The email of the user's account used.
-          var email = error.email;
-          // The firebase.auth.AuthCredential type that was used.
-          var credential = error.credential;
-          // ...
-        });
-    } else {
-      console.log("User already signed in");
-    }
-  });
-};
-
-const userEqual = (googleUser, firebaseUser) => {
-  if (firebaseUser) {
-    var providerData = firebaseUser.providerData;
-    for (var i = 0; i < providerData.length; i++) {
-      if (
-        providerData[i].providerId ===
-          firebase.auth.GoogleAuthProvider.PROVIDER_ID &&
-        providerData[i].uid === googleUser.getBasicProfile().getId()
-      ) {
-        // We don't need to reauth the Firebase connection.
-        console.log("true");
-        return true;
-      }
-    }
-  }
-  console.log("false");
-  return false;
-};
-
 export const loginUser = (email, password) => {
   // console.log(dispatch);
   return dispatch => {
@@ -157,6 +57,7 @@ export const checkIfUserLoggedIn = () => {
     });
     firebase.auth().onAuthStateChanged(user => {
       console.log("try user id logged in", user);
+      user ? Actions.home() : Actions.login();
     });
   };
 };

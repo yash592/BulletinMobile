@@ -33,6 +33,8 @@ class LoginForm extends Component {
   }
 
   renderButton = () => {
+    const { user, password } = this.state;
+    console.log(user, password);
     if (this.props.loading) {
       return (
         <Image
@@ -43,14 +45,14 @@ class LoginForm extends Component {
     }
     return (
       <Button
-        onPress={() => this.props.signInWithGoogleAsync()}
+        onPress={() => this.props.loginUser(user, password)}
         buttonText={"LOGIN"}
       />
     );
   };
 
   render() {
-    // console.log(this.props);
+    console.log(this.props);
     return (
       <Gradient
         colors={["white", "#EAE0F7"]}
