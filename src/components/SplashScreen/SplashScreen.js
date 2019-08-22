@@ -5,7 +5,11 @@ import { LinearGradient } from "expo";
 import AppIntroSlider from "react-native-app-intro-slider";
 import { slides } from "./slides";
 import { Font } from "expo";
-import { onBoardingDoneSet, onBoardingDoneGet } from "../../actions";
+import {
+  onBoardingDoneSet,
+  onBoardingDoneGet,
+  checkIfUserLoggedIn
+} from "../../actions";
 import { connect } from "react-redux";
 
 class SplashScreen extends Component {
@@ -119,5 +123,5 @@ const styles = StyleSheet.create({
 
 export default connect(
   null,
-  { onBoardingDoneSet }
+  { onBoardingDoneSet, checkIfUserLoggedIn }
 )(SplashScreen);
