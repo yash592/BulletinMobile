@@ -40,7 +40,8 @@ class NewsDetail extends Component {
   };
 
   _keyExtractor = (item, index) => {
-    return item.url;
+    console.log(item.title);
+    return item.title;
   };
 
   _renderBigTiles = ({ item }) => (
