@@ -15,6 +15,8 @@ import { AsyncStorage } from "react-native";
 import { Font } from "expo";
 import { FIREBASE_CONFIG } from "../../keys";
 
+// signin with email, pw and then run loginusersuccess
+
 export const loginUser = (email, password) => {
   // console.log(dispatch);
   return dispatch => {
@@ -57,10 +59,12 @@ export const checkIfUserLoggedIn = () => {
     });
     firebase.auth().onAuthStateChanged(user => {
       console.log("try user id logged in", user);
-      user ? Actions.home() : Actions.login();
+      user ? Actions.home() : Actions.auth();
     });
   };
 };
+
+// set a country to async storage
 
 export const countrySetter = country => {
   return dispatch => {
@@ -79,6 +83,8 @@ export const countrySetter = country => {
   };
 };
 
+// get a country from async storage
+
 export const countryGetter = () => {
   // console.log("country from action");
   return dispatch => {
@@ -91,6 +97,8 @@ export const countryGetter = () => {
     });
   };
 };
+
+// set yes or no to async storage if onboarding has been done
 
 export const onBoardingDoneSet = code => {
   return dispatch => {
@@ -108,6 +116,8 @@ export const onBoardingDoneSet = code => {
       });
   };
 };
+
+// get onboarding code
 
 export const onBoardingDoneGet = code => {
   return dispatch => {
