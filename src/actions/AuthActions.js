@@ -2,7 +2,7 @@ import firebase from "firebase";
 import { Actions } from "react-native-router-flux";
 import {
   LOGIN_SUCCESS,
-  LOGIN_FAILED,
+  LOGIN_FAIL,
   LOGIN_USER,
   COUNTRY_GETTER,
   COUNTRY_SETTER,
@@ -20,7 +20,6 @@ import { FIREBASE_CONFIG } from "../../keys";
 export const loginUser = (email, password) => {
   // console.log(dispatch);
   return dispatch => {
-    console.log("trying to log user in!", email, password);
     dispatch({
       type: LOGIN_USER
     });
@@ -30,6 +29,10 @@ export const loginUser = (email, password) => {
       .then(user => {
         console.log(user);
         loginUserSuccess(dispatch, user);
+      })
+      .catch(err => {
+        console.log(err);
+        loginUserFail(dispatch);
       });
   };
 };
@@ -47,12 +50,16 @@ export const loginUserSuccess = (dispatch, user) => {
 
 // action to handle a login failure attempt
 
-export const loginUserFail = () => {};
+export const loginUserFail = dispatch => {
+  dispatch({
+    type: LOGIN_FAIL,
+    payload: null
+  });
+};
 
 // action to check auth state and reroute based on that
 
 export const checkIfUserLoggedIn = () => {
-  console.log("got to check user action");
   return dispatch => {
     dispatch({
       type: IF_USER_LOGGED_IN
