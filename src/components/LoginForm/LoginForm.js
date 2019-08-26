@@ -43,6 +43,9 @@ class LoginForm extends Component {
         />
       );
     }
+    if (this.props.error) {
+      return <Text>Login failed</Text>;
+    }
     return (
       <Button
         onPress={() => this.props.loginUser(user, password)}
