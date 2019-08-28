@@ -34,7 +34,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    console.log("componentDidMount");
+    // console.log("componentDidMount");
     this.getCountry();
   }
 
@@ -96,7 +96,7 @@ class Home extends Component {
     // console.log(categories);
 
     // console.log(width);'
-    console.log("state", this.state);
+    // console.log("state", this.state);
 
     return (
       // if(!this.state.country)
