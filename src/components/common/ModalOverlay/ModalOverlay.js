@@ -4,6 +4,7 @@ import Modal from "react-native-modal";
 
 const ModalOverlay = props => {
   const { isVisible } = props;
+  console.log(props);
   return (
     <Modal
       isVisible={isVisible}

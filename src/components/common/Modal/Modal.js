@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Modal, Text, TouchableHighlight, View, Alert } from "react-native";
 
-class ModalDialog extends Component {
+class ModalExample extends Component {
   state = {
     modalVisible: false
   };
@@ -48,4 +48,4 @@ class ModalDialog extends Component {
   }
 }
 
-export default ModalDialog;
+export default ModalExample;
