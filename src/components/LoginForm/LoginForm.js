@@ -10,6 +10,8 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { Gradient } from "../common/Gradient";
 import { Input } from "../common/TextInput";
 import { Button } from "../common/Button";
+import { ModalOverlay } from "../common/ModalOverlay";
+
 import {
   loginUser,
   checkIfUserLoggedIn,
@@ -25,12 +27,23 @@ class LoginForm extends Component {
     super();
     this.state = {
       user: "",
-      password: ""
+      password: "",
+      modalShow: false
     };
 
     // this.onButtonPress = this.onButtonPress.bind(this);
     this.renderButton = this.renderButton.bind(this);
   }
+
+  renderError = () => {
+    if (this.props.error) {
+      return (
+        <Text>
+          Login failed! Please check your username or password and try again
+        </Text>
+      );
+    }
+  };
 
   renderButton = () => {
     const { user, password } = this.state;
@@ -43,14 +56,15 @@ class LoginForm extends Component {
         />
       );
     }
-    if (this.props.error) {
-      return <Text>Login failed</Text>;
-    }
+
     return (
-      <Button
-        onPress={() => this.props.loginUser(user, password)}
-        buttonText={"LOGIN"}
-      />
+      <>
+        <Button
+          onPress={() => this.props.loginUser(user, password)}
+          buttonText={"LOGIN"}
+        />
+        {this.renderError()}
+      </>
     );
   };
 
