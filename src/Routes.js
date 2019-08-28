@@ -15,22 +15,25 @@ const Routes = props => {
   return (
     <Router>
       <Scene key="root">
-        <Scene key="splash" hideNavBar>
-          <Scene key="splash" component={SplashScreen} />
-        </Scene>
-        <Scene key="load" hideNavBar>
-          <Scene key="load" component={LoadApp} />
-        </Scene>
-
-        <Scene key="auth" hideNavBar initial>
-          <Scene key="login" component={LoginForm} />
-        </Scene>
-        <Scene key="countrypick" hideNavBar>
-          <Scene key="countrypick" component={CountryPicker} />
-        </Scene>
         <Scene key="home" hideNavBar>
           <Scene key="home" component={Home} />
         </Scene>
+
+        <Scene key="splash" hideNavBar>
+          <Scene key="splash" component={SplashScreen} />
+          <Scene key="countrypick" hideNavBar>
+            <Scene key="countrypick" component={CountryPicker} />
+          </Scene>
+        </Scene>
+
+        <Scene key="load" hideNavBar initial>
+          <Scene key="load" component={LoadApp} />
+        </Scene>
+
+        <Scene key="auth" hideNavBar>
+          <Scene key="login" component={LoginForm} />
+        </Scene>
+
         <Scene key="newsresults" hideNavBar>
           <Scene key="newsresults" component={NewsResults} />
         </Scene>

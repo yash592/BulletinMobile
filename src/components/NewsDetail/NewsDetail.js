@@ -76,7 +76,7 @@ class NewsDetail extends Component {
 
   renderData = () => {
     console.log(this.props.SummarizePageData);
-    return MockData.map((data, i) => {
+    return this.props.SummarizePageData.map((data, i) => {
       // this.props.SummarizePageData
       // console.log("data", data);
       return (

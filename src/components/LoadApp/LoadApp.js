@@ -34,15 +34,15 @@ class LoadApp extends Component {
   };
 
   finished = async () => {
-    console.log("finished loading");
+    // console.log("finished loading");
     this.setState({
       isReady: true
     });
     const onBoarding = await AsyncStorage.getItem("Onboarding");
     const country = await AsyncStorage.getItem("Country");
-    console.log("onboarding!", onBoarding, country);
+    // console.log("onboarding!", onBoarding, country);
 
-    !onBoarding && !country ? Actions.splash() : this.goToScreen();
+    !onBoarding && !country ? Actions.splash() : Actions.home();
   };
 
   goToScreen = () => {
@@ -50,7 +50,7 @@ class LoadApp extends Component {
   };
 
   render() {
-    console.log("Apploading props", this.props, this.state);
+    // console.log("Apploading props", this.props, this.state);
     if (!this.state.isReady) {
       return (
         <AppLoading

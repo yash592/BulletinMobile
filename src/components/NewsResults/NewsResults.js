@@ -25,13 +25,13 @@ class NewsDetail extends Component {
     this.onPress = this.onPress.bind(this);
   }
   async componentDidMount() {
-    console.log("componentDidMount");
+    // console.log("componentDidMount");
     await Font.loadAsync({
       Roboto: require("../assets/fonts/Roboto-Medium.ttf"),
       RobotoBold: require("../assets/fonts/Roboto-Bold.ttf")
     });
     this.setState({ fontLoaded: true });
-    console.log("fontloaded");
+    // console.log("fontloaded");
   }
 
   onPress = (url, img, title, author) => {
@@ -40,7 +40,7 @@ class NewsDetail extends Component {
   };
 
   _keyExtractor = (item, index) => {
-    console.log(item.title);
+    // console.log(item.title);
     return item.title;
   };
 

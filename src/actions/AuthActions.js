@@ -112,7 +112,7 @@ export const onBoardingDoneSet = code => {
     return AsyncStorage.setItem("Onboarding", code)
       .then(res => {
         console.log("Onboarding", code);
-        Actions.home();
+        Actions.countrypick();
         dispatch({
           type: ONBOARING_SETTER,
           payload: null
