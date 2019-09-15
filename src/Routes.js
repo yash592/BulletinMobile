@@ -26,11 +26,11 @@ const Routes = props => {
           </Scene>
         </Scene>
 
-        <Scene key="load" hideNavBar initial>
+        <Scene key="load" hideNavBar>
           <Scene key="load" component={LoadApp} />
         </Scene>
 
-        <Scene key="auth" hideNavBar>
+        <Scene key="auth" hideNavBar initial>
           <Scene key="login" component={LoginForm} />
         </Scene>
 
