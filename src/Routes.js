@@ -2,6 +2,8 @@ import React from "react";
 import { Scene, Router, Actions } from "react-native-router-flux";
 import LoginForm from "./components/LoginForm/LoginForm";
 import Home from "./components/Home/Home";
+import TestPage from "./components/TestPage/TestPage";
+
 import NewsResults from "./components/NewsResults/NewsResults";
 import NewsDetail from "./components/NewsDetail/NewsDetail";
 import Search from "./components/Search/Search";
@@ -30,8 +32,12 @@ const Routes = props => {
           <Scene key="load" component={LoadApp} />
         </Scene>
 
-        <Scene key="auth" hideNavBar initial>
+        <Scene key="auth" hideNavBar>
           <Scene key="login" component={LoginForm} />
+        </Scene>
+
+        <Scene key="test" hideNavBar initial>
+          <Scene key="test" component={TestPage} />
         </Scene>
 
         <Scene key="newsresults" hideNavBar>

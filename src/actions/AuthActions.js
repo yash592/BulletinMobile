@@ -45,7 +45,7 @@ export const loginUserSuccess = (dispatch, user) => {
     payload: user
   });
   // console.log(payload);
-  Actions.home();
+  Actions.test();
 };
 
 // action to handle a login failure attempt
