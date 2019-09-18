@@ -1,31 +1,38 @@
 import React, { Component } from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, Button } from "react-native";
 import firebase from "firebase";
+import { saveStory } from "../../actions";
+import { connect } from "react-redux";
 
 class TestPage extends Component {
-  componentDidMount() {
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        console.log("user logged in is", user);
-      } else {
-        console.log("no user fpund");
-      }
-    });
+  // componentDidMount() {
+  //   firebase.auth().onAuthStateChanged(user => {
+  //     if (user) {
+  //       console.log("user logged in is", user);
+  //     } else {
+  //       console.log("no user fpund");
+  //     }
+  //   });
+  // }
 
-    this.getUserCred();
-  }
-
-  getUserCred = async () => {
-    let curruser = await firebase.auth().currentUser;
-    console.log(curruser);
-  };
   render() {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <Text>TestPage</Text>
+        <Button onPress={() => this.props.saveStory()} title="Click me" />
       </View>
     );
   }
 }
 
-export default TestPage;
+const mapStateToProps = state => {
+  console.log("state.news", state);
+  return {
+    news: state.news.news
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { saveStory }
+)(TestPage);
