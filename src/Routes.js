@@ -36,14 +36,14 @@ const Routes = props => {
           <Scene key="login" component={LoginForm} />
         </Scene>
 
-        <Scene key="test" hideNavBar initial>
+        <Scene key="test" hideNavBar>
           <Scene key="test" component={TestPage} />
         </Scene>
 
         <Scene key="newsresults" hideNavBar>
           <Scene key="newsresults" component={NewsResults} />
         </Scene>
-        <Scene key="newsdetail" hideNavBar>
+        <Scene key="newsdetail" hideNavBar initial>
           <Scene key="newsdetail" component={NewsDetail} />
         </Scene>
         <Scene key="search" hideNavBar>
