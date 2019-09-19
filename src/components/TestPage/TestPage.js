@@ -19,7 +19,10 @@ class TestPage extends Component {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <Text>TestPage</Text>
-        <Button onPress={() => this.props.saveStory()} title="Click me" />
+        <Button
+          onPress={() => this.props.saveStory("sample title")}
+          title="Click me"
+        />
       </View>
     );
   }

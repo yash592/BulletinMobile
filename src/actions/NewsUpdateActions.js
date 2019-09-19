@@ -6,15 +6,23 @@ import firebase from "firebase";
 
 import { SAVE_STORY } from "./types";
 
-export const saveStory = () => {
-  console.log("got to save story");
+export const saveStory = title => {
+  console.log("got to save story", title);
   return dispatch => {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        console.log("user logged in is", user);
+        const uid = user.uid;
+        console.log("uid", uid);
+        console.log(uid);
+        firebase
+          .database()
+          .ref(`/users/${uid}`)
+          .set({
+            title
+          });
         dispatch({
           type: SAVE_STORY,
-          payload: user
+          payload: uid
         });
       } else {
         console.log("no user fpund");
