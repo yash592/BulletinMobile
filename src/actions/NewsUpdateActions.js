@@ -14,6 +14,7 @@ export const saveStory = title => {
         const uid = user.uid;
         console.log("uid", uid);
         console.log(uid);
+        firebase.database().ref(`/users/${user.uid}/`);
         firebase
           .database()
           .ref(`/users/${uid}`)
