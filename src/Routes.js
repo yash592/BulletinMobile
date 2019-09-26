@@ -17,7 +17,7 @@ const Routes = props => {
   return (
     <Router>
       <Scene key="root">
-        <Scene key="home" hideNavBar>
+        <Scene key="home" hideNavBar initial>
           <Scene key="home" component={Home} />
         </Scene>
 
@@ -43,7 +43,7 @@ const Routes = props => {
         <Scene key="newsresults" hideNavBar>
           <Scene key="newsresults" component={NewsResults} />
         </Scene>
-        <Scene key="newsdetail" hideNavBar initial>
+        <Scene key="newsdetail" hideNavBar>
           <Scene key="newsdetail" component={NewsDetail} />
         </Scene>
         <Scene key="search" hideNavBar>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, Text, Image, Button } from "react-native";
 import firebase from "firebase";
-import { saveStory } from "../../actions";
+import { saveStory, checkIfUserLoggedIn } from "../../actions";
 import { connect } from "react-redux";
 
 class TestPage extends Component {
@@ -16,11 +16,17 @@ class TestPage extends Component {
   // }
 
   render() {
+    const sampleStory = {
+      title: "title2",
+      desc: "desc2",
+      content: "content2"
+    };
+    console.log(this.props);
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <Text>TestPage</Text>
         <Button
-          onPress={() => this.props.saveStory("sample title")}
+          onPress={() => this.props.saveStory(sampleStory)}
           title="Click me"
         />
       </View>
@@ -37,5 +43,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { saveStory }
+  { saveStory, checkIfUserLoggedIn }
 )(TestPage);

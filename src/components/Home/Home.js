@@ -16,6 +16,7 @@ import {
 } from "../../actions";
 import { connect } from "react-redux";
 import { Actions } from "react-native-router-flux";
+import * as Font from "expo-font";
 
 import {
   Dimensions,
