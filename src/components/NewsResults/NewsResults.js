@@ -39,11 +39,10 @@ class NewsResults extends Component {
     this.props.summarizeArticle(url, img, title, author);
   };
 
-  onDoublePress = (author, title, url, urlToImage) => {
-    console.log("double pressed!");
+  onDoublePress = (author, url, urlToImage) => {
+    console.log("double pressed!", author, url, urlToImage);
     let story = {
       author: author,
-      title: title,
       url: url,
       urlToImage: urlToImage
     };
@@ -56,29 +55,31 @@ class NewsResults extends Component {
     return item.title;
   };
 
-  _renderBigTiles = ({ item }) => (
-    <View
-      contentStyle={{
-        flex: 1,
-        flexDirection: "column",
-        alignItems: "center"
-      }}
-    >
-      <NewsCardLarge
-        img={item.urlToImage}
-        url={item.url}
-        title={item.title}
-        onPress={this.onDoublePress.bind(
-          this,
-          item.urlToImage,
-          item.img,
-          item.title,
-          item.author
-        )}
-        textStyle={styles.largeCardtext}
-      />
-    </View>
-  );
+  _renderBigTiles = ({ item }) => {
+    console.log("item");
+    return (
+      <View
+        contentStyle={{
+          flex: 1,
+          flexDirection: "column",
+          alignItems: "center"
+        }}
+      >
+        <NewsCardLarge
+          img={item.urlToImage}
+          url={item.url}
+          title={item.title}
+          onPress={this.onDoublePress.bind(
+            this,
+            item.urlToImage,
+            item.img,
+            item.author
+          )}
+          textStyle={styles.largeCardtext}
+        />
+      </View>
+    );
+  };
 
   _renderSmallTiles = ({ item }) => (
     <View
