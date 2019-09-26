@@ -9,14 +9,14 @@ import { BottomNav } from "../common/BottomNav";
 import { Header } from "../common/Header";
 
 import axios from "axios";
-import { Font } from "expo";
+import * as Font from "expo-font";
 import { connect } from "react-redux";
 import _ from "lodash";
 // import { Header } from "react-native-elements";
-import { summarizeArticle } from "../../actions";
+import { summarizeArticle, saveStory } from "../../actions";
 import { Actions } from "react-native-router-flux";
 
-class NewsDetail extends Component {
+class NewsResults extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -39,6 +39,18 @@ class NewsDetail extends Component {
     this.props.summarizeArticle(url, img, title, author);
   };
 
+  onDoublePress = (author, title, url, urlToImage) => {
+    console.log("double pressed!");
+    let story = {
+      author: author,
+      title: title,
+      url: url,
+      urlToImage: urlToImage
+    };
+    console.log(story);
+    this.props.saveStory(story);
+  };
+
   _keyExtractor = (item, index) => {
     // console.log(item.title);
     return item.title;
@@ -56,7 +68,7 @@ class NewsDetail extends Component {
         img={item.urlToImage}
         url={item.url}
         title={item.title}
-        onPress={this.onPress.bind(
+        onPress={this.onDoublePress.bind(
           this,
           item.urlToImage,
           item.img,
@@ -95,7 +107,7 @@ class NewsDetail extends Component {
   );
 
   render() {
-    // console.log("PROPSSSSS", this.props.newsList);
+    console.log("PROPSSSSS", this.props);
     // console.log(this.props);
     return !this.state.fontLoaded && !this.props.newsList ? (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -221,5 +233,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { summarizeArticle }
-)(NewsDetail);
+  { summarizeArticle, saveStory }
+)(NewsResults);

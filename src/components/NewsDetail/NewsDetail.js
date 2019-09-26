@@ -10,7 +10,7 @@ import {
 import { connect } from "react-redux";
 import { summarizeArticle } from "../../actions";
 import _ from "lodash";
-import { Font } from "expo";
+import * as Font from "expo-font";
 import { NewsImage } from "../common/NewsImage";
 import { BottomNav } from "../common/BottomNav";
 import { Header } from "../common/Header";

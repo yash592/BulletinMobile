@@ -20,7 +20,7 @@ import { searchNews } from "../../actions";
 import { connect } from "react-redux";
 import NewsListCard from "../common/NewsListCard/NewsListCard";
 import _ from "lodash";
-import { Font } from "expo";
+import * as Font from "expo-font";
 import { summarizeArticle } from "../../actions";
 
 const { height, width } = Dimensions.get("window");

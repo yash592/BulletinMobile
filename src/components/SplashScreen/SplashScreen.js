@@ -4,7 +4,7 @@ import { StyleSheet, View, Text, Image } from "react-native";
 import { LinearGradient } from "expo";
 import AppIntroSlider from "react-native-app-intro-slider";
 import { slides } from "./slides";
-import { Font } from "expo";
+import * as Font from "expo-font";
 import {
   onBoardingDoneSet,
   onBoardingDoneGet,

@@ -28,6 +28,8 @@ export default (state = INITIAL_STATE, action) => {
         error: "Login Failed! Check your username or password",
         loading: false
       };
+    case IF_USER_LOGGED_IN:
+      return { ...state, ...INITIAL_STATE, userUID: action.payload };
 
     case COUNTRY_GETTER:
       return { ...state, ...INITIAL_STATE, country: action.payload };
