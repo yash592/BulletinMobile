@@ -17,8 +17,8 @@ export const saveStory = story => {
         console.log(uid);
         firebase
           .database()
-          .ref(`/users/${user.uid}/stories`)
-          .push({ story })
+          .ref(`/users/${user.uid}/`)
+          .push(story)
           .then(console.log("done"));
         dispatch({
           type: SAVE_STORY,

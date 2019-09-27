@@ -34,52 +34,60 @@ class NewsResults extends Component {
     // console.log("fontloaded");
   }
 
+  shouldComponentUpdate(nextProps) {
+    console.log(this.props == this.nextProps);
+    return this.props == this.nextProps;
+  }
+
   onPress = (url, img, title, author) => {
-    // console.log(link);
-    this.props.summarizeArticle(url, img, title, author);
+    let story = {
+      url,
+      img,
+      title,
+      author
+    };
+    console.log(story);
+    this.props.summarizeArticle(story);
   };
 
-  onDoublePress = (author, url, urlToImage) => {
-    console.log("double pressed!", author, url, urlToImage);
+  onDoublePress = (title, img, author) => {
+    console.log("double pressed!", title, img, author);
     let story = {
-      author: author,
-      url: url,
-      urlToImage: urlToImage
+      title: title,
+      img: img,
+      author: author
     };
     console.log(story);
     this.props.saveStory(story);
   };
 
   _keyExtractor = (item, index) => {
-    // console.log(item.title);
-    return item.title;
+    console.log(item);
+    return item.urlToImage;
   };
 
-  _renderBigTiles = ({ item }) => {
-    console.log("item");
-    return (
-      <View
-        contentStyle={{
-          flex: 1,
-          flexDirection: "column",
-          alignItems: "center"
-        }}
-      >
-        <NewsCardLarge
-          img={item.urlToImage}
-          url={item.url}
-          title={item.title}
-          onPress={this.onDoublePress.bind(
-            this,
-            item.urlToImage,
-            item.img,
-            item.author
-          )}
-          textStyle={styles.largeCardtext}
-        />
-      </View>
-    );
-  };
+  _renderBigTiles = ({ item }) => (
+    <View
+      contentStyle={{
+        flex: 1,
+        flexDirection: "column",
+        alignItems: "center"
+      }}
+    >
+      <NewsCardLarge
+        img={item.urlToImage}
+        url={item.url}
+        title={item.title}
+        onPress={this.onDoublePress.bind(
+          this,
+          item.urlToImage,
+          item.url,
+          item.title
+        )}
+        textStyle={styles.largeCardtext}
+      />
+    </View>
+  );
 
   _renderSmallTiles = ({ item }) => (
     <View
