@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { StyleSheet, View, Text, Image } from "react-native";
-import { LinearGradient } from "expo";
+import { LinearGradient } from "expo-linear-gradient";
 import AppIntroSlider from "react-native-app-intro-slider";
 import { slides } from "./slides";
 import * as Font from "expo-font";

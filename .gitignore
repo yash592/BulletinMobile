@@ -6,4 +6,3 @@ npm-debug.*
 *.key
 *.mobileprovision
 keys.js
-google-services.json

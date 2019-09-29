@@ -16,7 +16,7 @@ import { BottomNav } from "../common/BottomNav";
 import { Header } from "../common/Header";
 import { Input } from "../common/TextInput";
 import Countries from "../../assets/Countries";
-import { Font } from "expo";
+import * as Font from "expo-font";
 
 class CountryPicker extends Component {
   constructor(props) {

@@ -34,7 +34,8 @@ class NewsResults extends Component {
     // console.log("fontloaded");
   }
 
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log(this.props, this.netxtProps);
     console.log(this.props == this.nextProps);
     return this.props == this.nextProps;
   }
@@ -63,7 +64,7 @@ class NewsResults extends Component {
 
   _keyExtractor = (item, index) => {
     console.log(item);
-    return item.urlToImage;
+    return item.publishedAt;
   };
 
   _renderBigTiles = ({ item }) => (
