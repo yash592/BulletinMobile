@@ -41,9 +41,9 @@ class Home extends Component {
 
   getCountry = async () => {
     const value = await AsyncStorage.getItem("Country");
-    console.log(value);
+    console.log("VALUE", value);
     if (!value) {
-      Actions.countrypick();
+      Actions.splash();
     }
     this.setState({ country: value });
   };

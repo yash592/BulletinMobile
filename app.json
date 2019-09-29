@@ -22,8 +22,7 @@
       "bundleIdentifier": "com.zephyr.summa"
     },
     "android": {
-      "package": "com.zephyr.summa",
-      "googleServicesFile": "./google-services.json"
+      "package": "com.zephyr.summa"
     }
   }
 }
