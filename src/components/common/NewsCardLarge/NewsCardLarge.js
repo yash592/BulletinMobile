@@ -5,7 +5,11 @@ const NewsCardLarge = props => {
   // console.log(props.author);
 
   return (
-    <TouchableOpacity style={styles.container} onPress={props.onPress}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={props.onPress}
+      onLongPress={props.onLongPress}
+    >
       <ImageBackground
         source={{ uri: props.img }}
         style={styles.imgBox}
