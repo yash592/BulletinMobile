@@ -79,11 +79,19 @@ class NewsResults extends Component {
         img={item.urlToImage}
         url={item.url}
         title={item.title}
-        onPress={this.onDoublePress.bind(
+        onPress={this.onPress.bind(
           this,
           item.urlToImage,
           item.url,
-          item.title
+          item.title,
+          item.author
+        )}
+        onLongPress={this.onDoublePress.bind(
+          this,
+          item.urlToImage,
+          item.url,
+          item.title,
+          item.author
         )}
         textStyle={styles.largeCardtext}
       />
@@ -109,6 +117,13 @@ class NewsResults extends Component {
           this,
           item.url,
           item.urlToImage,
+          item.title,
+          item.author
+        )}
+        onLongPress={this.onDoublePress.bind(
+          this,
+          item.urlToImage,
+          item.url,
           item.title,
           item.author
         )}
