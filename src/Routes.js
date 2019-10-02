@@ -18,7 +18,7 @@ const Routes = props => {
     <Router>
       <Scene key="root">
         <Scene key="home" hideNavBar initial>
-          <Scene key="home" component={Home} />
+          <Scene key="home" component={SavedNewsDeck} />
         </Scene>
 
         <Scene key="splash" hideNavBar>

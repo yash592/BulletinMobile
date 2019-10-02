@@ -12,15 +12,17 @@ import {
 } from "react-native";
 import { NewsCardLarge } from "../common/NewsCardLarge";
 import { SavedNewsCard } from "../common/SavedNewsCard";
-import { Font } from "expo";
+import * as Font from "expo-font";
 import { BottomNav } from "../common/BottomNav";
 import { Header } from "../common/Header";
+import { fetchStories } from "../../actions";
+import { connect } from "react-redux";
 
 const WIDTH = Dimensions.get("window").width;
 const HEIGHT = Dimensions.get("window").height;
 const SWIPE_MIN = 0.5 * WIDTH;
 
-class Deck extends Component {
+class SavedNewsDeck extends Component {
   constructor(props) {
     super(props);
 
@@ -49,6 +51,7 @@ class Deck extends Component {
     });
     this.setState({ fontLoaded: true });
     console.log("fontloaded");
+    this.props.fetchStories();
   }
 
   componentWillUpdate() {
@@ -157,6 +160,7 @@ class Deck extends Component {
   };
 
   render() {
+    console.log(this.props);
     return !this.state.fontLoaded ? (
       <View
         style={{
@@ -356,4 +360,13 @@ const DATA = [
   }
 ];
 
-export default Deck;
+const mapStateToProps = state => {
+  return {
+    news: state.news.news
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { fetchStories }
+)(SavedNewsDeck);
