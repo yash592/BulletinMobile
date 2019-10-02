@@ -4,7 +4,7 @@ import { NEWS } from "./types";
 import firebase from "firebase";
 // import { Actions } from "react-native-router-flux";
 
-import { SAVE_STORY } from "./types";
+import { SAVE_STORY, FETCH_SAVED_STORIES } from "./types";
 
 export const saveStory = story => {
   // console.log("got to save story", title);
@@ -32,19 +32,23 @@ export const saveStory = story => {
 };
 
 export const fetchStories = () => {
-  const { user } = firebase.auth();
-  console.log(user.uid);
-
   return dispatch => {
-    firebase
-      .database()
-      .ref(`/users/${user.uid}/stories`)
-      .on("value", snapshot => {
-        dispatch({
-          type: FETCH_SAVED_STORIES,
-          payload: snapshot.val()
-        });
-      });
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        firebase
+          .database()
+          .ref(`/users/${user.uid}/`)
+          .on("value", snapshot => {
+            console.log("snap", snapshot);
+            dispatch({
+              type: FETCH_SAVED_STORIES,
+              payload: snapshot.val()
+            });
+          });
+      } else {
+        console.log("no user found");
+      }
+    });
   };
 };
 
