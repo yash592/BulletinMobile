@@ -17,6 +17,7 @@ import { BottomNav } from "../common/BottomNav";
 import { Header } from "../common/Header";
 import { fetchStories } from "../../actions";
 import { connect } from "react-redux";
+import _ from "lodash";
 
 const WIDTH = Dimensions.get("window").width;
 const HEIGHT = Dimensions.get("window").height;
@@ -90,34 +91,61 @@ class SavedNewsDeck extends Component {
   // render all cards and stack them together
 
   renderCards = () => {
-    console.log(HEIGHT);
-    return DATA.map((item, i) => {
-      // console.log(this.state.position);
-      if (i < this.state.index) return null;
+    // console.log(HEIGHT);
+    return this.props.savedStories
+      .map((item, i) => {
+        // console.log("ITEMS", item.stories.author);
+        const { author, img, title } = item.stories;
+        console.log("Author", author, "IMG", img, "TITLE", title);
+        if (i < this.state.index) return null;
 
-      if (i === this.state.index) {
+        if (i === this.state.index) {
+          return (
+            <Animated.View
+              style={[
+                this.state.position.getLayout(),
+                styles.animated,
+                {
+                  zIndex: 99,
+                  transform: [{ scale: 1 }],
+                  opacity: this.state.position.x.interpolate({
+                    inputRange: [
+                      0,
+                      WIDTH / 8,
+                      WIDTH / 6,
+                      WIDTH / 4,
+                      WIDTH / 2,
+                      WIDTH
+                    ],
+                    outputRange: [1, 0.8, 0.6, 0.4, 0.2, 0]
+                  })
+                }
+              ]}
+              {...this.state.panResponder.panHandlers}
+              key={i}
+            >
+              <SavedNewsCard
+                title={title}
+                img={img}
+                author={author}
+                // summary={item.summary}
+                // id={item.id}
+                style={{ ...styles }}
+              />
+            </Animated.View>
+          );
+        }
         return (
           <Animated.View
             style={[
-              this.state.position.getLayout(),
               styles.animated,
               {
-                zIndex: 99,
-                transform: [{ scale: 1 }],
-                opacity: this.state.position.x.interpolate({
-                  inputRange: [
-                    0,
-                    WIDTH / 8,
-                    WIDTH / 6,
-                    WIDTH / 4,
-                    WIDTH / 2,
-                    WIDTH
-                  ],
-                  outputRange: [1, 0.8, 0.6, 0.4, 0.2, 0]
-                })
+                top: 20 * (i - this.state.index),
+                zIndex: 5,
+
+                transform: [{ scale: 0.98 }]
               }
             ]}
-            {...this.state.panResponder.panHandlers}
             key={item.id}
           >
             <SavedNewsCard
@@ -130,37 +158,14 @@ class SavedNewsDeck extends Component {
             />
           </Animated.View>
         );
-      }
-      return (
-        <Animated.View
-          style={[
-            styles.animated,
-            {
-              top: 20 * (i - this.state.index),
-              zIndex: 5,
 
-              transform: [{ scale: 0.98 }]
-            }
-          ]}
-          key={item.id}
-        >
-          <SavedNewsCard
-            title={item.title}
-            img={item.urlToImage}
-            author={item.author}
-            summary={item.summary}
-            id={item.id}
-            style={{ ...styles }}
-          />
-        </Animated.View>
-      );
-
-      // console.log(item);
-    }).reverse();
+        // console.log(item);
+      })
+      .reverse();
   };
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     return !this.state.fontLoaded ? (
       <View
         style={{
@@ -361,9 +366,12 @@ const DATA = [
 ];
 
 const mapStateToProps = state => {
-  return {
-    news: state.news.news
-  };
+  // console.log("STATE", state);
+  const savedStories = _.map(state.news, stories => {
+    return { stories };
+  });
+  // console.log("SAVEDSTORIES", savedStories);
+  return { savedStories };
 };
 
 export default connect(
