@@ -39,7 +39,7 @@ export const fetchStories = () => {
           .database()
           .ref(`/users/${user.uid}/`)
           .on("value", snapshot => {
-            console.log("snap", snapshot);
+            // console.log("snap", snapshot);
             dispatch({
               type: FETCH_SAVED_STORIES,
               payload: snapshot.val()
