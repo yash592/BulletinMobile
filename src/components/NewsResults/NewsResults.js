@@ -42,23 +42,25 @@ class NewsResults extends Component {
 
   onPress = (url, img, title, author) => {
     let story = {
-      url,
-      img,
-      title,
-      author
+      url: url,
+      img: img,
+      title: title,
+      author: author
     };
     console.log(story);
     this.props.summarizeArticle(story);
   };
 
-  onDoublePress = (title, img, author) => {
+  onDoublePress = (img, url, title, author) => {
     console.log("double pressed!", title, img, author);
     let story = {
-      title: title,
-      img: img,
-      author: author
+      img,
+      url,
+      title,
+      author
     };
     console.log(story);
+
     this.props.saveStory(story);
   };
 
@@ -74,6 +76,7 @@ class NewsResults extends Component {
         flexDirection: "column",
         alignItems: "center"
       }}
+      key={item.url}
     >
       <NewsCardLarge
         img={item.urlToImage}
@@ -106,6 +109,7 @@ class NewsResults extends Component {
         alignItems: "center",
         justifyContent: "space-evenly"
       }}
+      key={item.url}
     >
       <NewsCardSmall
         img={item.urlToImage}

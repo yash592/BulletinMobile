@@ -91,12 +91,11 @@ class SavedNewsDeck extends Component {
   // render all cards and stack them together
 
   renderCards = () => {
-    // console.log(HEIGHT);
     return this.props.savedStories
       .map((item, i) => {
-        // console.log("ITEMS", item.stories.author);
-        const { author, img, title } = item.stories;
-        console.log("Author", author, "IMG", img, "TITLE", title);
+        console.log("ITEMS", item);
+        console.log("i", i);
+
         if (i < this.state.index) return null;
 
         if (i === this.state.index) {
@@ -125,11 +124,12 @@ class SavedNewsDeck extends Component {
               key={i}
             >
               <SavedNewsCard
-                title={title}
-                img={img}
-                author={author}
+                title={item.stories.title}
+                img={item.stories.img}
+                author={item.stories.author}
                 // summary={item.summary}
                 // id={item.id}
+
                 style={{ ...styles }}
               />
             </Animated.View>
@@ -142,18 +142,15 @@ class SavedNewsDeck extends Component {
               {
                 top: 20 * (i - this.state.index),
                 zIndex: 5,
-
                 transform: [{ scale: 0.98 }]
               }
             ]}
-            key={item.id}
+            key={i}
           >
             <SavedNewsCard
-              title={item.title}
-              img={item.urlToImage}
-              author={item.author}
-              summary={item.summary}
-              id={item.id}
+              title={item.stories.title}
+              img={item.stories.img}
+              author={item.stories.author}
               style={{ ...styles }}
             />
           </Animated.View>
