@@ -15,7 +15,7 @@ import { SavedNewsCard } from "../common/SavedNewsCard";
 import * as Font from "expo-font";
 import { BottomNav } from "../common/BottomNav";
 import { Header } from "../common/Header";
-import { fetchStories } from "../../actions";
+import { fetchStories, deleteStory } from "../../actions";
 import { connect } from "react-redux";
 import _ from "lodash";
 
@@ -53,6 +53,7 @@ class SavedNewsDeck extends Component {
     this.setState({ fontLoaded: true });
     console.log("fontloaded");
     this.props.fetchStories();
+    this.props.deleteStory("title");
   }
 
   componentWillUpdate() {
@@ -373,5 +374,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchStories }
+  { fetchStories, deleteStory }
 )(SavedNewsDeck);

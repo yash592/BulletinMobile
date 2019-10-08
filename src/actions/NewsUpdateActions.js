@@ -12,7 +12,7 @@ export const saveStory = story => {
   return dispatch => {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        const uid = user.uid;
+        let uid = user.uid;
         console.log("uid", uid);
         console.log(uid);
         firebase
@@ -26,6 +26,19 @@ export const saveStory = story => {
         });
       } else {
         console.log("no user fpund");
+      }
+    });
+  };
+};
+
+export const deleteStory = title => {
+  return dispatch => {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        let uid = user.uid;
+        console.log(uid);
+        let adaref = firebase.database().ref(`users/${uid}`);
+        console.log(adaref);
       }
     });
   };
@@ -51,5 +64,3 @@ export const fetchStories = () => {
     });
   };
 };
-
-export const deleteStory = () => {};
