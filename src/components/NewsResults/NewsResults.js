@@ -64,79 +64,92 @@ class NewsResults extends Component {
     this.props.saveStory(story);
   };
 
-  _keyExtractor = (item, index) => {
-    console.log(item);
+  _keyExtractor = item => {
+    console.log("ITEM", item);
+    console.log("KEY", item.publishedAt);
     return item.publishedAt;
   };
 
-  _renderBigTiles = ({ item }) => (
-    <View
-      contentStyle={{
-        flex: 1,
-        flexDirection: "column",
-        alignItems: "center"
-      }}
-      key={item.url}
-    >
-      <NewsCardLarge
-        img={item.urlToImage}
-        url={item.url}
-        title={item.title}
-        onPress={this.onPress.bind(
-          this,
-          item.urlToImage,
-          item.url,
-          item.title,
-          item.author
-        )}
-        onLongPress={this.onDoublePress.bind(
-          this,
-          item.urlToImage,
-          item.url,
-          item.title,
-          item.author
-        )}
-        textStyle={styles.largeCardtext}
-      />
-    </View>
-  );
+  _keyExtractor2 = (item, index) => {
+    console.log("ITEM", index);
+    // console.log("KEY", item.publishedAt);
+    return index;
+  };
 
-  _renderSmallTiles = ({ item }) => (
-    <View
-      style={{
-        flex: 1,
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "space-evenly"
-      }}
-      key={item.url}
-    >
-      <NewsCardSmall
-        img={item.urlToImage}
-        url={item.url}
-        title={item.title}
-        author={item.author}
-        textStyle={styles.smallCardtext}
-        onPress={this.onPress.bind(
-          this,
-          item.url,
-          item.urlToImage,
-          item.title,
-          item.author
-        )}
-        onLongPress={this.onDoublePress.bind(
-          this,
-          item.urlToImage,
-          item.url,
-          item.title,
-          item.author
-        )}
-      />
-    </View>
-  );
+  _renderBigTiles = ({ item }) => {
+    // console.log("ITEM.URL", item.url);
+    return (
+      <View
+        contentStyle={{
+          flex: 1,
+          flexDirection: "column",
+          alignItems: "center"
+        }}
+        key={item.publishedAt}
+      >
+        <NewsCardLarge
+          img={item.urlToImage}
+          url={item.url}
+          title={item.title}
+          onPress={this.onPress.bind(
+            this,
+            item.urlToImage,
+            item.url,
+            item.title,
+            item.author
+          )}
+          onLongPress={this.onDoublePress.bind(
+            this,
+            item.urlToImage,
+            item.url,
+            item.title,
+            item.author
+          )}
+          textStyle={styles.largeCardtext}
+        />
+      </View>
+    );
+  };
+
+  _renderSmallTiles = ({ item }) => {
+    // console.log("ITEM.URL", item.url);
+    return (
+      <View
+        style={{
+          flex: 1,
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "space-evenly"
+        }}
+        key={item.publishedAt}
+      >
+        <NewsCardSmall
+          img={item.urlToImage}
+          url={item.url}
+          title={item.title}
+          author={item.author}
+          textStyle={styles.smallCardtext}
+          onPress={this.onPress.bind(
+            this,
+            item.url,
+            item.urlToImage,
+            item.title,
+            item.author
+          )}
+          onLongPress={this.onDoublePress.bind(
+            this,
+            item.urlToImage,
+            item.url,
+            item.title,
+            item.author
+          )}
+        />
+      </View>
+    );
+  };
 
   render() {
-    console.log("PROPSSSSS", this.props);
+    // console.log("PROPSSSSS", this.props.newsList.url);
     // console.log(this.props);
     return !this.state.fontLoaded && !this.props.newsList ? (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -155,7 +168,7 @@ class NewsResults extends Component {
             <FlatList
               data={this.props.newsList.slice(0, 1)}
               renderItem={this._renderBigTiles}
-              keyExtractor={this._keyExtractor}
+              keyExtractor={this._keyExtractor2}
             />
             <Text
               style={{
@@ -171,7 +184,7 @@ class NewsResults extends Component {
             <FlatList
               data={this.props.newsList.slice(1, this.props.newsList.length)}
               renderItem={this._renderSmallTiles}
-              keyExtractor={this._keyExtractor}
+              keyExtractor={this._keyExtractor2}
               numColumns="2"
               initialNumToRender={20}
             />
