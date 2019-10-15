@@ -64,17 +64,17 @@ class NewsResults extends Component {
     this.props.saveStory(story);
   };
 
-  _keyExtractor = item => {
-    console.log("ITEM", item);
-    console.log("KEY", item.publishedAt);
-    return item.publishedAt;
-  };
+  // _keyExtractor = item => {
+  //   console.log("ITEM", item);
+  //   console.log("KEY", item.publishedAt);
+  //   return item.publishedAt;
+  // };
 
-  _keyExtractor2 = (item, index) => {
-    console.log("ITEM", index);
-    // console.log("KEY", item.publishedAt);
-    return index;
-  };
+  // _keyExtractor2 = (item, index) => {
+  //   console.log("ITEM", index);
+  //   // console.log("KEY", item.publishedAt);
+  //   return index;
+  // };
 
   _renderBigTiles = ({ item }) => {
     // console.log("ITEM.URL", item.url);
@@ -168,7 +168,7 @@ class NewsResults extends Component {
             <FlatList
               data={this.props.newsList.slice(0, 1)}
               renderItem={this._renderBigTiles}
-              keyExtractor={this._keyExtractor2}
+              keyExtractor={(item, index) => index.toString()}
             />
             <Text
               style={{
@@ -184,7 +184,7 @@ class NewsResults extends Component {
             <FlatList
               data={this.props.newsList.slice(1, this.props.newsList.length)}
               renderItem={this._renderSmallTiles}
-              keyExtractor={this._keyExtractor2}
+              keyExtractor={(item, index) => index.toString()}
               numColumns="2"
               initialNumToRender={20}
             />

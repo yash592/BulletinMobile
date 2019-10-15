@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "aylien_textapi": "^0.7.0",
     "expo": "^35.0.0",
     "expo-cli": "^3.0.9",
     "expo-font": "~7.0.0",
