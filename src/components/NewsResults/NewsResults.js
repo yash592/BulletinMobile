@@ -40,14 +40,14 @@ class NewsResults extends Component {
     return this.props == this.nextProps;
   }
 
-  onPress = (url, img, title, author) => {
+  onPress = (img, url, title, author) => {
     let story = {
-      url: url,
-      img: img,
-      title: title,
-      author: author
+      img,
+      url,
+      title,
+      author
     };
-    console.log(story);
+    console.log("ONLONGPRESS", story);
     this.props.summarizeArticle(story);
   };
 
@@ -131,8 +131,8 @@ class NewsResults extends Component {
           textStyle={styles.smallCardtext}
           onPress={this.onPress.bind(
             this,
-            item.url,
             item.urlToImage,
+            item.url,
             item.title,
             item.author
           )}

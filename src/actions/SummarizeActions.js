@@ -2,7 +2,7 @@ import axios from "axios";
 import { SUMMARIZE_NEWS } from "./types";
 import { Actions } from "react-native-router-flux";
 // const unirest = require("unirest");
-const AYLIENTextAPI = require("aylien_textapi");
+// const AYLIENTextAPI = require("aylien_textapi");
 
 // summarize: function(link) {
 //     console.log(link);
@@ -10,29 +10,41 @@ const AYLIENTextAPI = require("aylien_textapi");
 //    .header("X-RapidAPI-Key", "ODvwbEGCc8mshFxn58WHl2tFdqkfp1eFXRXjsnlfTlgUdF0qML")
 //
 //   },
-var textapi = new AYLIENTextAPI({
-  application_id: "93bf2c79",
-  application_key: "2483722242baec84a6ab44965d4c96a7"
-});
-
-export const summarizeArticle = (link, img, title, author) => {
-  // console.log("got to summarize", link, img, title, author);
-  let url = `https://api.aylien.com/api/v1/summarize`;
+export const summarizeArticle = story => {
+  console.log("got to summarize", story);
+  const { author, title, img, url } = story;
+  console.log("URL", url);
+  let reqUrl = `https://aylien-text.p.rapidapi.com/summarize?url=${url}&sentences_number=5`;
   // console.log(url);
   // console.log(fetch);
+  console.log("REQURL", reqUrl);
 
   return dispatch => {
-    textapi.summarize(
-      {
-        url: link
-      },
-      function(err, res) {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log("RES", res);
-        }
+    return fetch(reqUrl, {
+      method: "GET",
+      headers: {
+        "X-RapidAPI-Host": "aylien-text.p.rapidapi.com",
+        "X-RapidAPI-Key": "ODvwbEGCc8mshFxn58WHl2tFdqkfp1eFXRXjsnlfTlgUdF0qML"
       }
-    );
+    }).then(res => {
+      console.log("RES", res);
+      // Actions.newsdetail();
+      const response = JSON.parse(res._bodyText);
+      // console.log("API response", response);
+      dispatch({
+        type: SUMMARIZE_NEWS,
+        payload: [
+          {
+            summary: response.sentences,
+            link: link,
+            img: img,
+            title: title,
+            author: author
+          }
+        ]
+      });
+    });
   };
 };
+
+https://api.aylien.com/api/v1/summarize?language=en&sentences_number=5&input=https%3A%2F%2Fwww.cnn.com%2F2019%2F10%2F15%2Fhealth%2Flegionnaires-north-carolina-deaths%2Findex.html&title=%20https%3A%2F%2Faylien-text.p.rapidapi.com%2Fsummarize%3Furl%3Dhttps%253A%252F%252Fwww.cbsnews.com%252Fnews%252Fhormone-therapy-clinics-could-be-putting-patients-danger-2019-10-15%252F%26sentences_number%3D5&url=https%3A%2F%2Fwww.cnn.com%2F2019%2F10%2F15%2Fhealth%2Flegionnaires-north-carolina-deaths%2Findex.html&
