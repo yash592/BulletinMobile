@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7c5750fe-221c-4613-adf1-922d625591dd" name="Default" comment="" />
+    <list default="true" id="7c5750fe-221c-4613-adf1-922d625591dd" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/src/actions/SummarizeActions.js" afterPath="$PROJECT_DIR$/src/actions/SummarizeActions.js" />
+      <change beforePath="$PROJECT_DIR$/src/components/NewsResults/NewsResults.js" afterPath="$PROJECT_DIR$/src/components/NewsResults/NewsResults.js" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,10 +42,10 @@
     </navigator>
     <panes>
       <pane id="ProjectPane" />
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">

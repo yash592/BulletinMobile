@@ -35,20 +35,21 @@ class NewsResults extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    console.log(this.props, this.netxtProps);
-    console.log(this.props == this.nextProps);
-    return this.props == this.nextProps;
+    // console.log(this.props, this.netxtProps);
+    // console.log(this.props == this.nextProps);
+    // return this.props == this.nextProps;
+    return false;
   }
 
   onPress = (img, url, title, author) => {
-    let story = {
-      img,
-      url,
-      title,
-      author
-    };
-    console.log("ONLONGPRESS", story);
-    this.props.summarizeArticle(story);
+    // let story = {
+    //   img,
+    //   url,
+    //   title,
+    //   author
+    // };
+    // console.log("ONLONGPRESS", story);
+    this.props.summarizeArticle(img, url, title, author);
   };
 
   onDoublePress = (img, url, title, author) => {
