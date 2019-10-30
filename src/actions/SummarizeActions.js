@@ -19,10 +19,19 @@ export const summarizeArticle = (link, img, title, author) => {
     })
       .then(resp => resp.json())
       .then(respjson => {
-        console.log(respjson);
+        // console.log(respjson);
+        Actions.newsdetail();
         dispatch({
           type: SUMMARIZE_NEWS,
-          payload: respjson.sentences
+          payload: [
+            {
+              summary: respjson.sentences,
+              link: img,
+              img: link,
+              title: title,
+              author: author
+            }
+          ]
         });
       })
       .catch(err => {

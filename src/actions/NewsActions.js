@@ -10,7 +10,7 @@ export const worldNews = countryCode => {
     return axios.get(url).then(res => {
       // console.log("respose", res.data.articles);
       res.data.articles.forEach(element => {
-        console.log("FOREACH", element.publishedAt);
+        // console.log("FOREACH", element.publishedAt);
       });
       dispatch({
         type: NEWS,
