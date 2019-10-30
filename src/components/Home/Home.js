@@ -35,7 +35,6 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    // console.log("componentDidMount");
     this.getCountry();
   }
 
@@ -80,7 +79,6 @@ class Home extends Component {
   }
 
   renderTiles = () => {
-    // this._retrieveData();
     return categories.map(category => {
       return (
         <CategoryTile
@@ -94,13 +92,7 @@ class Home extends Component {
   };
 
   render() {
-    // console.log(categories);
-
-    // console.log(width);'
-    // console.log("state", this.state);
-
     return (
-      // if(!this.state.country)
       <Gradient colors={["#EAE0F7", "black"]} style={styles.Gradient}>
         {this.renderTiles()}
       </Gradient>
@@ -109,7 +101,6 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     news: state.news.news
   };

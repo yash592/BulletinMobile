@@ -43,20 +43,16 @@ class NewsDetail extends Component {
     };
   }
   async componentDidMount() {
-    console.log("componentDidMount");
     await Font.loadAsync({
       OpenSans: require("../assets/fonts/OpenSans-SemiBold.ttf"),
       Roboto: require("../assets/fonts/Roboto-Medium.ttf"),
       RobotoCondensed: require("../assets/fonts/RobotoCondensed-Regular.ttf")
     });
     this.setState({ fontLoaded: true });
-    console.log("fontloaded");
   }
 
   renderSummary = data => {
-    // console.log("renderSummary", data);
     return data.map((el, i) => {
-      console.log("foreach", el);
       return (
         <View style={{ margin: 10 }} key={i}>
           <Text
@@ -75,10 +71,7 @@ class NewsDetail extends Component {
   };
 
   renderData = () => {
-    console.log("Summarizepagedata", this.props.SummarizePageData);
     return this.props.SummarizePageData.map((data, i) => {
-      // this.props.SummarizePageData
-      // console.log("data", data);
       return (
         <ScrollView key={i}>
           <View
@@ -130,7 +123,6 @@ class NewsDetail extends Component {
         }}
       >
         <Header headerText={"Gist"} showSocialIcons={true} />
-
         {this.renderData()}
         <BottomNav />
       </View>
@@ -139,9 +131,7 @@ class NewsDetail extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log("summarize from NewsDetail", state.summarize);
   const SummarizePageData = state.summarize;
-  // console.log({ SummarizePageData });
   return { SummarizePageData };
 };
 

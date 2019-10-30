@@ -25,30 +25,19 @@ class NewsResults extends Component {
     this.onPress = this.onPress.bind(this);
   }
   async componentDidMount() {
-    // console.log("componentDidMount");
     await Font.loadAsync({
       Roboto: require("../assets/fonts/Roboto-Medium.ttf"),
       RobotoBold: require("../assets/fonts/Roboto-Bold.ttf")
     });
     this.setState({ fontLoaded: true });
-    // console.log("fontloaded");
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    // console.log(this.props, this.netxtProps);
-    // console.log(this.props == this.nextProps);
-    // return this.props == this.nextProps;
-    return false;
-  }
+  shouldComponentUpdate = nextProps => {
+    console.log("shouldComponentUpdate?", this.props.news !== nextProps.news);
+    return this.props.news !== nextProps.news;
+  };
 
   onPress = (img, url, title, author) => {
-    // let story = {
-    //   img,
-    //   url,
-    //   title,
-    //   author
-    // };
-    // console.log("ONLONGPRESS", story);
     this.props.summarizeArticle(img, url, title, author);
   };
 
@@ -60,25 +49,10 @@ class NewsResults extends Component {
       title,
       author
     };
-    console.log(story);
-
     this.props.saveStory(story);
   };
 
-  // _keyExtractor = item => {
-  //   console.log("ITEM", item);
-  //   console.log("KEY", item.publishedAt);
-  //   return item.publishedAt;
-  // };
-
-  // _keyExtractor2 = (item, index) => {
-  //   console.log("ITEM", index);
-  //   // console.log("KEY", item.publishedAt);
-  //   return index;
-  // };
-
   _renderBigTiles = ({ item }) => {
-    // console.log("ITEM.URL", item.url);
     return (
       <View
         contentStyle={{
@@ -113,7 +87,6 @@ class NewsResults extends Component {
   };
 
   _renderSmallTiles = ({ item }) => {
-    // console.log("ITEM.URL", item.url);
     return (
       <View
         style={{
@@ -150,8 +123,6 @@ class NewsResults extends Component {
   };
 
   render() {
-    // console.log("PROPSSSSS", this.props.newsList.url);
-    // console.log(this.props);
     return !this.state.fontLoaded && !this.props.newsList ? (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <Text>Loading</Text>
@@ -174,7 +145,7 @@ class NewsResults extends Component {
             <Text
               style={{
                 padding: 10,
-                fontFamily: "Roboto", //Roboto
+                fontFamily: "Roboto",
                 fontSize: 18,
                 letterSpacing: 2,
                 color: "#A3A3A3"
@@ -266,11 +237,9 @@ const styles = {
 };
 
 const mapStateToProps = state => {
-  // console.log("state.news", state);
   const newsList = _.map(state.news, list => {
     return { ...list };
   });
-  // console.log("HAHAAAAAAHAHAHAHAHAH", { newsList });
   return { newsList };
 };
 
