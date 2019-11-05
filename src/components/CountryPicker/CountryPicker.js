@@ -51,6 +51,8 @@ class CountryPicker extends Component {
     });
   };
 
+  // pick up code and run the filter on type fn to render matched countries
+
   onChangeText = async text => {
     await this.setState({
       countryCode: text
@@ -72,9 +74,13 @@ class CountryPicker extends Component {
     });
   };
 
+  // filter on type
+  // return from filtered fn and condtionally render countries based on matching text
+
   filterOnType = () => {
     const { countryCode } = this.state;
     const filtered = this.filter(Countries, countryCode);
+    console.log("FILTERED", filtered);
 
     if (!filtered) {
       return <Text>No country found :(</Text>;
@@ -94,7 +100,6 @@ class CountryPicker extends Component {
   };
 
   render() {
-    // console.log(this.props.auth);
     if (this.state.fontLoaded) {
       return (
         <View style={{ flex: 1, backgroundColor: "white" }}>

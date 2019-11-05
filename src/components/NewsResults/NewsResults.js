@@ -32,7 +32,8 @@ class NewsResults extends Component {
     this.setState({ fontLoaded: true });
   }
 
-  shouldComponentUpdate = nextProps => {
+  shouldComponentUpdate = (nextProps, nextState) => {
+    console.log("NEXTPROPSNEWS", nextProps);
     console.log("shouldComponentUpdate?", this.props.news !== nextProps.news);
     return this.props.news !== nextProps.news;
   };
