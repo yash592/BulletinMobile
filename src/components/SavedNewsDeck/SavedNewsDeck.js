@@ -26,9 +26,7 @@ const SWIPE_MIN = 0.5 * WIDTH;
 class SavedNewsDeck extends Component {
   constructor(props) {
     super(props);
-
     const position = new Animated.ValueXY();
-
     const panResponder = PanResponder.create({
       onStartShouldSetPanResponder: () => true,
       onPanResponderMove: (event, gesture) => {
@@ -74,16 +72,11 @@ class SavedNewsDeck extends Component {
 
   doneSwiping = () => {
     const item = DATA[this.state.index];
-    // console.log(item);
-
-    // this.beginSwipe(item);
-
     this.setState({ index: this.state.index + 1 });
     this.state.position.setValue({ x: 0, y: 0 });
   };
 
   resetPosition = () => {
-    // console.log("reset");
     Animated.spring(this.state.position, {
       toValue: { x: 0, y: 0 }
     }).start();
@@ -96,9 +89,7 @@ class SavedNewsDeck extends Component {
       .map((item, i) => {
         console.log("ITEMS", item);
         console.log("i", i);
-
         if (i < this.state.index) return null;
-
         if (i === this.state.index) {
           return (
             <Animated.View
@@ -156,14 +147,11 @@ class SavedNewsDeck extends Component {
             />
           </Animated.View>
         );
-
-        // console.log(item);
       })
       .reverse();
   };
 
   render() {
-    // console.log(this.props);
     return !this.state.fontLoaded ? (
       <View
         style={{

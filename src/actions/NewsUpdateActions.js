@@ -25,7 +25,8 @@ export const saveStory = story => {
           payload: "Saved story!"
         });
       } else {
-        console.log("no user fpund");
+        console.log("No user found");
+        Actions.auth();
       }
     });
   };
