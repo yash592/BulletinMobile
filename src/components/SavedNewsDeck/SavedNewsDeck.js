@@ -11,7 +11,7 @@ import {
   UIManager
 } from "react-native";
 import { NewsCardLarge } from "../common/NewsCardLarge";
-import { SavedNewsCard } from "../common/SavedNewsCard";
+import SwipeCard from "../common/SwipeCard/SwipeCard";
 import * as Font from "expo-font";
 import { BottomNav } from "../common/BottomNav";
 import { Header } from "../common/Header";
@@ -26,159 +26,19 @@ const SWIPE_MIN = 0.5 * WIDTH;
 class SavedNewsDeck extends Component {
   constructor(props) {
     super(props);
-    const position = new Animated.ValueXY();
-    const panResponder = PanResponder.create({
-      onStartShouldSetPanResponder: () => true,
-      onPanResponderMove: (event, gesture) => {
-        // console.log(gesture);
-        position.setValue({ x: gesture.dx, y: 0 });
-      },
-      onPanResponderRelease: (event, gesture) => {
-        // console.log(SWIPE_MIN, -SWIPE_MIN);
-        gesture.dx > SWIPE_MIN ? this.beginSwipe() : this.resetPosition();
-      }
-    });
-    this.state = { panResponder, position, index: 0 };
   }
 
   // load font
-  async componentDidMount() {
-    await Font.loadAsync({
-      OpenSans: require("../assets/fonts/OpenSans-SemiBold.ttf"),
-      Roboto: require("../assets/fonts/Roboto-Medium.ttf"),
-      RobotoCondensed: require("../assets/fonts/RobotoCondensed-Regular.ttf")
-    });
-    this.setState({ fontLoaded: true });
-    console.log("fontloaded");
-    this.props.fetchStories();
-    this.props.deleteStory("title");
-  }
-
-  componentWillUpdate() {
-    UIManager.setLayoutAnimationEnabledExperimental &&
-      UIManager.setLayoutAnimationEnabledExperimental(true);
-    LayoutAnimation.spring();
-  }
-
-  // begin swiping and if swipe is greater than swpipe min, swipe it out and move on to next card
-
-  beginSwipe = () => {
-    console.log("Swiped right");
-    Animated.timing(this.state.position, {
-      toValue: { x: WIDTH, y: 0 },
-      duration: 250
-    }).start(() => this.doneSwiping());
-  };
-
-  doneSwiping = () => {
-    const item = DATA[this.state.index];
-    this.setState({ index: this.state.index + 1 });
-    this.state.position.setValue({ x: 0, y: 0 });
-  };
-
-  resetPosition = () => {
-    Animated.spring(this.state.position, {
-      toValue: { x: 0, y: 0 }
-    }).start();
-  };
 
   // render all cards and stack them together
 
-  renderCards = () => {
-    return this.props.savedStories
-      .map((item, i) => {
-        console.log("ITEMS", item);
-        console.log("i", i);
-        if (i < this.state.index) return null;
-        if (i === this.state.index) {
-          return (
-            <Animated.View
-              style={[
-                this.state.position.getLayout(),
-                styles.animated,
-                {
-                  zIndex: 99,
-                  transform: [{ scale: 1 }],
-                  opacity: this.state.position.x.interpolate({
-                    inputRange: [
-                      0,
-                      WIDTH / 8,
-                      WIDTH / 6,
-                      WIDTH / 4,
-                      WIDTH / 2,
-                      WIDTH
-                    ],
-                    outputRange: [1, 0.8, 0.6, 0.4, 0.2, 0]
-                  })
-                }
-              ]}
-              {...this.state.panResponder.panHandlers}
-              key={i}
-            >
-              <SavedNewsCard
-                title={item.stories.title}
-                img={item.stories.img}
-                author={item.stories.author}
-                // summary={item.summary}
-                // id={item.id}
-
-                style={{ ...styles }}
-              />
-            </Animated.View>
-          );
-        }
-        return (
-          <Animated.View
-            style={[
-              styles.animated,
-              {
-                top: 20 * (i - this.state.index),
-                zIndex: 5,
-                transform: [{ scale: 0.98 }]
-              }
-            ]}
-            key={i}
-          >
-            <SavedNewsCard
-              title={item.stories.title}
-              img={item.stories.img}
-              author={item.stories.author}
-              style={{ ...styles }}
-            />
-          </Animated.View>
-        );
-      })
-      .reverse();
-  };
-
   render() {
-    return !this.state.fontLoaded ? (
-      <View
-        style={{
-          flex: 1,
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-      >
-        <Text>Loading</Text>
-      </View>
-    ) : (
-      <View
-        style={{
-          flex: 1,
-          height: "100%"
-        }}
-      >
-        <Header headerText={"Saved Gists"} />
-        <View
-          style={{
-            flex: 1,
-            justifyContent: "flex-start",
-            marginTop: 20
-          }}
-        >
-          {this.renderCards()}
-        </View>
+    console.log("SAVEDNEWSDECK?");
+    return (
+      <View>
+        <SwipeCard>
+          <Text>BOO@</Text>
+        </SwipeCard>
       </View>
     );
   }
