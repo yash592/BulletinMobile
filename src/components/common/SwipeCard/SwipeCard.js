@@ -6,9 +6,14 @@ import {
   TouchableOpacity,
   ScrollView,
   PanResponder,
+  Dimensions,
   Animated
 } from "react-native";
 import * as Font from "expo-font";
+
+const WIDTH = Dimensions.get("window").width;
+const HEIGHT = Dimensions.get("window").height;
+const SWIPE_MIN = 0.5 * WIDTH;
 
 class SwipeCard extends Component {
   constructor(props) {
@@ -38,14 +43,20 @@ class SwipeCard extends Component {
 
   renderCards() {
     <Animated.View
-      style={{ position: "absolute", width: SCREEN_WIDTH }}
+      style={{ position: "absolute", width: WIDTH }}
       {...this.state.panResponder.panHandlers}
-    ></Animated.View>;
+    >
+      <Text>Hi</Text>
+    </Animated.View>;
   }
 
   render() {
-    // console.log(this.props);
-    return <View>{this.renderCards()}</View>;
+    console.log("SWIPECARD");
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        {this.renderCards()}
+      </View>
+    );
   }
 }
 
@@ -54,7 +65,6 @@ const styles = {
     flex: 1,
     justifyContent: "flex-start",
     width: "96%",
-
     shadowOffset: { width: 10, height: 10 },
     shadowRadius: 0.25,
     elevation: 5,
