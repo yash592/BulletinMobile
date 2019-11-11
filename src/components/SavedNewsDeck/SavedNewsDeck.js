@@ -35,11 +35,9 @@ class SavedNewsDeck extends Component {
   render() {
     console.log("SAVEDNEWSDECK?");
     return (
-      <View>
-        <SwipeCard>
-          <Text>BOO@</Text>
-        </SwipeCard>
-      </View>
+      <SwipeCard>
+        <Text>Hi</Text>
+      </SwipeCard>
     );
   }
 }
