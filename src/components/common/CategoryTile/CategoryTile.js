@@ -32,7 +32,6 @@ const Container = styled.TouchableOpacity`
   margin: 5px;
   width: 47.5%;
   height: 23.5%;
-
   elevation: 5;
   background-color: white;
   border-radius: 10;
