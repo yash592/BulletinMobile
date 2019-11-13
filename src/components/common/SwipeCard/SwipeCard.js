@@ -20,9 +20,9 @@ class SwipeCard extends Component {
     super(props);
     const position = new Animated.ValueXY();
     const panResponder = PanResponder.create({
-      onStartShouldPanResponder: () => true,
+      onStartShouldSetPanResponder: () => true,
       onPanResponderMove: (event, gesture) => {
-        console.log(gesture);
+        console.log("Gesture", gesture);
         position.setValue({ x: gesture.dx, y: 0 });
       },
       onPanResponderRelease: (event, gesture) => {
@@ -41,22 +41,32 @@ class SwipeCard extends Component {
     console.log("fontloaded");
   }
 
+  getCardStyle = () => {
+    const { position } = this.state;
+    // console.log(position);
+
+    const rotate = position.x.interpolate({
+      inputRange: [0, WIDTH / 8, WIDTH / 6, WIDTH / 4, WIDTH / 2, WIDTH],
+      outputRange: [1, 0.8, 0.6, 0.4, 0.2, 0]
+    });
+  };
+
   renderCards() {
-    <Animated.View
-      style={{ position: "absolute", width: WIDTH }}
-      {...this.state.panResponder.panHandlers}
-    >
-      <Text>Hi</Text>
-    </Animated.View>;
+    return this.props.data.map((item, i) => {
+      return (
+        <Animated.View
+          style={this.getCardStyle()}
+          {...this.state.panResponder.panHandlers}
+        >
+          {this.props.renderCard(item)}
+        </Animated.View>
+      );
+    });
   }
 
   render() {
-    console.log("SWIPECARD");
-    return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        {this.renderCards()}
-      </View>
-    );
+    console.log("SWIPECARD", this.props, this.state.panResponder);
+    return <View>{this.renderCards()}</View>;
   }
 }
 

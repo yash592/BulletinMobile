@@ -16,6 +16,7 @@ import * as Font from "expo-font";
 import { BottomNav } from "../common/BottomNav";
 import { Header } from "../common/Header";
 import { fetchStories, deleteStory } from "../../actions";
+import { Card } from "react-native-elements";
 import { connect } from "react-redux";
 import _ from "lodash";
 
@@ -28,6 +29,31 @@ class SavedNewsDeck extends Component {
     super(props);
   }
 
+  sampledata = [
+    {
+      Text: "HI",
+      Sample: "Hello"
+    },
+    {
+      Text: "HI",
+      Sample: "Hi"
+    },
+    {
+      Text: "HI",
+      Sample: "Nope"
+    }
+  ];
+
+  renderCard = news => {
+    return (
+      <Card>
+        <View style={{ width: 800 }}>
+          <Text>{news.Sample}</Text>
+        </View>
+      </Card>
+    );
+  };
+
   // load font
 
   // render all cards and stack them together
@@ -35,9 +61,13 @@ class SavedNewsDeck extends Component {
   render() {
     console.log("SAVEDNEWSDECK?");
     return (
-      <SwipeCard>
-        <Text>Hi</Text>
-      </SwipeCard>
+      <View style={{ marginTop: 10 }}>
+        <SwipeCard
+          data={this.sampledata}
+          renderCard={this.renderCard}
+          keyProp="jobkey"
+        />
+      </View>
     );
   }
 }
