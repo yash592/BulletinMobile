@@ -12,6 +12,8 @@ import {
 } from "react-native";
 import { NewsCardLarge } from "../common/NewsCardLarge";
 import SwipeCard from "../common/SwipeCard/SwipeCard";
+import { SwipeDeckCard } from "../common/SwipeDeckCard/SwipeDeckCard";
+
 import * as Font from "expo-font";
 import { BottomNav } from "../common/BottomNav";
 import { Header } from "../common/Header";
@@ -33,24 +35,16 @@ class SavedNewsDeck extends Component {
     {
       Text: "HI",
       Sample: "Hello"
-    },
-    {
-      Text: "HI",
-      Sample: "Hi"
-    },
-    {
-      Text: "HI",
-      Sample: "Nope"
     }
   ];
 
   renderCard = news => {
     return (
-      <Card>
+      <SwipeDeckCard>
         <View style={{ width: 800 }}>
           <Text>{news.Sample}</Text>
         </View>
-      </Card>
+      </SwipeDeckCard>
     );
   };
 
@@ -61,7 +55,13 @@ class SavedNewsDeck extends Component {
   render() {
     console.log("SAVEDNEWSDECK?");
     return (
-      <View style={{ marginTop: 10 }}>
+      <View
+        style={{
+          marginTop: 10,
+          justifyContent: "center",
+          alignItems: "center"
+        }}
+      >
         <SwipeCard
           data={this.sampledata}
           renderCard={this.renderCard}
@@ -248,7 +248,6 @@ const mapStateToProps = state => {
   return { savedStories };
 };
 
-export default connect(
-  mapStateToProps,
-  { fetchStories, deleteStory }
-)(SavedNewsDeck);
+export default connect(mapStateToProps, { fetchStories, deleteStory })(
+  SavedNewsDeck
+);
