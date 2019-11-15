@@ -10,6 +10,7 @@ import {
   Animated
 } from "react-native";
 import * as Font from "expo-font";
+import { Platform } from "@unimodules/core";
 
 const WIDTH = Dimensions.get("window").width;
 const HEIGHT = Dimensions.get("window").height;
@@ -23,10 +24,10 @@ class SwipeCard extends Component {
       onStartShouldSetPanResponder: () => true,
       onPanResponderMove: (event, gesture) => {
         console.log("Gesture", gesture);
-        position.setValue({ x: gesture.dx, y: 0 });
+        position.setValue({ x: gesture.dx, y: gesture.dy });
       },
       onPanResponderRelease: (event, gesture) => {
-        gesture.dx > SWIPE_MIN ? this.beginSwipe(title) : this.resetPosition();
+        // gesture.dx > SWIPE_MIN ? this.beginSwipe(title) : this.resetPosition();
       }
     });
     this.state = { panResponder, position, index: 0 };
@@ -52,16 +53,26 @@ class SwipeCard extends Component {
   };
 
   renderCards() {
-    return this.props.data.map((item, i) => {
+    const deck = this.props.data.map((item, i) => {
+      // if (i === this.state.index) return null;
+
+      if (i === 0) {
+        return (
+          <Animated.View
+            style={this.state.position.getLayout()}
+            {...this.state.panResponder.panHandlers}
+          >
+            {this.props.renderCard(item)}
+          </Animated.View>
+        );
+      }
       return (
-        <Animated.View
-          style={this.getCardStyle()}
-          {...this.state.panResponder.panHandlers}
-        >
+        <Animated.View style={{ ...this.state.panResponder.panHandlers }}>
           {this.props.renderCard(item)}
         </Animated.View>
       );
     });
+    return Platform.OS === "android" ? deck : deck.reverse();
   }
 
   render() {

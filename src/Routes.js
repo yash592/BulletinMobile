@@ -11,6 +11,8 @@ import CountryPicker from "./components/CountryPicker/CountryPicker";
 import LoadApp from "./components/LoadApp/LoadApp";
 import SplashScreen from "./components/SplashScreen/SplashScreen";
 import SavedNewsDeck from "./components/SavedNewsDeck/SavedNewsDeck";
+//import { SavedNewsDeck } from "./components/Common/SwipeDeckCard";
+import { SwipeDeckCard } from "./components/common/SwipeDeckCard/SwipeDeckCard";
 
 const Routes = props => {
   // console.log("rputes props", props);
@@ -45,6 +47,9 @@ const Routes = props => {
 
         <Scene key="newsresults" hideNavBar>
           <Scene key="newsresults" component={NewsResults} />
+        </Scene>
+        <Scene key="swipedeckcard" hideNavBar>
+          <Scene key="swipedeckcard" component={SwipeDeckCard} />
         </Scene>
         <Scene key="newsdetail" hideNavBar>
           <Scene key="newsdetail" component={NewsDetail} />
