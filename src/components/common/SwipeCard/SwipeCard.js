@@ -59,15 +59,29 @@ class SwipeCard extends Component {
       if (i === 0) {
         return (
           <Animated.View
-            style={this.state.position.getLayout()}
+            style={[
+              this.state.position.getLayout(),
+              { zIndex: 99 },
+              { position: "absolute", width: WIDTH }
+            ]}
             {...this.state.panResponder.panHandlers}
+            key={item.keyProp}
           >
             {this.props.renderCard(item)}
           </Animated.View>
         );
       }
       return (
-        <Animated.View style={{ ...this.state.panResponder.panHandlers }}>
+        <Animated.View
+          style={{ ...this.state.panResponder.panHandlers }}
+          key={item.keyProp}
+          style={{
+            top: 20 * (i - this.state.index),
+            zIndex: -i,
+            position: "absolute",
+            width: WIDTH
+          }}
+        >
           {this.props.renderCard(item)}
         </Animated.View>
       );

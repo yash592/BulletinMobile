@@ -33,18 +33,25 @@ class SavedNewsDeck extends Component {
 
   sampledata = [
     {
-      Text: "HI",
-      Sample: "Hello"
+      Title: "HI",
+      Author: "Hello",
+      Content: "Content"
+    },
+    {
+      Title: "HI",
+      Author: "Hello",
+      Content: "Content"
     }
   ];
 
   renderCard = news => {
+    console.log("NEWS", news);
     return (
-      <SwipeDeckCard>
-        <View style={{ width: 800 }}>
-          <Text>{news.Sample}</Text>
-        </View>
-      </SwipeDeckCard>
+      <SwipeDeckCard
+        title={news.Title}
+        Author={news.Author}
+        Content={news.Content}
+      />
     );
   };
 
@@ -53,11 +60,11 @@ class SavedNewsDeck extends Component {
   // render all cards and stack them together
 
   render() {
-    console.log("SAVEDNEWSDECK?");
+    // console.log("SAVEDNEWSDECK?");
     return (
       <View
         style={{
-          marginTop: 10,
+          marginTop: 30,
           justifyContent: "center",
           alignItems: "center"
         }}
