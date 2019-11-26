@@ -47,11 +47,13 @@ class SavedNewsDeck extends Component {
   renderCard = news => {
     console.log("NEWS", news);
     return (
-      <SwipeDeckCard
-        title={news.Title}
-        Author={news.Author}
-        Content={news.Content}
-      />
+      <View style={styles.animated}>
+        <SwipeDeckCard
+          title={news.Title}
+          Author={news.Author}
+          Content={news.Content}
+        />
+      </View>
     );
   };
 
@@ -62,13 +64,7 @@ class SavedNewsDeck extends Component {
   render() {
     // console.log("SAVEDNEWSDECK?");
     return (
-      <View
-        style={{
-          marginTop: 30,
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-      >
+      <View>
         <SwipeCard
           data={this.sampledata}
           renderCard={this.renderCard}
@@ -81,7 +77,6 @@ class SavedNewsDeck extends Component {
 
 const styles = {
   animated: {
-    position: "absolute",
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
