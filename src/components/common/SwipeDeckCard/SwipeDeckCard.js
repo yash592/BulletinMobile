@@ -10,10 +10,7 @@ const SwipeDeckCard = props => {
     <View
       style={{
         width: 0.9 * WIDTH,
-        height: 0.7 * HEIGHT,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "pink"
+        height: 0.7 * HEIGHT
       }}
     >
       <Image

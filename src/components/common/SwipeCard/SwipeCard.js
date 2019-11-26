@@ -62,7 +62,10 @@ class SwipeCard extends Component {
             style={[
               this.state.position.getLayout(),
               { zIndex: 99 },
-              { position: "absolute", width: WIDTH }
+              {
+                width: WIDTH,
+                position: "absolute"
+              }
             ]}
             {...this.state.panResponder.panHandlers}
             key={item.keyProp}
@@ -78,8 +81,8 @@ class SwipeCard extends Component {
           style={{
             top: 20 * (i - this.state.index),
             zIndex: -i,
-            position: "absolute",
-            width: WIDTH
+            width: WIDTH,
+            position: "absolute"
           }}
         >
           {this.props.renderCard(item)}
@@ -98,7 +101,9 @@ class SwipeCard extends Component {
 const styles = {
   container: {
     flex: 1,
-    justifyContent: "flex-start",
+    marginTop: 30,
+    justifyContent: "center",
+    alignItems: "center",
     width: "96%",
     shadowOffset: { width: 10, height: 10 },
     shadowRadius: 0.25,
