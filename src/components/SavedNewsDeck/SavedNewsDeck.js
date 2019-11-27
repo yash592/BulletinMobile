@@ -49,9 +49,11 @@ class SavedNewsDeck extends Component {
     return (
       <View style={styles.animated}>
         <SwipeDeckCard
-          title={news.Title}
-          Author={news.Author}
-          Content={news.Content}
+          title={news.title}
+          Author={news.author}
+          Content={news.summary}
+          key={news.id}
+          Image={news.urlToImage}
         />
       </View>
     );
@@ -65,11 +67,7 @@ class SavedNewsDeck extends Component {
     // console.log("SAVEDNEWSDECK?");
     return (
       <View>
-        <SwipeCard
-          data={this.sampledata}
-          renderCard={this.renderCard}
-          keyProp="jobkey"
-        />
+        <SwipeCard data={DATA} renderCard={this.renderCard} />
       </View>
     );
   }
@@ -80,7 +78,8 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
-    height: "86%"
+    height: "100%",
+    marginTop: 20
   },
   cardOpacity: {
     opacity: 1
