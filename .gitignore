@@ -6,3 +6,5 @@ npm-debug.*
 *.key
 *.mobileprovision
 keys.js
+.DS_STORE
+package-lock.json
