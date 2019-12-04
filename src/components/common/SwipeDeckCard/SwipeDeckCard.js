@@ -12,7 +12,8 @@ const WIDTH = Dimensions.get("window").width;
 const HEIGHT = Dimensions.get("window").height;
 
 const SwipeDeckCard = props => {
-  console.log("SWIPEDECKCARD", props);
+  console.log("Swipedeckcard", props);
+
   return (
     <View style={styles.Container}>
       <Image
@@ -21,7 +22,7 @@ const SwipeDeckCard = props => {
         }}
         style={styles.Image}
       />
-      <Text>{props.title}</Text>
+      <Text style={props.styles.titleText}>{props.title}</Text>
       <Text>{props.author}</Text>
       <Text>{props.content}</Text>
     </View>

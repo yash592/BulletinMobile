@@ -32,15 +32,6 @@ class SwipeCard extends Component {
     });
     this.state = { panResponder, position, index: 0 };
   }
-  async componentDidMount() {
-    await Font.loadAsync({
-      OpenSans: require("../../assets/fonts/OpenSans-SemiBold.ttf"),
-      Roboto: require("../../assets/fonts/Roboto-Medium.ttf"),
-      RobotoCondensed: require("../../assets/fonts/RobotoCondensed-Regular.ttf")
-    });
-    this.setState({ fontLoaded: true });
-    console.log("fontloaded");
-  }
 
   getCardStyle = () => {
     const { position } = this.state;
@@ -93,7 +84,7 @@ class SwipeCard extends Component {
   }
 
   render() {
-    console.log("SWIPECARD", this.props, this.state.panResponder);
+    // console.log("SWIPECARD", this.props, this.state.panResponder);
     return <View>{this.renderCards()}</View>;
   }
 }

@@ -13,7 +13,6 @@ import {
 import { NewsCardLarge } from "../common/NewsCardLarge";
 import SwipeCard from "../common/SwipeCard/SwipeCard";
 import { SwipeDeckCard } from "../common/SwipeDeckCard/SwipeDeckCard";
-
 import * as Font from "expo-font";
 import { BottomNav } from "../common/BottomNav";
 import { Header } from "../common/Header";
@@ -21,7 +20,6 @@ import { fetchStories, deleteStory } from "../../actions";
 import { Card } from "react-native-elements";
 import { connect } from "react-redux";
 import _ from "lodash";
-
 const WIDTH = Dimensions.get("window").width;
 const HEIGHT = Dimensions.get("window").height;
 const SWIPE_MIN = 0.5 * WIDTH;
@@ -29,20 +27,20 @@ const SWIPE_MIN = 0.5 * WIDTH;
 class SavedNewsDeck extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      fontLoaded: false
+    };
   }
 
-  sampledata = [
-    {
-      Title: "HI",
-      Author: "Hello",
-      Content: "Content"
-    },
-    {
-      Title: "HI",
-      Author: "Hello",
-      Content: "Content"
-    }
-  ];
+  async componentDidMount() {
+    await Font.loadAsync({
+      OpenSans: require("../assets/fonts/OpenSans-SemiBold.ttf"),
+      Roboto: require("../assets/fonts/Roboto-Medium.ttf"),
+      RobotoCondensed: require("../assets/fonts/RobotoCondensed-Regular.ttf")
+    });
+    this.setState({ fontLoaded: true });
+    console.log("fontloaded");
+  }
 
   renderCard = news => {
     console.log("NEWS", news);
@@ -54,6 +52,7 @@ class SavedNewsDeck extends Component {
           Content={news.summary}
           key={news.id}
           Image={news.urlToImage}
+          styles={{ ...styles }}
         />
       </View>
     );
@@ -64,8 +63,12 @@ class SavedNewsDeck extends Component {
   // render all cards and stack them together
 
   render() {
-    // console.log("SAVEDNEWSDECK?");
-    return (
+    console.log(this.state.fontLoaded);
+    return !this.state.fontLoaded ? (
+      <View>
+        <Text>Loading!</Text>
+      </View>
+    ) : (
       <View>
         <SwipeCard data={DATA} renderCard={this.renderCard} />
       </View>
