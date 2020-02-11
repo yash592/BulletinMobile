@@ -28,6 +28,7 @@ class SplashScreen extends Component {
       RobotoCondensed: require("../assets/fonts/RobotoCondensed-Regular.ttf")
     });
     this.setState({ fontLoaded: true });
+    console.log("Font loaded");
   }
 
   _renderItem = ({ item, dimensions }) => (
@@ -116,12 +117,11 @@ const styles = StyleSheet.create({
     fontSize: 22,
     color: "black",
     textAlign: "center",
-    marginBottom: 16,
-    fontFamily: "OpenSans"
+    marginBottom: 16
+    //fontFamily: "OpenSans"
   }
 });
 
-export default connect(
-  null,
-  { onBoardingDoneSet, checkIfUserLoggedIn }
-)(SplashScreen);
+export default connect(null, { onBoardingDoneSet, checkIfUserLoggedIn })(
+  SplashScreen
+);
