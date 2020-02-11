@@ -15,6 +15,7 @@ import styled from "styled-components";
 
 const CategoryTile = props => {
   const { img, text, onPress, children } = props;
+  console.log("CategoryTileProps", props);
 
   return (
     <Container onPress={onPress}>
@@ -55,7 +56,7 @@ const TextBox = styled.View`
 
 const Title = styled.Text`
 fontSize: 22;
-fontFamily:Roboto;
+fontFamily: "Roboto";
 fontWeight: bold;
 shadow-color: white;
 textShadowOffset: { width: 0.1, height: 0.1 };

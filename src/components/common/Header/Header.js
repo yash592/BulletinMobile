@@ -64,7 +64,7 @@ const styles = {
   },
   textStyle: {
     fontSize: 22,
-    fontFamily: "sans-serif-condensed",
+    //fontFamily: "sans-serif-condensed",
     color: "black",
     marginLeft: 20
   }

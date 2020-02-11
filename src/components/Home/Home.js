@@ -31,10 +31,19 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.onClick = this.onClick.bind(this);
-    this.state = { country: "" };
+    this.state = { country: "", fontLoaded: false };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    await Font.loadAsync({
+      OpenSans: require("../assets/fonts/OpenSans-SemiBold.ttf"),
+      Roboto: require("../assets/fonts/Roboto-Medium.ttf"),
+      RobotoCondensed: require("../assets/fonts/RobotoCondensed-Regular.ttf")
+    });
+    this.setState({
+      fontLoaded: true
+    });
+
     this.getCountry();
   }
 
@@ -85,6 +94,7 @@ class Home extends Component {
           key={category.id}
           img={category.icon}
           text={category.name}
+          font={"Roboto"}
           onPress={() => this.onClick(category.name)}
         />
       );
@@ -92,11 +102,11 @@ class Home extends Component {
   };
 
   render() {
-    return (
+    return this.state.fontLoaded ? (
       <Gradient colors={["#EAE0F7", "black"]} style={styles.Gradient}>
         {this.renderTiles()}
       </Gradient>
-    );
+    ) : null;
   }
 }
 
@@ -122,17 +132,14 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(
-  mapStateToProps,
-  {
-    worldNews,
-    politicsStories,
-    businessStories,
-    entertainmentStories,
-    healthStories,
-    scienceStories,
-    sportsStories,
-    techStories,
-    countryGetter
-  }
-)(Home);
+export default connect(mapStateToProps, {
+  worldNews,
+  politicsStories,
+  businessStories,
+  entertainmentStories,
+  healthStories,
+  scienceStories,
+  sportsStories,
+  techStories,
+  countryGetter
+})(Home);
