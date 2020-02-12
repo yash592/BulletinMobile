@@ -17,6 +17,7 @@ import {
 import { connect } from "react-redux";
 import { Actions } from "react-native-router-flux";
 import * as Font from "expo-font";
+import { loadImages } from "../LoadImagesAndFonts/LoadImagesAndFonts";
 
 import {
   Dimensions,
@@ -94,7 +95,6 @@ class Home extends Component {
           key={category.id}
           img={category.icon}
           text={category.name}
-          font={"Roboto"}
           onPress={() => this.onClick(category.name)}
         />
       );
@@ -102,6 +102,7 @@ class Home extends Component {
   };
 
   render() {
+    //loadImages();
     return this.state.fontLoaded ? (
       <Gradient colors={["#EAE0F7", "black"]} style={styles.Gradient}>
         {this.renderTiles()}

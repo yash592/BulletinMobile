@@ -33,8 +33,8 @@ class NewsResults extends Component {
   }
 
   shouldComponentUpdate = (nextProps, nextState) => {
-    console.log("NEXTPROPSNEWS", nextProps);
-    console.log("shouldComponentUpdate?", this.props.news !== nextProps.news);
+    // console.log("NEXTPROPSNEWS", nextProps);
+    // console.log("shouldComponentUpdate?", this.props.news !== nextProps.news);
     return this.props.news !== nextProps.news;
   };
 
@@ -244,7 +244,6 @@ const mapStateToProps = state => {
   return { newsList };
 };
 
-export default connect(
-  mapStateToProps,
-  { summarizeArticle, saveStory }
-)(NewsResults);
+export default connect(mapStateToProps, { summarizeArticle, saveStory })(
+  NewsResults
+);
