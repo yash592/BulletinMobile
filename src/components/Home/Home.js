@@ -25,6 +25,7 @@ import {
   TouchableOpacity,
   AsyncStorage
 } from "react-native";
+import { AppLoading } from "expo";
 
 const categories = require("../../assets/categories");
 
@@ -32,7 +33,7 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.onClick = this.onClick.bind(this);
-    this.state = { country: "", fontLoaded: false };
+    this.state = { country: "", fontLoaded: false, isReady: false };
   }
 
   async componentDidMount() {
@@ -88,6 +89,25 @@ class Home extends Component {
     }
   }
 
+  cacheImages = () => {
+    return ImageStore.map(image => {
+      if (typeof image === "string") {
+        return Image.prefetch(image);
+      } else {
+        return Asset.fromModule(image).downloadAsync();
+      }
+    });
+  };
+
+  loadImages = async () => {
+    const imageAssets = this.cacheImages([
+      //require("../../../assets/images/entertainment.jpg")
+    ]);
+
+    await Promise.all([...imageAssets]);
+    console.log("IMAGE ASSETS", imageAssets);
+  };
+
   renderTiles = () => {
     return categories.map(category => {
       return (
@@ -102,12 +122,18 @@ class Home extends Component {
   };
 
   render() {
-    //loadImages();
+    // console.log(loadImages());
     return this.state.fontLoaded ? (
       <Gradient colors={["#EAE0F7", "black"]} style={styles.Gradient}>
         {this.renderTiles()}
       </Gradient>
-    ) : null;
+    ) : (
+      <AppLoading
+        startAsync={this.loadImages}
+        onError={console.warn}
+        onFinish={() => this.setState({ isReady: true })}
+      />
+    );
   }
 }
 
