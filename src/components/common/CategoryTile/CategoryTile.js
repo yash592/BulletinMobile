@@ -15,7 +15,7 @@ import styled from "styled-components";
 
 const CategoryTile = props => {
   const { img, text, onPress, children } = props;
-  console.log("CategoryTileProps", props);
+  // console.log("CategoryTileProps", props);
 
   return (
     <Container onPress={onPress}>
