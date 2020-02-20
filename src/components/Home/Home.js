@@ -12,12 +12,13 @@ import {
   scienceStories,
   sportsStories,
   techStories,
-  countryGetter
+  countryGetter,
+  loadImages
 } from "../../actions";
 import { connect } from "react-redux";
 import { Actions } from "react-native-router-flux";
 import * as Font from "expo-font";
-import { loadImages } from "../LoadImagesAndFonts/LoadImagesAndFonts";
+//import { loadImages } from "../LoadImagesAndFonts/LoadImagesAndFonts";
 
 import {
   Dimensions,
@@ -47,6 +48,9 @@ class Home extends Component {
     });
 
     this.getCountry();
+    // this.props.loadImages().then(res => {
+    //   console.log(res);
+    // });
   }
 
   getCountry = async () => {
@@ -89,25 +93,6 @@ class Home extends Component {
     }
   }
 
-  cacheImages = () => {
-    return ImageStore.map(image => {
-      if (typeof image === "string") {
-        return Image.prefetch(image);
-      } else {
-        return Asset.fromModule(image).downloadAsync();
-      }
-    });
-  };
-
-  loadImages = async () => {
-    const imageAssets = this.cacheImages([
-      //require("../../../assets/images/entertainment.jpg")
-    ]);
-
-    await Promise.all([...imageAssets]);
-    console.log("IMAGE ASSETS", imageAssets);
-  };
-
   renderTiles = () => {
     return categories.map(category => {
       return (
@@ -122,14 +107,14 @@ class Home extends Component {
   };
 
   render() {
-    // console.log(loadImages());
-    return this.state.fontLoaded ? (
+    console.log(this.state.isReady, this.state.fontLoaded);
+    return this.state.isReady && this.state.fontLoaded ? (
       <Gradient colors={["#EAE0F7", "black"]} style={styles.Gradient}>
         {this.renderTiles()}
       </Gradient>
     ) : (
       <AppLoading
-        startAsync={this.loadImages}
+        startAsync={this.props.loadImages}
         onError={console.warn}
         onFinish={() => this.setState({ isReady: true })}
       />
@@ -168,5 +153,6 @@ export default connect(mapStateToProps, {
   scienceStories,
   sportsStories,
   techStories,
-  countryGetter
+  countryGetter,
+  loadImages
 })(Home);
