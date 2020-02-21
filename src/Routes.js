@@ -13,6 +13,7 @@ import SplashScreen from "./components/SplashScreen/SplashScreen";
 import SavedNewsDeck from "./components/SavedNewsDeck/SavedNewsDeck";
 //import { SavedNewsDeck } from "./components/Common/SwipeDeckCard";
 import { SwipeDeckCard } from "./components/common/SwipeDeckCard/SwipeDeckCard";
+import { StatusBar } from "react-native";
 
 const Routes = props => {
   // console.log("rputes props", props);

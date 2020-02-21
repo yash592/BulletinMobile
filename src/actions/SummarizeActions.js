@@ -5,7 +5,7 @@ import { Actions } from "react-native-router-flux";
 
 export const summarizeArticle = (link, img, title, author) => {
   console.log("got to summarize", link, img, title, author);
-  let url = `https://api.aylien.com/api/v1/summarize?url=${img}&sentences_number=10`;
+  let url = `https://api.aylien.com/api/v1/summarize?url=${img}&sentences_number=5`;
   console.log(url);
   // console.log(fetch);
   return dispatch => {
