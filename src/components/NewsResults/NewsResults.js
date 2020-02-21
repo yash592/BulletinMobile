@@ -1,5 +1,12 @@
 import React, { Component, PureComponent } from "react";
-import { View, Text, Image, FlatList, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  FlatList,
+  ScrollView,
+  StatusBar
+} from "react-native";
 import { Gradient } from "../common/Gradient";
 import { CategoryTile } from "../common/CategoryTile";
 // import { Header } from "react-native-elements";
@@ -130,6 +137,7 @@ class NewsResults extends Component {
       </View>
     ) : (
       <View style={{ flex: 1 }}>
+        <StatusBar barStyle="dark-content" />
         <Header headerText={"News"} />
         <ScrollView>
           <Gradient

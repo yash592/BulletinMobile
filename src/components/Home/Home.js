@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { View, Text, Image, StyleSheet, Animated } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  Animated,
+  StatusBar
+} from "react-native";
 import { Gradient } from "../common/Gradient";
 import { CategoryTile } from "../common/CategoryTile/";
 import { ModalOverlay } from "../common/ModalOverlay/";
@@ -109,9 +116,13 @@ class Home extends Component {
   render() {
     console.log(this.state.isReady, this.state.fontLoaded);
     return this.state.isReady && this.state.fontLoaded ? (
-      <Gradient colors={["#EAE0F7", "black"]} style={styles.Gradient}>
-        {this.renderTiles()}
-      </Gradient>
+      <View style={{ flex: 1 }}>
+        <StatusBar barStyle="dark-content" backgroundColor="black" />
+
+        <Gradient colors={["#EAE0F7", "black"]} style={styles.Gradient}>
+          {this.renderTiles()}
+        </Gradient>
+      </View>
     ) : (
       <AppLoading
         startAsync={this.props.loadImages}

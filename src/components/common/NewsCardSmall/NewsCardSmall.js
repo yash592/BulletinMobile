@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { View, Text, ImageBackground, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  ImageBackground,
+  TouchableOpacity,
+  Platform
+} from "react-native";
 
 const NewsCardSmall = props => {
   // console.log("NewsCardSmall props", props);
@@ -31,10 +37,13 @@ const styles = {
     width: "98%",
     height: 250,
     shadowColor: "black",
-    shadowOffset: { width: 10, height: 10 },
-    shadowOpacity: 1,
-    shadowRadius: 1,
-    elevation: 5,
+    shadowOffset: {
+      width: Platform.OS === "ios" ? 2 : 10,
+      height: Platform.OS === "ios" ? 2 : 10
+    },
+    shadowOpacity: Platform.OS === "ios" ? 0.5 : 1,
+    shadowRadius: Platform.OS === "ios" ? 0.5 : 1,
+    elevation: Platform.OS === "ios" ? 0 : 5,
     backgroundColor: "white",
     borderRadius: 5
   },
